@@ -10,8 +10,8 @@
 - Bază de date relațională (MySQL)
 
 ## Tehnologii open-source
-- stockfish (*open source chess engine*) [link](https://github.com/official-stockfish/Stockfish)
-- chessboard.js [link](http://www.chessboardjs.com/) 
+- [stockfish (*open source chess engine*)](https://github.com/official-stockfish/Stockfish)
+- [chessboard.js](http://www.chessboardjs.com/) 
 ## Moduri de a folosi aplicația
 - ### 1. Tutorial (poate fi redenumit)
   - studii pe baza partidelor reale ce se află într-un DB (capitole)
