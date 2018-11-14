@@ -1,0 +1,15 @@
+Dupa ceva research am gasit urmatoarele lucruri:
+    Cel mai avansat AI de pana acum este AlphaGo Zero
+        Este scris in C++, Lua si Ptyhon, adica framework ul DeepMind
+        Foloseste hyperparametri (parametri initializati inainte sa inceapa antrenarea), retele neuronale
+        A fost antrenat jucandu-se impotriva sa, cunoscand doare regurile jocului
+    
+    Pentru a testa cat de bun este AI ul nostru putem juca 
+        Versus 10 nivele de AI pe https://www.chess.com/play/computer Presupun ca foloseste minmax peste un engine de AI optimizat
+        Versus 100 nivele pe aplicatia de pe windows store chess lvl 100 https://www.microsoft.com/en-us/p/the-chess-lv100/9wzdncrfj23z
+          Asta foloseste un engine de pe net, iar aici este comparatia intre 2 astfel de engineuri http://www.chessgames.com/perl/chessgame?gid=1366756
+        Putem juca online versus un bot asemanator cu AlphaGo Zero https://www.chess.com/forum/view/general/leela-zero-a-neural-network-engine-similar-to-alpha-zero
+        
+    Am gasit o implementare in python pentru OpenAI pentru simularea jocului https://github.com/genyrosk/gym-chess
+
+Putem antrena AI ul nostru folosind jocuri de aici http://www.chessgames.com/index.html (folosesc un mod standardizat prin care expun mutarile ca stringuri)
