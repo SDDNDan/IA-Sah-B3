@@ -20,7 +20,7 @@ body {
 
 .footer-bs {
     background-color: #3c3d41;
-    padding: 60px 40px;
+    padding: 30px 40px;
     color: rgba(255,255,255,1.00);
     margin-bottom: 20px;
     margin-top: 50px;
@@ -90,7 +90,7 @@ body {
 
 #chess-board {
     position: relative;
-    margin: 0px;
+    margin: 20px 0px 0px 0px;
     padding: 0px;
     background: url(../media/images/light_board.jpg) 0% 0% / 100% 100%;
     border: none;
@@ -102,4 +102,13 @@ body {
 
 #description{
     height: 480px;
+}
+
+.sub-footer{
+    padding: 10px;
+    text-align: center;
+}
+
+#start-game{
+    margin-top: 20px;
 }
