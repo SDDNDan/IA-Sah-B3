@@ -24,6 +24,10 @@ html {
 
 .header .nav {
   align-items: center;
+  font-size: 1.15em;
 }
 
+.header .nav .sign-out {
+  align-self: flex-end;
+}
 
