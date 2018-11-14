@@ -97,4 +97,9 @@ body {
     border-radius: 3px;
     width: 480px;
     height: 480px;
+    float: left;
+}
+
+#description{
+    height: 480px;
 }
