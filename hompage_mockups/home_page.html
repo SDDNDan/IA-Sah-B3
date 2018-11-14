@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Chess Game</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></link>
+
+
+    <link rel="stylesheet" href="css/custom_style.css"></link>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div id="header">
+</div>
+<div id="menu">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Chess Online</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown" style="float:right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"><span class="carety" id="user-account"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Registration</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+</div>
+<div class="container">
+    <div id="chess-board">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_rdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 5; transform: translate(0px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_ndt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 5; transform: translate(60px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_bdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(120px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_qdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(180px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_kdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(240px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_bdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(300px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_ndt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(360px, 0px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_rdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(420px, 0px);">
+
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(0px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(60px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(120px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(180px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(240px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(300px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(360px, 60px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_pdt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(420px, 60px);">
+
+
+        <!--->
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(0px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(60px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(120px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(180px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(240px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(300px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(360px, 360px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_plt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 6; transform: translate(420px, 360px);">
+
+
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_rlt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 5; transform: translate(0px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_nlt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px; height: 60px; z-index: 5; transform: translate(60px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_blt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(120px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_qlt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(180px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_klt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(240px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_blt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(300px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_nlt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(360px, 420px);">
+        <img class="chess_com_piece chess_com_draggable" src="media/images/pieces/Chess_rlt60.png" width="60"
+             height="60"
+             style="position: absolute; margin: 0px; padding: 0px; display: block; overflow: hidden; opacity: 1; width: 60px height: 60px z-index: 5; transform: translate(420px, 420px);">
+    </div>
+
+    <footer class="footer-bs">
+        <div class="row">
+            <div class="col-md-3 footer-brand animated fadeInLeft">
+                <h2>Logo</h2>
+                <p>Soma details about game</p>
+                <p>© 2018 3B, All rights reserved</p>
+            </div>
+            <div class="col-md-4 footer-nav animated fadeInUp">
+                <div class="col-md-6">
+                    <ul class="list">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">Terms &amp; Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2 footer-social animated fadeInDown">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 footer-ns animated fadeInRight">
+                <h4>Newsletter</h4>
+                <p>Please subscribe for news</p>
+                <p>
+                </p><div class="input-group">
+                    <input type="text" class="form-control" placeholder="Email address">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-envelope"></span></button>
+                      </span>
+                </div><!-- /input-group -->
+                <p></p>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
