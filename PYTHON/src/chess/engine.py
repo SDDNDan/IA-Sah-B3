@@ -1,7 +1,9 @@
 import subprocess
 
+from PYTHON.src.chess.player import Player
 
-class Engine:
+
+class Engine(Player):
     """
     AnMon - only gives best move with 'go depth 8 searchmoves'
     Herman - prints only best move
@@ -10,6 +12,10 @@ class Engine:
     SOS - only gives best move
     Spike - like stockfish
     """
+
+    def get_best_move(self, fen):
+        self.set_fen_position(fen)
+        return self.get_best_move_depth(1)
 
     def __init__(
             self, engine_path="../../../engines/stockfish-8-win/Windows/stockfish_8_x64.exe", param=None):

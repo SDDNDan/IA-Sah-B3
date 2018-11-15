@@ -16,9 +16,10 @@ class Chess:
 
     def start_new_game(self):
         self.board = chess.Board()
+        self.stockfish.set_fen_position(self.board.fen())
 
     def move(self, move_uci):
-        self.board.push_uci(move_uci)
+        self.board.push_uci(str(move_uci))
         self.stockfish.set_fen_position(self.board.fen())
 
     def get_best_move_depth(self, depth):
@@ -52,3 +53,9 @@ class Chess:
 
     def get_valid_moves(self):
         return self.board.legal_moves
+
+    def is_over(self):
+        return self.board.is_game_over()
+
+    def is_white_winner(self):
+        return not self.is_white_to_move() and self.board.is_checkmate()
