@@ -1,4 +1,4 @@
-# Design module backend (13-nov)
+# Design module (13-nov)
 
 ## Tehnologii
 - Back-End
