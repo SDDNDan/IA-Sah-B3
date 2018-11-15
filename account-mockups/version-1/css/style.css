@@ -9,6 +9,10 @@ html {
   font-size: 16px;
 }
 
+body {
+  position: relative;
+}
+
 /* Header */
 
 .header > .container-fluid {
@@ -27,7 +31,22 @@ html {
   font-size: 1.15em;
 }
 
-.header .nav .sign-out {
-  align-self: flex-end;
+/* Main content */
+
+
+
+/* Footer */
+
+.footer {
+  
+  /* Make sure the footer always sits
+     at the bottom of the body */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
+.footer .copyright {
+  padding-top: .75em;
+}
