@@ -1,0 +1,52 @@
+/* Making sure the minimum height of the page
+is equal with the height of the viewport */
+html,
+body {
+  height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  position: relative;
+}
+
+/* Header */
+
+.header > .container-fluid {
+  padding: .5em 1.5em .5em;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.header .navbar-brand {
+  font-size: 2em;
+}
+
+.header .nav {
+  align-items: center;
+  font-size: 1.15em;
+}
+
+/* Main content */
+
+
+
+/* Footer */
+
+.footer {
+  
+  /* Make sure the footer always sits
+     at the bottom of the body */
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.footer .copyright {
+  padding-top: .75em;
+}
