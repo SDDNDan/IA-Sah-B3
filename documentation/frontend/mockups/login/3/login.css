@@ -1,0 +1,76 @@
+body{
+    background-image: url('./kings-court-the-valiant-knight-tom-mc-nemar.jpg');
+    background-size: cover;
+}
+
+header{
+    color: white;
+    font-size: 70px;
+    position: absolute;
+    top: 5%;
+    left: 42%;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+#login-window{
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 15%;
+    background-color: rgb(138, 138, 138);
+    opacity: .8;
+    border-radius: 15px;
+    padding-left: calc(6vw - 2px);
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+label{
+    color: white;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#em-label{
+    margin-right: 63px;
+}
+
+#pw-label{
+    margin-right: 20px;
+}
+
+.inputs{
+    border-radius: 20px;
+    border: none;
+    padding: 1vw;
+    outline: none;
+    font-family: monospace;
+    font-size: 2vw;
+}
+
+button{
+    background-color: rgb(78, 77, 77);
+    position: relative;
+    color: white;
+    border: none;
+    font-size: 28px;
+    border-radius: 20px;
+    left: 20px;
+    margin-top: 30px;
+    outline: none;
+    padding: 10px;
+}
+
+#register-btn{
+    position: relative;
+    left: 30px;
+}
+
+#btn-container{
+    text-align: center;
+}
+
+button:hover{
+    background-color: black;
+    transition-duration: 0.4s;
+}
