@@ -1,4 +1,4 @@
-# Task-uri s10
+# Task-uri s10 - front-end
 După discuția de la laboratorul din **săptămâna 7** au reieșit următoarele cerințe:
 * oferirea de mutări sugerate pentru starea curentă
 * oferirea de detalii despre algoritmii/strategiile implementate
