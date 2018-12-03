@@ -3,21 +3,34 @@ import testsdesign
 
 class TestPerson(TestCase):
 
-    student = testsdesign.Person("Ceausescu", 20)                 #Arrange
+    # Test Initialize
+    SUT = testsdesign.Person("Ceausescu", 20)                 
 
-    def test_init(self):
-        assert TestPerson.student.name == "Ceausescu"
-        assert TestPerson.student.age == 20
+    def When_PersonExists_AndWeEditHisName_HisName_ShouldUpdate(self):
+        
+        # ARRANGE ACT ( Nu avem arrange deci acesta va fi la acelasi nivel cu ACT)
+        TestPerson.SUT.name = "Test"
+        
+        # ASSERT
+        assert TestPerson.SUT.name == "Test"
 
-    def test_sayHello(self):
-        raspuns1 = TestPerson.student.sayHello()           #Act
+     def When_PersonHasValidName_AndWannaGetHisNameReversed_ThenReversedNameShouldGetIt(self):
+        
+         # ARRANGE 
+         TestPerson.SUT.name = "Test"
+        
+         # ACT
+         result = TestPerson.SUT.reversedName()
+        
+         # ASSERT
+         assert TestPerson.SUT.name == "tseT"
+     
+    
+    
+     def test_sayHello(self):
+        raspuns1 = TestPerson.SUT.sayHello()           #Act
         assert raspuns1 == "Hello, my name is Ceausescu!"  #Assert
         assert raspuns1 != "Dragi tovarasi"                #Assert
-
-    def test_reversedName(self):
-        raspuns2 = TestPerson.student.reversedName()       #Act
-        assert raspuns2 == "ucsesuaeC"                     #Assert
-        assert raspuns2 != "Ceausescu"                     #Assert
 
     def test_ageplus(self):
         raspuns3 = TestPerson.student.ageplus()
