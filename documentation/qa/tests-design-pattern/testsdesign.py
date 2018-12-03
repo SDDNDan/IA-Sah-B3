@@ -11,10 +11,12 @@ Each method should group these functional sections, separated by blank lines:
 Pattern:
 
 def test_functionName():
+    #ARRANGE
     a = assemble()
+    #ACT
     var = a.functionName()
+    #ASSERT
     assert var == expected_result
-	assert var != unexpected_result
 '''
 
 class Person:

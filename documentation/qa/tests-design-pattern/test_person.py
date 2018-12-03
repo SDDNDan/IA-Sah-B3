@@ -3,10 +3,10 @@ import testsdesign
 
 class TestPerson(TestCase):
 
-    # Test Initialize
+    # Test Initialization
     SUT = testsdesign.Person("Ceausescu", 20)                 
 
-    def When_PersonExists_AndWeEditHisName_HisName_ShouldUpdate(self):
+    def test_When_PersonExists_AndWeEditHisName_ShouldUpdate(self):
         
         # ARRANGE ACT ( Nu avem arrange deci acesta va fi la acelasi nivel cu ACT)
         TestPerson.SUT.name = "Test"
@@ -14,25 +14,41 @@ class TestPerson(TestCase):
         # ASSERT
         assert TestPerson.SUT.name == "Test"
 
-     def When_PersonHasValidName_AndWannaGetHisNameReversed_ThenReversedNameShouldGetIt(self):
-        
-         # ARRANGE 
+    def test_When_PersonExists_AndWeEditHisAge_ShouldUpdate(self):
+
+        # ARRANGE ACT ( Nu avem arrange deci acesta va fi la acelasi nivel cu ACT)
+        TestPerson.SUT.age = 25
+
+        # ASSERT
+        assert TestPerson.SUT.age == 25
+
+    def test_When_PersonExists_AndWeCall_sayHello_ShoulRespond(self):
+
+        # ARRANGE ACT (arrange facut la #Test initialization)
+        result = TestPerson.SUT.sayHello()
+
+        # ASSERT
+        assert result == "Hello, my name is Ceausescu!"
+
+    def test_When_PersonHasValidName_AndWannaGetHisNameReversed_ThenReversedNameShouldGetIt(self):
+
+         # ARRANGE
          TestPerson.SUT.name = "Test"
         
          # ACT
          result = TestPerson.SUT.reversedName()
         
          # ASSERT
-         assert TestPerson.SUT.name == "tseT"
+         assert result == "tseT"
      
-    
-    
-     def test_sayHello(self):
-        raspuns1 = TestPerson.SUT.sayHello()           #Act
-        assert raspuns1 == "Hello, my name is Ceausescu!"  #Assert
-        assert raspuns1 != "Dragi tovarasi"                #Assert
 
-    def test_ageplus(self):
-        raspuns3 = TestPerson.student.ageplus()
-        assert raspuns3 == 21
-        assert raspuns3 != 20
+    def test_When_PersonHasValidAge_AndWeCall_ageplus_WeShoulGetAgePlusPlus(self):
+
+        # ARRANGE
+        TestPerson.SUT.age = 23
+
+        # ACT
+        result = TestPerson.SUT.ageplus()
+
+        # ASSERT
+        assert result == 24
