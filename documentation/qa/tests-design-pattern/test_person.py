@@ -1,9 +1,9 @@
 from unittest import TestCase
-import main
+import testsdesign
 
 class TestPerson(TestCase):
 
-    student = main.Person("Ceausescu", 20)                 #Arrange
+    student = testsdesign.Person("Ceausescu", 20)                 #Arrange
 
     def test_init(self):
         assert TestPerson.student.name == "Ceausescu"

@@ -15,8 +15,6 @@ def test_functionName():
     var = a.functionName()
     assert var == expected_result
 	assert var != unexpected_result
-
-  
 '''
 
 class Person:
