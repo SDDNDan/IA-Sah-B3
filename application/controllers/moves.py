@@ -19,8 +19,8 @@ def get_moves_controller(request):
             chess_engine_module = importlib.import_module(
                 ".".join([CHESS_ENGINES_PACKAGE, chess_engine]))
 
-            answer.append({"Strategy": chess_engine_module.get_strategy_name(
-            ), "Move": chess_engine_module.get_strategy_move(fen)})
+            answer.append({"strategy": chess_engine_module.get_strategy_name(
+            ), "move": chess_engine_module.get_strategy_move(fen)})
 
     if len(answer) == 0:
         return 'Strategy with name \'{}\' is not recognized!'.format(strategy), 400
