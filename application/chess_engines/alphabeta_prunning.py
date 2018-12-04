@@ -1,3 +1,6 @@
+from application.chess.engine import Engine
+from application.chess.chess_game import Chess
+
 def get_strategy_name():
     return "Alpha-beta prunning"
 
@@ -22,14 +25,12 @@ def get_possible_states(fen):
     chess = Chess()
     states = []
     for move in chess.get_valid_moves():
-        chess.doMove(move)
+        chess.move(move)
         t = tuple(chess.get_fen(), move)
         states.append(t)
         chess.undo_last_move()
 
-
-
-    return [('', "D2D4"), ('', "D2D3")]
+    return states
 
 """
 Acum ca ma gandesc mai bine, stockfish deja foloseste alpha beta prunging, 
