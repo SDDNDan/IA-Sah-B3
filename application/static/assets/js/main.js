@@ -15,15 +15,17 @@ $( document ).ready( function () {
 
   chessboard.start();
 
-  // getStrategies()
+  // getStrategies() - call
 
-  // renderStrategiesDetails( strategiesDetails )
+  // renderStrategiesDetails( strategiesDetails ) - call
 });
+
+// getStrategies()
+
+// renderStrategiesDetails( strategiesDetails )
 
 // getSuggestedMoves( strategies )
 
 // renderSuggestedMoves( suggestedMoves )
 
 // setChessboardFen()
-
-
