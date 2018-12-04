@@ -1,4 +1,4 @@
-from common_lib.package_operations import package_contents
+from application.common_lib.package_operations import package_contents
 
 import json
 
