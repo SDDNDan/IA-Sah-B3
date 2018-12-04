@@ -1,5 +1,5 @@
-from common_lib.package_operations import package_contents
-from common_lib.fen_operations import valid_fen
+from application.common_lib.package_operations import package_contents
+from application.common_lib.fen_operations import valid_fen
 import importlib
 import json
 
