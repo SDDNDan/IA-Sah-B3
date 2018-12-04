@@ -18,6 +18,10 @@ class Chess:
         self.board = chess.Board()
         self.stockfish.set_fen_position(self.board.fen())
 
+    def undo_last_move(self):
+        self.board.pop()
+        self.stockfish.set_fen_position(self.board.fen())
+
     def move(self, move_uci):
         self.board.push_uci(str(move_uci))
         self.stockfish.set_fen_position(self.board.fen())
