@@ -7,11 +7,13 @@ def is_final_state(node):
 
 
 #  Returneaza evaluarea unei stari
+
 def heuristic_eval(fen):
     engine = Engine()
     engine.set_fen_position(fen)
     engine.get_evaluation_depth(1)
 
+    
 
 #  va returna o lista de tuple de forma (fen, mutare)
 #  unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
@@ -20,10 +22,11 @@ def get_possible_states(fen):
     chess = Chess()
     states = []
     for move in chess.get_valid_moves():
-        game.doMove(move)
-        t = tuple(game.get_fen(), move)
+        chess.doMove(move)
+        t = tuple(chess.get_fen(), move)
         states.append(t)
         chess.undo_last_move()
+
 
 
     return [('', "D2D4"), ('', "D2D3")]
