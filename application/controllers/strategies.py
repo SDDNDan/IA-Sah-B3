@@ -2,7 +2,7 @@ from application.common_lib.package_operations import package_contents
 
 import json
 
-CHESS_ENGINES_PACKAGE = 'chess_engines'
+CHESS_ENGINES_PACKAGE = '../chess_engines'
 
 
 def get_strategies_controller(request):
