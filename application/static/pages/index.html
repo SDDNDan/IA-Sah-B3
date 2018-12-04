@@ -25,25 +25,45 @@
 
   <main class="main">
     <div class="container-fluid mb-5">
-      <div class="row">
-        <div class="col-12 col-lg-5">
-          <div class="chessboard-container">
-            <div id="js-chessboard"></div>
+	  <div class="position-relative">
+        <div class="row">
+          <div class="col-12 col-lg-5">
+            <div class="chessboard-container">
+              <div id="js-chessboard"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="col-12 col-lg-7">
-          <div class="suggested-moves">
+          <div class="col-12 col-lg-7">
+            <div class="suggested-moves">
               <!-- Suggested moves component -->
+            </div>
           </div>
-        </div>
 
-        <div class="col-12">
-          <div class="fen-loader">
+          <div class="col-12">
+            <div class="fen-loader">
             <!-- FEN loader component -->
-          </div>
-        </div>
-      </div>
+		  <textarea rows="2" cols="50" name="fname" id="fname">
+Introduce a particular position
+		  </textarea>
+      <button id="myBtn" onclick = "formvalidate()">Submit</button>
+		    </div>
+
+	<script >
+function formvalidate(event){
+    var t= document.getElementById("fname").value;
+    if(t==""){
+       alert("Please, introduce a particular position");
+      if(event.preventDefault){ event.preventDefault()};
+   }
+}
+document.getElementById("myBtn").addEventListener("click", setChessboardFen);
+
+    </script>
+
+		    </div> 
+		  </div>
+	    </div>
+	  </div>
     </div>
 
     <div class="container-fluid">
