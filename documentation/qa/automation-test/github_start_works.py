@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 
 # Fiecare browser are driverul lui dar pentru primul test voi folosi doar chrome
 driver = webdriver.Chrome(
-    "C:\\Users\\Dan\\Desktop\\IA-Sah-B3\\documentation\\qa\\automation-test\\drivers\\chromedriver.exe")
+    "drivers\chromedriver.exe")
 
 # Daca nu reusesc sa ma conectez la site in maxim 30 secunde programul va iesi automat
 driver.set_page_load_timeout("30")
