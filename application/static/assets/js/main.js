@@ -5,7 +5,8 @@ let strategiesDetails = [];
 // current fen of the chessboard
 let currentFEN;
 
-const base_url = 'http://127.0.0.1:5000';
+// todo: change accordingly when is necessary (ex: move project on an online server)
+const BASE_URL = 'http://127.0.0.1:5000';
 
 // on document load using jQuery
 $( document ).ready( function () {
@@ -23,8 +24,8 @@ $( document ).ready( function () {
 });
 
 function getStrategies() {
-    const strategies_url = '/strategies';
-    $.getJSON( base_url + strategies_url, function( data ) {
+    const STRATEGIES_URL = '/strategies';
+    $.getJSON( BASE_URL + STRATEGIES_URL, function( data ) {
         $.each( data, function( key, val ) {
             if("strategy" in val){
                 strategies.push(val.strategy);
