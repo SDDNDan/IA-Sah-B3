@@ -7,7 +7,6 @@ def get_strategy_name():
     return "Alpha-beta prunning"
 
 
-#  verifica daca o stare este stare finala adica daca cineva castiga jocul
 def is_final_state(node):
     chess = Chess()
     chess.set_fen(node)
@@ -15,13 +14,12 @@ def is_final_state(node):
         return True
     return False
 
-
-#  Returneaza evaluarea unei stari
-
 def heuristic_eval(fen):
     engine = Engine()
     engine.set_fen_position(fen)
     engine.get_evaluation_depth(1)
+
+    return (0,0)    #Pentru test
 
 
 
@@ -39,10 +37,6 @@ def get_possible_states(fen):
 
     return states
 
-
-# Acum ca ma gandesc mai bine, stockfish deja foloseste alpha beta prunging,
-# asa ca mm fi putut cheam direct engine.get_evaluation_depth(adamcimea_dorita)
-
 def alpha_beta(fen, depth, alpha, beta, maximizing_player):
     if depth == 0 or is_final_state(fen):
         return heuristic_eval(fen)
@@ -50,7 +44,6 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         best_move = ""
         value = -999999999999999999
         for child, move in get_possible_states(fen):
-           # this_move_value, this_move = alpha_beta(child, depth - 1, alpha, beta, False)
             value = max(value, alpha_beta(child, depth - 1, alpha, beta, False)[0])
             if value > alpha:
                 alpha = value
@@ -62,7 +55,6 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         best_move = ""
         value = 999999999999999999
         for child, move in get_possible_states(fen):
-           # this_move_value, this_move = alpha_beta(child, depth - 1, alpha, beta, True)
             value = min(value, alpha_beta(child, depth - 1, alpha, beta, True)[0])
             if value < beta:
                 beta = value
@@ -72,5 +64,5 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         return (value, best_move)
 
 def get_strategy_move(fen):
-    #return alpha_beta(fen, 2, -999999999999999999, 999999999999999999, True)[1]
-    return "D2D4"
+    return alpha_beta(fen, 2, -999999999999999999, 999999999999999999, True)[1]
+
