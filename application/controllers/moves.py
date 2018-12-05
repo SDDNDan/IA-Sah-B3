@@ -3,7 +3,7 @@ from application.common_lib.fen_operations import valid_fen
 import importlib
 import json
 
-CHESS_ENGINES_PACKAGE = 'chess_engines'
+CHESS_ENGINES_PACKAGE = '../chess_engines'
 
 
 def get_moves_controller(request):
