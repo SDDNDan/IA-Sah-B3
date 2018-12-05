@@ -5,20 +5,23 @@ let strategies = [];
 // current fen of the chessboard
 let currentFEN;
 
+//sugestedMoves
+let suggestedMoves = []
+
 // todo: change accordingly when is necessary (ex: move project on an online server)
 const BASE_URL = 'http://127.0.0.1:5000';
 
-// on document load using jQuery
-$( document ).ready( function () {
-  // Init chessboard element
-  const chessboard = ChessBoard('js-chessboard', {
-    draggable: true,
-    dropOffBoard: 'snapback'
-  });
+//Chessboard
+const CHESSBOARD = ChessBoard('js-chessboard',{
+  draggable: true,
+  dropOffBoard: 'snapback'
+});
 
-  chessboard.start();
-  
-  // get strategies from the server
+$( document ).ready( function () {
+  //Init chessboard element
+  CHESSBOARD.start();
+
+  //get trategies from the server
   getStrategies();
 });
 
@@ -98,8 +101,35 @@ function createCardMarkup( strategyDetails ) {
   return card;
 }
 
-// getSuggestedMoves( strategies )
+function getSuggestedMove(){
+  return new Promise((resolve, reject) =>{
+    
+  })
+}
 
-// renderSuggestedMoves( suggestedMoves )
+function getSuggestedMoves( ){
+
+    myUrl = BASE_URL + "/moves?fen=" + CHESSBOARD.fen() + "%20w%20KQkq%20-%200%201&strategy=";
+    console.log(myUrl);
+
+    for (var  i = 0; i < strategies.length; i++){
+      $.getJSON( myUrl + strategies[i], function( data ) {
+        $.each( data, function( key, val ) {
+            if("strategy" in val){
+              let res = {
+                strategy: val.strategy,
+                move: val.move
+              }
+                suggestedMoves.push(res);
+            }
+        });
+        //renderSuggestedMoves(data);
+      });
+  }
+  
+  
+}
+
+//renderSuggestedMoves( suggestedMoves )
 
 // setChessboardFen()
