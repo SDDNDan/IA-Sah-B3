@@ -21,7 +21,8 @@ for engine in engines:
     move = None
     score = None
     try:
-        move = engine.get_best_move(fen)
+        engine.set_fen_position(fen)
+        move = engine.get_best_move_depth(1)
     except ValueError:
         error = name + " could not compute move"
         errors.append(error)

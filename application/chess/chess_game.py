@@ -63,3 +63,7 @@ class Chess:
 
     def is_white_winner(self):
         return not self.is_white_to_move() and self.board.is_checkmate()
+
+    def set_fen(self, fen):
+        self.board.set_fen(fen)
+        self.stockfish.set_fen_position(fen)
