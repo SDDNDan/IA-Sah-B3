@@ -20,7 +20,17 @@ $( document ).ready( function () {
   // renderStrategiesDetails( strategiesDetails ) - call
 });
 
-// getStrategies()
+function getStrategies() {
+
+    var strategiesUrl = 'http://127.0.0.1:5000/strategies';
+    $.getJSON( strategiesUrl, function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+            strategies[key] = val;
+        });
+    });
+}
+ getStrategies();
 
 // renderStrategiesDetails( strategiesDetails )
 function renderStrategiesDetails ( strategiesDetails ) {
