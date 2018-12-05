@@ -29,33 +29,33 @@
 
   <main class="main">
     <div class="container-fluid mb-5">
-      <div class="position-relative">
-        <div class="row">
-          <div class="col-12 col-lg-5">
-            <div class="chessboard-container">
-              <div id="js-chessboard"></div>
-            </div>
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <div class="chessboard-container">
+            <div id="js-chessboard"></div>
           </div>
+        </div>
 
-          <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-7">
             <div class="suggested-moves">
-              <!-- Suggested moves component -->
-            </div>
-          </div>
+                <!-- Suggested moves component -->
+              </div>
+          <div class="position-relative">
+            <div class="fen-loader">             
+              <div class="col-12">
 
-          <div class="col-12">
-            <div class="fen-loader">
-              <!-- FEN loader component -->
-              <textarea rows="2" cols="50" name="fen-name" id="fen-name">
+                <!-- FEN loader component -->
+                <textarea rows="2" cols="50" name="fen-name" id="fen-name">
 Introduce a particular position
 		  </textarea>
-              <button class="fen-button" onclick="setChessboardFen()">Submit</button>
+                <button class="fen-button" onclick="setChessboardFen()">Submit</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div>
+
 
     <div class="container-fluid">
       <div class="row">
