@@ -1,9 +1,12 @@
 from application.chess.engine import Engine
 from application.chess.chess_game import Chess
 
+
 def get_strategy_name():
     return "Alpha-beta prunning"
 
+
+"""
 #  verifica daca o stare este stare finala adica daca cineva castiga jocul
 def is_final_state(node):
     return False
@@ -33,8 +36,8 @@ def get_possible_states(fen):
     return states
 
 """
-Acum ca ma gandesc mai bine, stockfish deja foloseste alpha beta prunging, 
-asa ca mm fi putut cheam direct engine.get_evaluation_depth(adamcimea_dorita)
+# Acum ca ma gandesc mai bine, stockfish deja foloseste alpha beta prunging,
+# asa ca mm fi putut cheam direct engine.get_evaluation_depth(adamcimea_dorita)
 """
 def alpha_beta(fen, depth, alpha, beta, maximizing_player):
     if depth == 0 or is_final_state(fen):
@@ -63,8 +66,9 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
             if alpha >= beta:
                 break  # alpha cut-off
         return value, best_move
+"""
 
 
 def get_strategy_move(fen):
-    return alpha_beta(fen, 10, -999999999999999999, 999999999999999999, True)[1]
-    # return "D2D4"
+    # return alpha_beta(fen, 10, -999999999999999999, 999999999999999999, True)[1]
+    return "D2D4"

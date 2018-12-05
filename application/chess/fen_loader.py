@@ -42,7 +42,8 @@ def get_fens_recursively(p_search_root, max_fen_count_per_file):
     for (root, directories, files) in os.walk(p_search_root):
         for file_name in files:
             full_file_path = os.path.join(root, file_name)
-            l_fens = get_fens_from_fen_file(full_file_path, max_fen_count_per_file)
+            l_fens = get_fens_from_fen_file(
+                full_file_path, max_fen_count_per_file)
             l_fens.update(l_fens)
             # print(full_file_path)
     return l_fens

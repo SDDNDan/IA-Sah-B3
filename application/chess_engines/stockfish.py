@@ -1,5 +1,6 @@
 from application.chess.engine import Engine
 
+
 def get_strategy_name():
     return "Stockfish"
 
