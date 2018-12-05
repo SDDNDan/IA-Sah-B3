@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+    crossorigin="anonymous">
   <!-- chessboard.js -->
   <link rel="stylesheet" href="../assets/css/vendor/chessboard-0.3.0.min.css">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <title>Chess Mentor</title>
 </head>
+
 <body>
 
   <header class="header">
@@ -25,63 +29,50 @@
 
   <main class="main">
     <div class="container-fluid mb-5">
-	  <div class="position-relative">
-        <div class="row">
-          <div class="col-12 col-lg-5">
-            <div class="chessboard-container">
-              <div id="js-chessboard"></div>
-            </div>
+      <div class="row">
+        <div class="col-12 col-lg-5">
+          <div class="chessboard-container">
+            <div id="js-chessboard"></div>
           </div>
+        </div>
 
-          <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-7">
             <div class="suggested-moves">
-              <!-- Suggested moves component -->
-            </div>
-          </div>
+                <!-- Suggested moves component -->
+              </div>
+          <div class="position-relative">
+            <div class="fen-loader">             
+              <div class="col-12">
 
-          <div class="col-12">
-            <div class="fen-loader">
-            <!-- FEN loader component -->
-		  <textarea rows="2" cols="50" name="fname" id="fname">
+                <!-- FEN loader component -->
+                <textarea rows="2" cols="50" name="fen-name" id="fen-name">
 Introduce a particular position
 		  </textarea>
-      <button id="myBtn" onclick = "formvalidate()">Submit</button>
-		    </div>
-
-	<script >
-function formvalidate(event){
-    var t= document.getElementById("fname").value;
-    if(t==""){
-       alert("Please, introduce a particular position");
-      if(event.preventDefault){ event.preventDefault()};
-   }
-}
-document.getElementById("myBtn").addEventListener("click", setChessboardFen);
-
-    </script>
-
-		    </div> 
-		  </div>
-	    </div>
-	  </div>
+                <button class="fen-button" onclick="setChessboardFen()">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
 
     <div class="container-fluid">
       <div class="row">
         <div class="col-12">
           <div id="js-strategies-details" class="strategies-details">
-              <h2 class="strategies-details__title">Strategies details</h2>
-              <!-- Strategies details component -->
-              <div class="container-fluid p-0">
-                <div class="row">
-                  
-                </div>
+            <h2 class="strategies-details__title">Strategies details</h2>
+            <!-- Strategies details component -->
+            <div class="container-fluid p-0">
+              <div class="row">
+
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    
+
   </main>
 
   <footer class="footer">
@@ -96,11 +87,14 @@ document.getElementById("myBtn").addEventListener("click", setChessboardFen);
   <!-- jQuery -->
   <script src="../assets/js/vendor/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
   <!-- chessboard.js -->
   <script src="../assets/js/vendor/chessboard-0.3.0.min.js"></script>
   <!-- Our scripts -->
   <script src="../assets/js/main.js"></script>
 </body>
+
 </html>

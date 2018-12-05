@@ -1,3 +1,4 @@
+import os
 import subprocess
 from application.chess.player import Player
 
@@ -16,11 +17,12 @@ class Engine(Player):
         self.set_fen_position(fen)
         return self.get_best_move_depth(1)
 
-    def __init__(self, engine_path="../chess_engines_cpp/stockfish-8-win/Windows/stockfish_8_x64.exe", param=None):
+    def __init__(self, engine_path="../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe", param=None):
         if param is None:
             param = {}
         print("Loading engine. This might be time inefficient. "
               "If possible try to instantiate Engine as few times as possible.")
+        self.engine_path = engine_path
         self.stockfish = subprocess.Popen(
             engine_path,
             universal_newlines=True,
@@ -125,6 +127,9 @@ class Engine(Player):
     def __write(self, command):
         self.stockfish.stdin.write(command + '\n')
         self.stockfish.stdin.flush()
+
+    def get_engine_name(self):
+        return os.path.basename(self.engine_path).split(".")[0]
 
     def __del__(self):
         self.stockfish.kill()
