@@ -8,9 +8,7 @@
 .main {
   padding-top: 30px;
 }
-div.position-relative{
-	position:relative
-}
+
 div.fen-loader{
 	 position: absolute;
      bottom: 260px;
