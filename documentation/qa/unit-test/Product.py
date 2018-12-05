@@ -14,7 +14,7 @@ class Product:
         return self.price
 
     def changeRating(self, newRating):
-        if self.rating =< 5 or self.rating >=0:
+        if newRating <= 5 and newRating >= 0:
             self.rating = newRating
         return self.rating
 
