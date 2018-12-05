@@ -7,4 +7,4 @@ def get_strategy_name():
 
 def get_strategy_move(fen):
     engine = Engine()
-    return "D2D4"
+    return engine.get_best_move(fen)
