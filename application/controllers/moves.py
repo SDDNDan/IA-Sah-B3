@@ -1,9 +1,10 @@
-from common_lib.package_operations import package_contents
-from common_lib.fen_operations import valid_fen
+from application.common_lib.package_operations import package_contents
+from application.common_lib.fen_operations import valid_fen
 import importlib
 import json
 
-CHESS_ENGINES_PACKAGE = 'chess_engines'
+CHESS_ENGINES_PATH = '../chess_engines'
+CHESS_ENGINES_PACKAGE = 'application.chess_engines'
 
 
 def get_moves_controller(request):
@@ -14,7 +15,7 @@ def get_moves_controller(request):
         return 'Fen is missing or is invalid!', 400
 
     answer = []
-    for chess_engine in package_contents(CHESS_ENGINES_PACKAGE):
+    for chess_engine in package_contents(CHESS_ENGINES_PATH):
         if (strategy == 'all' or strategy == chess_engine) and chess_engine != '__init__':
             chess_engine_module = importlib.import_module(
                 ".".join([CHESS_ENGINES_PACKAGE, chess_engine]))

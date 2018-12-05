@@ -2,8 +2,8 @@ from flask import Flask
 from flask import request
 from flask_cors import CORS
 
-from controllers.moves import get_moves_controller
-from controllers.strategies import get_strategies_controller
+from application.controllers.moves import get_moves_controller
+from application.controllers.strategies import get_strategies_controller
 
 app = Flask(__name__)
 CORS(app)

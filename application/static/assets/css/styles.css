@@ -8,5 +8,18 @@
 .main {
   padding-top: 30px;
 }
+div.fen-loader{
+	 position: absolute;
+   top: 460px;
+   right: 180px;
+   display: flex;
+}
+.fen-button{
+  position: absolute;
+  top: 0px;
+  right: -68px;
+  padding: 13px 15px;
+
+}
 
 /* FOOTER */
