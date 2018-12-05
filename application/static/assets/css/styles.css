@@ -21,5 +21,16 @@ div.fen-loader{
   padding: 13px 15px;
 
 }
+div.suggested-moves{
+   position: absolute;
+   width: 1000px;
+   clear: both;
+}
 
+.suggested-moves-button{
+	position: absolute;
+	margin-top: 10px;
+	width:300px;
+	height:50px;
+}
 /* FOOTER */
