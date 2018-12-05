@@ -5,6 +5,8 @@ let strategiesDetails = [];
 // current fen of the chessboard
 let currentFEN;
 
+const base_url = 'http://127.0.0.1:5000';
+
 // on document load using jQuery
 $( document ).ready( function () {
   // Init chessboard element
@@ -15,22 +17,20 @@ $( document ).ready( function () {
 
   chessboard.start();
   
-  // getStrategies() - call
+  getStrategies() - call
   
   // renderStrategiesDetails( strategiesDetails ) - call
 });
 
 function getStrategies() {
-
-    var strategiesUrl = 'http://127.0.0.1:5000/strategies';
-    $.getJSON( strategiesUrl, function( data ) {
+    const strategies_url = '/strategies';
+    $.getJSON( base_url + strategies_url, function( data ) {
         var items = [];
         $.each( data, function( key, val ) {
-            strategies[key] = val;
+            strategies.push(val.strategy);
         });
     });
 }
- getStrategies();
 
 // renderStrategiesDetails( strategiesDetails )
 function renderStrategiesDetails ( strategiesDetails ) {
