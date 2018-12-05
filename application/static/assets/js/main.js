@@ -17,7 +17,7 @@ $( document ).ready( function () {
 
   chessboard.start();
   
-  getStrategies() - call
+  getStrategies();
   
   // renderStrategiesDetails( strategiesDetails ) - call
 });
@@ -25,9 +25,10 @@ $( document ).ready( function () {
 function getStrategies() {
     const strategies_url = '/strategies';
     $.getJSON( base_url + strategies_url, function( data ) {
-        var items = [];
         $.each( data, function( key, val ) {
-            strategies.push(val.strategy);
+            if("strategy" in val){
+                strategies.push(val.strategy);
+            }
         });
     });
 }
