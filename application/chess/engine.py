@@ -16,7 +16,7 @@ class Engine(Player):
         self.set_fen_position(fen)
         return self.get_best_move_depth(1)
 
-    def __init__(self, engine_path="../chess_engines_cpp/stockfish-8-win/Windows/stockfish_8_x64.exe", param=None):
+    def __init__(self, engine_path="../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe", param=None):
         if param is None:
             param = {}
         print("Loading engine. This might be time inefficient. "
