@@ -1,7 +1,7 @@
 // global array with the strategy names
 let strategies = [];
 // global array with the strategies details
-let strategiesDetails = [];
+// let strategiesDetails = [];
 // current fen of the chessboard
 let currentFEN;
 
@@ -18,42 +18,46 @@ $( document ).ready( function () {
 
   chessboard.start();
   
+  // get strategies from the server
   getStrategies();
-  
-  // renderStrategiesDetails( strategiesDetails ) - call
 });
 
 function getStrategies() {
-    const STRATEGIES_URL = '/strategies';
-    $.getJSON( BASE_URL + STRATEGIES_URL, function( data ) {
-        $.each( data, function( key, val ) {
-            if("strategy" in val){
-                strategies.push(val.strategy);
-            }
-        });
+  const STRATEGIES_URL = '/strategies';
+  $.getJSON( BASE_URL + STRATEGIES_URL, function( data ) {
+    $.each( data, function( key, val ) {
+        if("strategy" in val){
+            strategies.push(val.strategy);
+        }
     });
+      
+    // render strategies details
+    renderStrategiesDetails( data );
+  });
 }
 
 // renderStrategiesDetails( strategiesDetails )
-function renderStrategiesDetails ( strategiesDetails ) {
+function renderStrategiesDetails ( strategies ) {
   // grab the strategies details container
   const strategiesDetails = document.getElementById('js-strategies-details');
   // navigate down to the .row descendant
   const container = strategiesDetails.children[1];
   const row = container.children[0];
 
-  // .col element
-  let col = document.createElement('div');
-  col.classList = 'col-12 col-md-6';
+  strategies.forEach( strategy => {
+    // .col element
+   let col = document.createElement('div');
+   col.classList = 'col-12 col-md-6 mb-3';
 
-  // .card
-  let card = createCardMarkup( strategyDetails );
+   // .card
+   let card = createCardMarkup( strategy );
 
-  // append .card to .col
-  col.appendChild( card );
+   // append .card to .col
+   col.appendChild( card );
 
-  // append markup to the .row
-  row.appendChild( col );
+   // append markup to the .row
+   row.appendChild( col );
+ });
 }
 
 function createCardMarkup( strategyDetails ) {
