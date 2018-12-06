@@ -33,14 +33,16 @@ class Chess:
         return self.engine.get_best_move_millis(millis)
 
     def get_best_move_from_fen_millis(self, fen, millis):
-        l_engine = Engine(self.engine_path)
-        l_engine.set_fen_position(fen)
-        return l_engine.get_best_move_millis(millis)
+        self.engine.set_fen_position(fen)
+        move = self.engine.get_best_move_millis(millis)
+        self.sync_engine()
+        return move
 
     def get_best_move_from_fen_depth(self, fen, depth):
-        l_engine = Engine(self.engine_path)
-        l_engine.set_fen_position(fen)
-        return l_engine.get_best_move_depth(depth)
+        self.engine.set_fen_position(fen)
+        move = self.engine.get_best_move_depth(depth)
+        self.sync_engine()
+        return move
 
     def get_fen(self):
         return self.board.fen()

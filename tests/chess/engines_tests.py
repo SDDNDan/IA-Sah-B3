@@ -2,6 +2,7 @@ from application.chess.engine import Engine
 
 fen = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
 
+
 engines = [
     Engine('../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe'),
     Engine('../../chess_engines_cpp/stockfish-9-win/Windows/stockfish_9_x64.exe'),

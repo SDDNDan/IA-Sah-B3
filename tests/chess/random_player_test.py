@@ -4,11 +4,12 @@ from application.chess.chess_game import Chess
 from application.chess.engine import Engine
 from application.chess.random_player import RandomPlayer
 
+engine_path = '../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe'
 game_count = 20
 sf_wins = 0
-sf = Engine()
+sf = Engine(engine_path)
 rand_player = RandomPlayer()
-chess = Chess()
+chess = Chess(engine_path)
 
 for i in range(game_count):
     print("Playing game: " + str(i))
@@ -29,4 +30,4 @@ for i in range(game_count):
             chess.move(black_move)
     if is_sf_white == chess.is_white_winner():
         sf_wins += 1
-print("Stockfish wins: " + str(sf_wins))
+print("Stockfish wins: " + str(sf_wins) + "/" + str(game_count))
