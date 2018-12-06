@@ -3,4 +3,4 @@ def get_strategy_name():
 
 
 def get_strategy_move(fen):
-    return "D2D4"
+    return "d2d4"

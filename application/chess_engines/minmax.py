@@ -7,9 +7,9 @@ import copy
 def get_strategy_name():
     return "MinMax"
 
+
 def get_strategy_move(fen):
-    return minimax(fen, 2, True, Engine(), Chess())[1]
-    # return "D2D4"
+    return min_max(fen, 2, True, Engine(), Chess())[1]
 
 
 def is_final_state(node, chess):
@@ -22,13 +22,16 @@ def is_final_state(node, chess):
 def heuristic_eval(fen, engine):
     engine.set_fen_position(fen)
     print(engine.get_evaluation_depth(1))
-    return (engine.get_evaluation_depth(1), 0)  # Pentru test
+    return engine.get_evaluation_depth(1), 0  # Pentru test
 
 
-#  va returna o lista de tuple de forma (fen, mutare)
-#  unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
 def get_possible_states(fen, chess):
-    #  poate fi imbunatatit daca sortam in fucntie de heuristic_eval
+    #
+    """
+    va returna o lista de tuple de forma (fen, mutare)
+    unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
+    poate fi imbunatatit daca sortam in fucntie de heuristic_eval
+    """
     states = []
     for move in chess.get_valid_moves():
         chess.move(move)
@@ -39,18 +42,15 @@ def get_possible_states(fen, chess):
     return states
 
 
-
-
-def minimax(fen, depth, maximizingPlayer, engine, chess):
+def min_max(fen, depth, maximizing_player, engine, chess):
     if depth == 0 or is_final_state(fen, chess):
         return heuristic_eval(fen, engine)
-    
-    
-    if maximizingPlayer:
+
+    if maximizing_player:
         value = -999999999999999999
         best_move = "e2e4"
         for child, move in get_possible_states(fen, chess):
-            temp = minimax(child, depth - 1, False, engine, chess)[0]
+            temp = min_max(child, depth - 1, False, engine, chess)[0]
             if value > temp:
                 best_move = move
                 value = temp
@@ -59,13 +59,12 @@ def minimax(fen, depth, maximizingPlayer, engine, chess):
         best_move = "e2e4"
         value = 999999999999999999
         for child, move in get_possible_states(fen, chess):
-            temp = minimax(child, depth - 1, True, engine, chess)[0]
+            temp = min_max(child, depth - 1, True, engine, chess)[0]
             if value < temp:
                 value = temp
                 best_move = move
 
         return value, best_move
-
 
 
 # def get_strategy_move(fen):

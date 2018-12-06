@@ -1,33 +1,41 @@
 from application.chess.engine import Engine
 from application.chess.chess_game import Chess
 
-MAX_DEPTH=10
+MAX_DEPTH = 10
+
 
 def get_strategy_name():
     return "Iterative deepening search"
 
 
 def get_strategy_move(fen):
-    return "D2D4"
+    return "d2d4"
 
-#  verifica daca o stare este stare finala adica daca cineva castiga jocul
+
 def is_final_state(node):
+    """
+    verifica daca o stare este stare finala adica daca cineva castiga jocul
+    """
     return False
 
 
-#  Returneaza evaluarea unei stari
-
 def heuristic_eval(fen):
+    """
+    #  Returneaza evaluarea unei stari
+    """
     engine = Engine()
     engine.set_fen_position(fen)
     engine.get_evaluation_depth(1)
 
-    
 
-#  va returna o lista de tuple de forma (fen, mutare)
-#  unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
 def get_possible_states(fen):
-    #  poate fi imbunatatit daca sortam in fucntie de heuristic_eval
+    """
+    va returna o lista de tuple de forma (fen, mutare)
+    unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia
+    ( o vom folosi mai tarziu sa o returnam)
+    poate fi imbunatatit daca sortam in fucntie de heuristic_eval
+    """
+
     chess = Chess()
     states = []
     for move in chess.get_valid_moves():
@@ -38,48 +46,46 @@ def get_possible_states(fen):
 
     return states
 
-def ids(fen, depth, maximizing_player,goal):
 
+def ids(fen, depth, maximizing_player, goal):
     if depth == 0 or is_final_state(fen):
         return heuristic_eval(fen)
-    
-    maxim=-999999999999999999
-    minim=999999999999999999
 
-    if depth==MAX_DEPTH:
+    maxim = -999999999999999999
+    minim = 999999999999999999
+
+    if depth == MAX_DEPTH:
         for child, move in get_possible_states(fen):
-            val,bm,ok=ids(child, depth - 1, True,goal)
-            if ok==True:
-                return val,bm,ok
+            val, bm, ok = ids(child, depth - 1, True, goal)
+            if ok:
+                return val, bm, ok
 
     if maximizing_player:
         best_move = ""
         value = -999999999999999999
         for child, move in get_possible_states(fen):
-            val,bm,ok=ids(child, depth - 1, True,goal)
-            if ok==True:
-                return val,bm,ok
+            val, bm, ok = ids(child, depth - 1, True, goal)
+            if ok:
+                return val, bm, ok
         for child, move in get_possible_states(fen):
-            value = max(value,ids(child, depth - 1, False,goal)[0])
+            value = max(value, ids(child, depth - 1, False, goal)[0])
             if value > maxim:
                 maxim = value
                 best_move = move
-            if maxim>goal:
-                return value,best_move,True
-        return value,best_move,False
+            if maxim > goal:
+                return value, best_move, True
+        return value, best_move, False
     else:
         best_move = ""
         value = 999999999999999999
         for child, move in get_possible_states(fen):
-            val,bm,ok=ids(child, depth - 1, True,goal)
-            if ok==True:
-                return val,bm,ok
+            val, bm, ok = ids(child, depth - 1, True, goal)
+            if ok:
+                return val, bm, ok
         for child, move in get_possible_states(fen):
-            value = min(value, ids(child, depth - 1, True,goal)[0])
-            ok= max(0,ids(child, depth - 1, True,goal)[2])
+            value = min(value, ids(child, depth - 1, True, goal)[0])
+            ok = max(0, ids(child, depth - 1, True, goal)[2])
             if value < minim:
                 minim = value
                 best_move = move
-        return value, best_move,False
-
-
+        return value, best_move, False

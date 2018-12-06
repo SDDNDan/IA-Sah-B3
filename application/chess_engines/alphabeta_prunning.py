@@ -3,7 +3,7 @@ from application.chess.engine import Engine
 
 
 def get_strategy_name():
-    return "Alpha-beta prunning"
+    return "Alpha-beta pruning"
 
 
 def is_final_state(node, chess):
@@ -15,12 +15,15 @@ def is_final_state(node, chess):
 
 def heuristic_eval(fen, engine):
     engine.set_fen_position(fen)
-    return (engine.get_evaluation_depth(1), 0)  # Pentru test
+    return engine.get_evaluation_depth(1), 0  # Pentru test
 
 
-#  va returna o lista de tuple de forma (fen, mutare)
-#  unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
 def get_possible_states(fen, chess):
+    """
+    va returna o lista de tuple de forma (fen, mutare)
+    unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia
+    (o vom folosi mai tarziu sa o returnam)
+    """
     #  poate fi imbunatatit daca sortam in fucntie de heuristic_eval
     states = []
     for move in chess.get_valid_moves():
@@ -46,7 +49,7 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player, engine, chess):
                 best_move = move
             if alpha >= beta:
                 break  # beta cut-off
-        return (value, best_move)
+        return value, best_move
     else:
         best_move = ""
         value = 999999999999999999
@@ -58,7 +61,7 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player, engine, chess):
                 best_move = move
             if alpha >= beta:
                 break  # alpha cut-off
-        return (value, best_move)
+        return value, best_move
 
 
 def get_strategy_move(fen):

@@ -2,7 +2,7 @@ import chess.pgn
 import os
 import chess
 
-from PYTHON.src.chess.chess_game import Chess
+from application.chess.chess_game import Chess
 
 
 def get_fens_from_moves(move_list):
