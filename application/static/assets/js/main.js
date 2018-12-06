@@ -12,12 +12,12 @@ let suggestedMoves = []
 const BASE_URL = 'http://127.0.0.1:5000';
 
 //Chessboard
-const CHESSBOARD = ChessBoard('js-chessboard',{
+const CHESSBOARD = ChessBoard('js-chessboard', {
   draggable: true,
   dropOffBoard: 'snapback'
 });
 
-$( document ).ready( function () {
+$(document).ready(function () {
   //Init chessboard element
   CHESSBOARD.start();
 
@@ -27,43 +27,43 @@ $( document ).ready( function () {
 
 function getStrategies() {
   const STRATEGIES_URL = '/strategies';
-  $.getJSON( BASE_URL + STRATEGIES_URL, function( data ) {
-    $.each( data, function( key, val ) {
-        if("strategy" in val){
-            strategies.push(val.strategy);
-        }
+  $.getJSON(BASE_URL + STRATEGIES_URL, function (data) {
+    $.each(data, function (key, val) {
+      if ("strategy" in val) {
+        strategies.push(val.strategy);
+      }
     });
-      
+
     // render strategies details
-    renderStrategiesDetails( data );
+    renderStrategiesDetails(data);
   });
 }
 
 // renderStrategiesDetails( strategiesDetails )
-function renderStrategiesDetails ( strategies ) {
+function renderStrategiesDetails(strategies) {
   // grab the strategies details container
   const strategiesDetails = document.getElementById('js-strategies-details');
   // navigate down to the .row descendant
   const container = strategiesDetails.children[1];
   const row = container.children[0];
 
-  strategies.forEach( strategy => {
+  strategies.forEach(strategy => {
     // .col element
-   let col = document.createElement('div');
-   col.classList = 'col-12 col-md-6 mb-3';
+    let col = document.createElement('div');
+    col.classList = 'col-12 col-md-6 mb-3';
 
-   // .card
-   let card = createCardMarkup( strategy );
+    // .card
+    let card = createCardMarkup(strategy);
 
-   // append .card to .col
-   col.appendChild( card );
+    // append .card to .col
+    col.appendChild(card);
 
-   // append markup to the .row
-   row.appendChild( col );
- });
+    // append markup to the .row
+    row.appendChild(col);
+  });
 }
 
-function createCardMarkup( strategyDetails ) {
+function createCardMarkup(strategyDetails) {
   // Create Bootstrap card markup
   // https://getbootstrap.com/docs/4.1/components/card/#using-grid-markup
   // .card element
@@ -91,45 +91,67 @@ function createCardMarkup( strategyDetails ) {
   link.href = strategyDetails.documentation;
 
   // append everything to .card-body
-  cardBody.appendChild( cardTitle );
-  cardBody.appendChild( cardText );
-  cardBody.appendChild( link );
+  cardBody.appendChild(cardTitle);
+  cardBody.appendChild(cardText);
+  cardBody.appendChild(link);
 
   // append .card-body to .card container
-  card.appendChild( cardBody );
+  card.appendChild(cardBody);
 
   return card;
 }
 
-function getSuggestedMove(){
-  return new Promise((resolve, reject) =>{
-    
+function getSuggestedMove() {
+  return new Promise((resolve, reject) => {
+
   })
 }
 
-function getSuggestedMoves( ){
+function getSuggestedMoves() {
 
-    myUrl = BASE_URL + "/moves?fen=" + CHESSBOARD.fen() + "%20w%20KQkq%20-%200%201&strategy=";
-    console.log(myUrl);
+  myUrl = BASE_URL + "/moves?fen=" + "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" + "%20w%20KQkq%20-%200%201&strategy=";
+  console.log("URLLLLL: " + myUrl);
 
-    for (var  i = 0; i < strategies.length; i++){
-      $.getJSON( myUrl + strategies[i], function( data ) {
-        $.each( data, function( key, val ) {
-            if("strategy" in val){
-              let res = {
-                strategy: val.strategy,
-                move: val.move
-              }
-                suggestedMoves.push(res);
-            }
-        });
-        //renderSuggestedMoves(data);
+  for (var i = 0; i < strategies.length; i++) {
+    console.log(strategies[i]);
+    $.getJSON(myUrl + strategies[i], function (data) {
+      $.each(data, function (key, val) {
+        if ("strategy" in val) {
+          let res = {
+            strategy: val.strategy,
+            move: val.move
+          }
+          suggestedMoves.push(res);
+          renderSuggestedMoves(res);
+        }
       });
+
+    });
   }
-  
-  
 }
 
-//renderSuggestedMoves( suggestedMoves )
+function renderSuggestedMoves(res) {
+  myDiv = document.getElementsByClassName("list-group")[0];
+
+  childA = document.createElement('a');
+  childA.setAttribute("class", "list-group-item list-group-item-action");
+  childA.setAttribute("href", "#");
+
+  strategy = document.createTextNode(res.strategy + " - ");
+  move = document.createTextNode(res.move);
+
+  strSpan = document.createElement("span");
+  strSpan.setAttribute("class", "strategy");
+  strSpan.appendChild(strategy);
+
+  mvSpan = document.createElement("span");
+  strSpan.setAttribute("class", "strategy");
+  strSpan.appendChild(move);
+
+  myDiv.appendChild(childA);
+  childA.appendChild(strSpan);
+  childA.appendChild(mvSpan);
+
+}
 
 // setChessboardFen()
