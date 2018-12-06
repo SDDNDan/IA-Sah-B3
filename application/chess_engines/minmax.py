@@ -8,8 +8,8 @@ def get_strategy_name():
     return "MinMax"
 
 def get_strategy_move(fen):
-    minimax(fen, 10, True, Engine(), Chess())
-    return "D2D4"
+    return minimax(fen, 2, True, Engine(), Chess())[1]
+    # return "D2D4"
 
 
 def is_final_state(node, chess):
@@ -48,20 +48,18 @@ def minimax(fen, depth, maximizingPlayer, engine, chess):
     
     if maximizingPlayer:
         value = -999999999999999999
-        best_move = ""
+        best_move = "e2e4"
         for child, move in get_possible_states(fen, chess):
-            # value = max(value, minimax(child, depth - 1, FALSE))
-            temp = minimax(child, depth - 1, False, engine, chess)
+            temp = minimax(child, depth - 1, False, engine, chess)[0]
             if value > temp:
                 best_move = move
-                value
-        return value
+                value = temp
+        return value, best_move
     else: 
-        best_move = ""
-        value = minimax(child, depth - 1, False, engine, chess)
+        best_move = "e2e4"
+        value = 999999999999999999
         for child, move in get_possible_states(fen, chess):
-            # value = min(value, minimax(child, depth - 1, TRUE))
-            temp = minimax(child, depth - 1, True, engine, chess)
+            temp = minimax(child, depth - 1, True, engine, chess)[0]
             if value < temp:
                 value = temp
                 best_move = move
