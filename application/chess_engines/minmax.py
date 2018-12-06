@@ -5,6 +5,10 @@ import copy
 def get_strategy_name():
     return "MinMax"
 
+def get_strategy_move(fen):
+    return "D2D4"
+
+
 # def get_strategy_move(fen):
 #     chess = Chess()
 #     chess.set_fen(fen)
