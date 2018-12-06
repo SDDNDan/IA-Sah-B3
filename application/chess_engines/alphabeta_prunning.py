@@ -15,7 +15,6 @@ def is_final_state(node, chess):
 
 def heuristic_eval(fen, engine):
     engine.set_fen_position(fen)
-    print(engine.get_evaluation_depth(1))
     return (engine.get_evaluation_depth(1), 0)  # Pentru test
 
 
