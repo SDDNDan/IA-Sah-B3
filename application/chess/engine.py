@@ -15,7 +15,7 @@ class Engine(Player):
 
     def get_best_move(self, fen):
         self.set_fen_position(fen)
-        return self.get_best_move_depth(1)
+        return self.get_best_move_depth(12)
 
     def __init__(self, engine_path="../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe", param=None):
         if param is None:
