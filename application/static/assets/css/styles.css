@@ -9,29 +9,37 @@
   padding-top: 30px;
 }
 
+/* .fen-loader component */
+
 .fen-loader {
   margin-top: 20px;
   display: flex;
 }
 
-[name="fen-textarea"] {
+.fen-loader [name="fen-textarea"] {
   margin-right: 10px;
   resize: none;
 }
 
-.fen-button {
-  flex-grow: 0;
+.fen-loader .fen-button {
   padding: 13px 15px;
 }
 
-.fen-feedback {
+.fen-loader + .fen-feedback {
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease-out;
 }
 
-.suggested-moves {
-  
+/* .suggested-moves component */
+
+.suggested-moves .desc {
+  font-size: 14px;
+}
+
+.suggested-moves .strategy__move {
+  opacity: 0;
+  transition: opacity .3s ease-in;
 }
 
 .suggested-moves-button {

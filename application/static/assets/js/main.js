@@ -35,19 +35,19 @@ function getStrategies() {
     });
 
     // render strategies details
-    renderStrategiesDetails(data);
+    renderStrategiesDetails( data );
+    renderSuggestedMovesMarkup( data );
   });
 }
 
-// renderStrategiesDetails( strategiesDetails )
-function renderStrategiesDetails(strategies) {
+function renderStrategiesDetails( strategiesResponse ) {
   // grab the strategies details container
   const strategiesDetails = document.getElementById('js-strategies-details');
   // navigate down to the .row descendant
   const container = strategiesDetails.children[1];
   const row = container.children[0];
 
-  strategies.forEach(strategy => {
+  strategiesResponse.forEach(strategy => {
     // .col element
     let col = document.createElement('div');
     col.classList = 'col-12 col-md-6 mb-3';
@@ -63,7 +63,7 @@ function renderStrategiesDetails(strategies) {
   });
 }
 
-function createCardMarkup(strategyDetails) {
+function createCardMarkup( strategyDetails ) {
   // Create Bootstrap card markup
   // https://getbootstrap.com/docs/4.1/components/card/#using-grid-markup
   // .card element
@@ -101,19 +101,11 @@ function createCardMarkup(strategyDetails) {
   return card;
 }
 
-function getSuggestedMove() {
-  return new Promise((resolve, reject) => {
-
-  })
-}
-
 function getSuggestedMoves() {
 
   myUrl = BASE_URL + "/moves?fen=" + "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" + "%20w%20KQkq%20-%200%201&strategy=";
-  console.log("URLLLLL: " + myUrl);
 
   for (var i = 0; i < strategies.length; i++) {
-    console.log(strategies[i]);
     $.getJSON(myUrl + strategies[i], function (data) {
       $.each(data, function (key, val) {
         if ("strategy" in val) {
@@ -121,37 +113,116 @@ function getSuggestedMoves() {
             strategy: val.strategy,
             move: val.move
           }
+
           suggestedMoves.push(res);
-          renderSuggestedMoves(res);
+          renderSuggestedMove(res);
         }
       });
-
     });
   }
 }
 
-function renderSuggestedMoves(res) {
-  myDiv = document.getElementsByClassName("list-group")[0];
+function renderSuggestedMove( strategyResponse ) {
+  const moveEl = document.getElementById(`js-move-${strategyResponse.strategy.toLowerCase().substr(0, 3)}`);
 
-  childA = document.createElement('a');
-  childA.setAttribute("class", "list-group-item list-group-item-action");
-  childA.setAttribute("href", "#");
-
-  strategy = document.createTextNode(res.strategy + " - ");
-  move = document.createTextNode(res.move);
-
-  strSpan = document.createElement("span");
-  strSpan.setAttribute("class", "strategy");
-  strSpan.appendChild(strategy);
-
-  mvSpan = document.createElement("span");
-  strSpan.setAttribute("class", "strategy");
-  strSpan.appendChild(move);
-
-  myDiv.appendChild(childA);
-  childA.appendChild(strSpan);
-  childA.appendChild(mvSpan);
-
+  moveEl.innerText = strategyResponse.move;
+  moveEl.style.opacity = 1;
 }
 
-// setChessboardFen()
+function createListGroupItemMarkup( strategyDetails ) {
+  // link
+  let link = document.createElement('a');
+  link.classList = 'list-group-item list-group-item-action strategy';
+
+  // .container-fluid
+  let container = document.createElement('div');
+  container.classList = 'container-fluid';
+
+  // .row
+  let row = document.createElement('div');
+  row.classList = 'row';
+  
+  // .strategy__info.col
+  let strategyInfo = document.createElement('div');
+  strategyInfo.classList = 'strategy__info col p-0';
+  
+  // strategy .name
+  let strategyName = document.createElement('h5');
+  strategyName.classList = 'mb-1 name';
+  strategyName.innerText = strategyDetails.strategy;
+  
+  // strategy .desc
+  let strategyDesc = document.createElement('p');
+  strategyDesc.classList = 'mb-1 desc';
+  strategyDesc.innerText = strategyDetails.description;
+
+  // .col-2.align-self-center
+  let col = document.createElement('div');
+  col.classList = 'col-2 align-self-center';
+
+  // .strategy-move
+  let strategyMove = document.createElement('span');
+  strategyMove.classList = 'alert alert-success strategy__move';
+  strategyMove.id = `js-move-${strategyDetails.strategy.substr(0, 3)}`;
+
+
+  // append .name & .desc to .strategy__info
+  strategyInfo.appendChild(strategyName);
+  strategyInfo.appendChild(strategyDesc);
+
+  // append .strategy-move to .col-2.align-self-center
+  col.appendChild(strategyMove);
+  
+  // append .strategy__info & .col-2.align-self-cente
+  // to .row
+  row.appendChild(strategyInfo);
+  row.appendChild(col);
+  
+  // append .row to .container-fluid
+  container.appendChild(row);
+
+  // append .container to link
+  link.append(container);
+
+  return link;
+}
+
+function renderSuggestedMovesMarkup( strategiesResponse ) {
+  const suggestedMovesContainer = document.getElementById('js-suggested-moves-container');
+
+  strategiesResponse.forEach( (strategy) => {
+    let groupItem = createListGroupItemMarkup( strategy );
+    suggestedMovesContainer.appendChild( groupItem );
+  });
+}
+
+function setChessboardFen() {
+  // grab the textarea from the .fen-loader component
+  const fenTextarea = document.getElementById('js-fen-textarea');
+  // element that displays a warning if 
+  // a non-FEN string is entered in the textarea
+  const fenFeedback = document.querySelector('.fen-loader + .fen-feedback');
+  // get the value of the textarea
+  const fen = fenTextarea.value;
+
+  // check if fen is valid
+  if( parseFEN(fen) ) {
+    CHESSBOARD.position(fen);
+  } else {
+    // make it visible
+    fenFeedback.style.opacity = 1;
+    // hide it after a delay of 1.5s
+    setTimeout( function () {
+      fenFeedback.style = '';
+    }, 1500)
+  }
+}
+
+// Event Listeners
+
+// submit button for the .fen-loader component
+const submitFenBtn = document.getElementById('js-fen-submit');
+submitFenBtn.addEventListener('click', setChessboardFen);
+// get-moves button for the .suggested-moves component
+const getMovesBtn = document.getElementById('js-get-moves');
+getMovesBtn.addEventListener('click', getSuggestedMoves);
