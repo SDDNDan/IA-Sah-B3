@@ -58,8 +58,8 @@ def minimax(fen, depth, maximizingPlayer, engine, chess):
         return value
     else: 
         best_move = ""
-        value = minimax(child, depth - 1, False, engine, chess)
         for child, move in get_possible_states(fen, chess):
+            # value = minimax(child, depth - 1, False, engine, chess)
             # value = min(value, minimax(child, depth - 1, TRUE))
             temp = minimax(child, depth - 1, True, engine, chess)
             if value < temp:
