@@ -103,11 +103,13 @@ function createCardMarkup( strategyDetails ) {
 
 function getSuggestedMoves() {
 
-  myUrl = BASE_URL + "/moves?fen=" + "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" + "%20w%20KQkq%20-%200%201&strategy=";
+  // TODO: refactor the creation of the URL
+  // using the fen() method from chess.js
+  myUrl = BASE_URL + "/moves?fen=" + "rnbqkb1r/p1pp1ppp/1p2pn2/8/2P5/1P2P3/PB1P1PPP/RN1QKBNR b KQkq - 0 4" + "&strategy=";
 
   for (var i = 0; i < strategies.length; i++) {
     let strategyName = strategies[i];
-    
+
     $.getJSON(myUrl + strategies[i], function (data) {
       $.each(data, function (key, val) {
         if ("strategy" in val) {
