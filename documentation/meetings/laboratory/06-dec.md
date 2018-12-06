@@ -21,5 +21,6 @@
 # extra
 * Pagina de prezentare trebuie reîmprospătată + adresă de email
 * Căutare în DB (formată din meciuri mari maeștri) cu scopul de a afișa ce mutări s-au făcut într-un meci istoric pornind de la un anumit FEN
+* posibilitatea de a schimba imaginile pentru setul de piese
 * după vacanță - documentație pentru Learn&Earn
 * s14 - evaluare individuală + să rămână pe Git tot ce s-a făcut, chiar dacă e `deprecated`
