@@ -49,5 +49,5 @@ def get_fens_recursively(p_search_root, max_fen_count_per_file):
     return l_fens
 
 
-search_root = "../../data/fens/players"
-fens = get_fens_recursively(search_root, 50)
+# search_root = "../../data/fens/players"
+# fens = get_fens_recursively(search_root, 50)
