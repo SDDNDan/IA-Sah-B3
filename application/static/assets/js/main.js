@@ -106,6 +106,8 @@ function getSuggestedMoves() {
   myUrl = BASE_URL + "/moves?fen=" + "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR" + "%20w%20KQkq%20-%200%201&strategy=";
 
   for (var i = 0; i < strategies.length; i++) {
+    let strategyName = strategies[i];
+    
     $.getJSON(myUrl + strategies[i], function (data) {
       $.each(data, function (key, val) {
         if ("strategy" in val) {
@@ -115,17 +117,17 @@ function getSuggestedMoves() {
           }
 
           suggestedMoves.push(res);
-          renderSuggestedMove(res);
+          renderSuggestedMove(strategyName, res.move);
         }
       });
     });
   }
 }
 
-function renderSuggestedMove( strategyResponse ) {
-  const moveEl = document.getElementById(`js-move-${strategyResponse.strategy.toLowerCase().substr(0, 3)}`);
+function renderSuggestedMove( strategyName, strategyMove ) {
+  const moveEl = document.getElementById(`js-move-${strategyName}`);
 
-  moveEl.innerText = strategyResponse.move;
+  moveEl.innerText = strategyMove;
   moveEl.style.opacity = 1;
 }
 
@@ -163,7 +165,7 @@ function createListGroupItemMarkup( strategyDetails ) {
   // .strategy-move
   let strategyMove = document.createElement('span');
   strategyMove.classList = 'alert alert-success strategy__move';
-  strategyMove.id = `js-move-${strategyDetails.strategy.substr(0, 3)}`;
+  strategyMove.id = `js-move-${strategyDetails.strategy}`;
 
 
   // append .name & .desc to .strategy__info
