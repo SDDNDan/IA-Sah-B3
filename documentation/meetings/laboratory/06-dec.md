@@ -1,6 +1,6 @@
 # Laborator 6-dec
 ## Front-End
-* Fiecare strategie să ofere, la apăsarea unui buton de detalii, mai multe de o mișcare (3 consecutive + scoruri fiecare mutare)
+* Fiecare strategie să ofere, la apăsarea unui buton de detalii, mai mult de o mișcare (3 consecutive + scoruri fiecare mutare)
 * În header: 
   * logo
   * acronim ( denumire aplicație )

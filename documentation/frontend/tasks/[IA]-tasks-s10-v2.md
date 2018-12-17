@@ -100,7 +100,7 @@ Dacă aveți vreo sugestie pentru evitarea situațiilor de conflicte **nu ezita�
 
 Dacă cumva apar conflicte, PHPStorm & WebStorm de la Intellij au un tool de diff pentru conflicte foarte eficient și intuitiv. Sunt și extensii pentru VS Code (e.g. GitLens).
 ## Stiluri
-În fișierul `styles.css`. 
+În fișierul `styles.css`.
 
 Folosim metodologia [BEM](https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) pentru lizibilitate în CSS, dar nu coborâm mai mult de 2 nivele pentru că numele clasei devine prea lung (e.g. block__element1__element2___element3--modifier1). [Articolul acesta](https://medium.com/fed-or-dead/battling-bem-5-common-problems-and-how-to-avoid-them-5bbd23dee319) explică destul de bine cum se poate folosi BEM eficient.
 
