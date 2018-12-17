@@ -22,7 +22,7 @@ def get_moves_controller(request):
 
             answer.append({"strategy": chess_engine_module.get_strategy_name(
             ), "move": chess_engine_module.get_strategy_move(fen)})
-
+            
     if len(answer) == 0:
         return 'Strategy with name \'{}\' is not recognized!'.format(strategy), 400
 
