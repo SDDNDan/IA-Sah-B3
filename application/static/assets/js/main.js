@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 // flip button for the orientation of chessboard
 const flipBtn = document.getElementById('js-flip-chessboard');
-flipBtn.addEventListener('click', CHESSBOARD.flip);
+flipBtn.addEventListener('click', CHESS_COMPONENT.CHESS.flip);
 // submit button for the .fen-loader component
 const submitFenBtn = document.getElementById('js-fen-submit');
 submitFenBtn.addEventListener('click', clientLogic.setChessboardFen);
