@@ -3,6 +3,53 @@
 
 /* HEADER */
 /* .nav--header */
+#logo {
+  float: left;
+  color: white;
+  height: 82px;
+  border-radius: 50px;
+}
+
+.nav--header {
+  overflow: hidden;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav--header li, 
+span {
+  float: left;
+  color: #c0bbbb;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.nav--header .right-side:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.nav--header .right-side {
+  border-radius: 30px;
+  position: relative;
+  float: right;
+  margin-top: 13px;
+  font-size: 18px;
+}
+
+#application-title {
+  font-size: 36px;
+  text-decoration: none;
+}
+
+#application-title:hover {
+  color: white;
+}
+/* .nav--header */
 
 /* MAIN */
 .main {
