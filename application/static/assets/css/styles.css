@@ -1,5 +1,12 @@
 /* GENERAL STYLES */
+html,
+.body {
+  height: 100%;
+}
 
+.body {
+  background-color: var(--light);
+}
 
 /* HEADER */
 /* .nav--header */
@@ -7,6 +14,29 @@
 /* MAIN */
 .main {
   padding-top: 30px;
+}
+/* chess component */
+
+/* numbers & letters */
+.numeric-fc462,
+.alpha-d2270 {
+  color: var(--gray-dark);
+  font-size: 16px;
+ }
+
+/* numbers */
+.numeric-fc462 {
+  top: 50%;
+  left: -15px;
+  transform: translateY(-50%);
+}
+
+/* letters */
+.alpha-d2270 {
+  bottom: -25px;
+  right: 50%;
+  transform: translateX(50%);
+  text-transform: uppercase;
 }
 
 /* .fen-loader component */
@@ -35,6 +65,11 @@
 
 .suggested-moves .desc {
   font-size: 14px;
+}
+
+.suggested-moves__container {
+  max-height: 55vh;
+  overflow-y: scroll;
 }
 
 .suggested-moves .strategy__move {
