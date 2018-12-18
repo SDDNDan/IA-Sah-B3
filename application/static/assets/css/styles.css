@@ -10,6 +10,39 @@ html,
 
 /* HEADER */
 /* .nav--header */
+.nav--header__logo {
+  float: left;
+  color: white;
+  height: 82px;
+  border-radius: 50px;
+}
+
+.nav--header {
+  overflow: hidden;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nav--header li, 
+.nav--header__app-title {
+  float: left;
+  color: #c0bbbb;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.nav--header__app-title {
+  font-size: 36px;
+  text-decoration: none;
+}
+
+.nav--header__app-title:hover {
+  color: white;
+}
 
 /* MAIN */
 .main {
