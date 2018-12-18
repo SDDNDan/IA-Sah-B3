@@ -3,7 +3,7 @@
 
 /* HEADER */
 /* .nav--header */
-#logo {
+.nav--header__logo {
   float: left;
   color: white;
   height: 82px;
@@ -17,7 +17,7 @@
 }
 
 .nav--header li, 
-span {
+.nav--header__app-title {
   float: left;
   color: #c0bbbb;
   text-align: center;
@@ -28,28 +28,14 @@ span {
   cursor: pointer;
 }
 
-.nav--header .right-side:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.nav--header .right-side {
-  border-radius: 30px;
-  position: relative;
-  float: right;
-  margin-top: 13px;
-  font-size: 18px;
-}
-
-#application-title {
+.nav--header__app-title {
   font-size: 36px;
   text-decoration: none;
 }
 
-#application-title:hover {
+.nav--header__app-title:hover {
   color: white;
 }
-/* .nav--header */
 
 /* MAIN */
 .main {
