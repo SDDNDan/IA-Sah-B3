@@ -12,7 +12,7 @@ export function renderStrategiesDetails( strategiesResponse ) {
   strategiesResponse.forEach( strategy => {
     // .col element
     let col = document.createElement('div');
-    col.classList = 'col-12 col-md-6 mb-3';
+    col.classList = 'col-12 mb-3';
 
     // .card
     let card = markup.createCardMarkup(strategy);

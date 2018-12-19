@@ -10,17 +10,17 @@ html,
 
 /* HEADER */
 /* .nav--header */
+.nav--header {
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--gray);
+}
+
 .nav--header__logo {
   float: left;
   color: white;
   height: 82px;
   border-radius: 50px;
-}
-
-.nav--header {
-  overflow: hidden;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .nav--header li, 
@@ -45,9 +45,7 @@ html,
 }
 
 /* MAIN */
-.main {
-  padding-top: 30px;
-}
+
 /* chess component */
 
 /* numbers & letters */
@@ -96,6 +94,14 @@ html,
 
 /* .suggested-moves component */
 
+.suggested-moves h4.list-group-item.active {
+  z-index: auto;
+}
+
+.suggested-moves .list-group-item:hover {
+  z-index: auto;
+}
+
 .suggested-moves .desc {
   font-size: 14px;
 }
@@ -116,8 +122,29 @@ html,
 }
 
 .flip-button {
-	  padding: 15px;
+  padding: 15px;
 	margin-top: 10px;
+}
+
+.strategies-details {
+  height: 100%;
+  width: 43%;
+  position: fixed;
+  top: 0;
+  overflow-y: scroll;
+  pointer-events: none;
+  transform: translateX(-100%);
+  transition: transform .3s ease-in-out;
+  background-color: var(--gray);
+}
+
+.strategies-details.in-view {
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.strategies-details__title {
+  color: #c0bbbb;
 }
 
 /* .help component */
@@ -127,9 +154,10 @@ html,
   background-color: rgb(199, 194, 194);
   position: absolute;
   top: 0;
+  opacity: 0;
   pointer-events: none;
-  transition: transform .3s ease-in-out;
-  opacity: .2s ease-in-out;
+  transition: transform .3s ease-in-out,
+              opacity .2s ease-in-out;
   transform: translateY(-100%);
   z-index: 3;
 }
@@ -148,7 +176,7 @@ html,
   z-index: 4;
 }
 
-.in-view {
+.help.in-view {
 	opacity: 1;
 	pointer-events: auto;	
 	transform: translateY(0);

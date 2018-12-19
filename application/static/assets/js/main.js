@@ -35,3 +35,9 @@ helpButtonOpen.addEventListener('click', clientLogic.toggleHelp);
 // toggleHelp close
 const helpButtonClose = document.getElementById('js-close-help');
 helpButtonClose.addEventListener('click', clientLogic.toggleHelp);
+// toggleStrategiesDetails
+const strategyDetailsTrigger = document.getElementById('js-toggle-strategies-details');
+strategyDetailsTrigger.addEventListener('click', () => {
+  const strategyDetailsSectionEl = document.getElementById('js-strategies-details-section');
+  clientLogic.toggleStrategyDetails( strategyDetailsSectionEl);
+});

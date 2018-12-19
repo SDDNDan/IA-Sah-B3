@@ -34,3 +34,7 @@ export function toggleHelp() {
 	const helpEl = document.getElementById('js-help')
 	helpEl.classList.toggle('in-view');
 }
+
+export function toggleStrategyDetails( strategyDetailsEl ) {
+  strategyDetailsEl.classList.toggle('in-view');
+}
