@@ -8,6 +8,9 @@ from application.controllers.commentary import get_commentary_controller
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def index():
+  return app.send_static_file('index.html')
 
 @app.route('/strategies', methods=['GET'])
 def get_strategies_router():
