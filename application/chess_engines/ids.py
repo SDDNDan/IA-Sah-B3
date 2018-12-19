@@ -1,6 +1,14 @@
 from application.chess.engine import Engine
 from application.chess.chess_game import Chess
 
+print("Initializing class Engine for module " + __name__ + " ...")
+engine = Engine()
+print("Engine class initialized successfully!")
+
+print("Initializing class Chess for module " + __name__ + " ...")
+chess = Chess()
+print("Chess class initialized successfully!")
+
 MAX_DEPTH = 10
 
 
@@ -14,7 +22,7 @@ def get_strategy_move(fen):
 
 def is_final_state(node):
     """
-    verifica daca o stare este stare finala adica daca cineva castiga jocul
+    Verifica daca o stare este stare finala adica daca cineva castiga jocul
     """
     return False
 
@@ -23,7 +31,6 @@ def heuristic_eval(fen):
     """
     #  Returneaza evaluarea unei stari
     """
-    engine = Engine()
     engine.set_fen_position(fen)
     engine.get_evaluation_depth(1)
 
@@ -36,7 +43,6 @@ def get_possible_states(fen):
     poate fi imbunatatit daca sortam in fucntie de heuristic_eval
     """
 
-    chess = Chess()
     states = []
     for move in chess.get_valid_moves():
         chess.move(move)

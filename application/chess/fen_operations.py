@@ -49,5 +49,15 @@ def get_fens_recursively(p_search_root, max_fen_count_per_file):
     return l_fens
 
 
+def valid_fen(fen):
+    if fen is None:
+        return False
+
+    try:
+        chess.Board(fen=fen)
+        return True
+    except:
+        return False
+
 # search_root = "../../data/fens/players"
 # fens = get_fens_recursively(search_root, 50)

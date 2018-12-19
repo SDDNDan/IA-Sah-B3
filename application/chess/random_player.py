@@ -6,7 +6,6 @@ from application.chess.player import Player
 
 
 class RandomPlayer(Player):
-
     def get_best_move(self, fen):
         random = Random()
         board = chess.Board(fen=fen)

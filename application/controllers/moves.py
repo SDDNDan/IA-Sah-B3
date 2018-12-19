@@ -1,5 +1,5 @@
 from application.common_lib.package_operations import list_package_modules
-from application.common_lib.fen_operations import valid_fen
+from application.chess.fen_operations import valid_fen
 import importlib
 import json
 
