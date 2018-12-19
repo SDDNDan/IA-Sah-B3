@@ -138,6 +138,17 @@ html,
   background-color: var(--gray);
 }
 
+.strategies-details__close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  z-index: 1;
+  font-size: 20px;
+}
+.strategies-details__close:hover {
+  text-decoration: none;
+}
+
 .strategies-details.in-view {
   pointer-events: auto;
   transform: translateX(0);
@@ -166,13 +177,13 @@ html,
   display: inline-block;
 }
 
-.help 
-.help__close {
+.help .help__close {
   padding: 5px;
   position: absolute;
   top: 5px;
   right: 10px;
   text-decoration: none;
+  font-size: 20px;
   z-index: 4;
 }
 
