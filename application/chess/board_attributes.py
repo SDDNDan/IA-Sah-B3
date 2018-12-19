@@ -5,6 +5,16 @@ import random
 
 from application.chess.engine import Engine
 
+SQUARES = [
+        A1, B1, C1, D1, E1, F1, G1, H1,
+        A2, B2, C2, D2, E2, F2, G2, H2,
+        A3, B3, C3, D3, E3, F3, G3, H3,
+        A4, B4, C4, D4, E4, F4, G4, H4,
+        A5, B5, C5, D5, E5, F5, G5, H5,
+        A6, B6, C6, D6, E6, F6, G6, H6,
+        A7, B7, C7, D7, E7, F7, G7, H7,
+        A8, B8, C8, D8, E8, F8, G8, H8] = range(64)
+
 
 class Attributes:
     """
@@ -17,10 +27,75 @@ class Attributes:
     """
 
     @staticmethod
-    def white_has_queen(board): return 'Q' in board.fen()
+    def white_has_queen(board):
+        return 'Q' in board.fen().split()[0]
 
     @staticmethod
-    def black_has_queen(board): return 'q' in board.fen()
+    def black_has_queen(board):
+        return 'q' in board.fen().split()[0]
+
+    @staticmethod
+    def white_has_pair_of_bishops(board):
+        fen = board.fen().split()[0]
+        return fen.count('B') == 2 and fen.count('b') != 2
+
+    @staticmethod
+    def black_has_pair_of_bishops(board):
+        fen = board.fen().split()[0]
+        return fen.count('b') == 2 and fen.count('B') != 2
+
+    @staticmethod
+    def white_has_small_center_control(board):
+        count = 0
+        small_central_squares = [chess.E4, chess.D4, chess.E5, chess.D5]
+        for sq in small_central_squares:
+            if board.is_attacked_by(chess.WHITE, sq):
+                count += 1
+            if board.is_attacked_by(chess.BLACK, sq):
+                count -= 1
+        return count > 0
+
+    @staticmethod
+    def black_has_small_center_control(board):
+        count = 0
+        small_central_squares = [chess.E4, chess.D4, chess.E5, chess.D5]
+        for sq in small_central_squares:
+            if board.is_attacked_by(chess.WHITE, sq):
+                count -= 1
+            if board.is_attacked_by(chess.BLACK, sq):
+                count += 1
+        return count > 0
+
+    @staticmethod
+    def white_has_large_center_control(board):
+        count = 0
+        large_central_squares \
+            = [chess.E4, chess.D4, chess.E5, chess.D5, chess.C3, chess.D3, chess.E3, chess.F3, chess.F4, chess.F5,
+               chess.F6, chess.E6, chess.D6, chess.C6, chess.C5, chess.C4]
+        for sq in large_central_squares:
+            if board.is_attacked_by(chess.WHITE, sq):
+                count += 1
+            if board.is_attacked_by(chess.BLACK, sq):
+                count -= 1
+        return count > 0
+
+    @staticmethod
+    def black_has_large_center_control(board):
+        count = 0
+        large_central_squares \
+            = [chess.E4, chess.D4, chess.E5, chess.D5, chess.C3, chess.D3, chess.E3, chess.F3, chess.F4, chess.F5,
+               chess.F6, chess.E6, chess.D6, chess.C6, chess.C5, chess.C4]
+        for sq in large_central_squares:
+            if board.is_attacked_by(chess.WHITE, sq):
+                count -= 1
+            if board.is_attacked_by(chess.BLACK, sq):
+                count += 1
+        return count > 0
+
+    # @staticmethod
+    # def white_has_active_queen(board):
+    #     for q in board.queens:
+    #         print(q)
 
 
 def get_attribute_array(fen):
@@ -36,8 +111,8 @@ def get_attribute_array(fen):
 
 
 def compute_random_comment(features1, features2, god_move, pleb_move):
-    s1 = ' '.join(features1)
-    s2 = ' '.join(features2)
+    s1 = ', '.join(features1)
+    s2 = ', '.join(features2)
     count1 = len(features1)
     count2 = len(features2)
     if count1 > 0 and count2 > 0:
@@ -51,16 +126,16 @@ def compute_random_comment(features1, features2, god_move, pleb_move):
             'Your move {} leads to a position where {}, which is horrible! Well... at least you are pretty.'
                 .format(god_move, s1, pleb_move, s2),
             'HA! You thought {} is a good move. WRONG! Try a real move like {}: {}, but if you think that if '
-            '{} gets you anywhere... uhm, well at least you can operate a computer.'.format(pleb_move, god_move, s1,
-                                                                                            s2),
+            'a position where {} gets you anywhere... uhm, well at least you can operate a computer.'
+                .format(pleb_move, god_move, s1, s2),
             'Let\'s analyze my ultimate Chad move {} vs your virgin move {}. After my god-like move, {}, while you nerd'
             ' are stuck in a position where {}. Good luck with that.'.format(god_move, pleb_move, s1, s2)
         ]
-    if count1 > 0:
+    elif count1 > 0:
         thoughts = [
             'Well, after {} instead of {}, at least you get in a position where {}.'.format(god_move, pleb_move, s1)
         ]
-    if count2 > 0:
+    elif count2 > 0:
         thoughts = [
             'Could you please tell me how is it good when {}. Hey, I will give you a slight hint: {} is '
             'the best move. {} might be a genius move, but this kind of genius doesn\'t play chess.'
@@ -113,7 +188,7 @@ def get_comment(engine, fen, move):
     if abs(player_eval - strategy_eval) > 2:
         attributes1 = get_attribute_array(strategy_analysis_board.fen())
         attributes2 = get_attribute_array(player_analysis_board.fen())
-        while diff_count(attributes1, attributes2) < 1:
+        while diff_count(attributes1, attributes2) < 3:
             sf.set_fen_position(strategy_analysis_board.fen())
             strategy_analysis_board.push_uci(sf.get_best_move_depth(12))
 
