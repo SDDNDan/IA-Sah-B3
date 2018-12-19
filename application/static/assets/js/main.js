@@ -5,8 +5,15 @@ import CHESS_COMPONENT from "./components/Chess.component.js";
 $(document).ready(function () {
   // init chessboard element
   CHESS_COMPONENT.CHESSBOARD.start();
-  // init popover here
 
+  // init popover here
+    let fenDetails = $('#fen-details').html();
+    $('#js-fen-textarea').popover({
+        placement: "bottom",
+        trigger: "focus",
+        content: fenDetails,
+        html: true
+    });
   // get strategies from the server
   async.getStrategies();
 });
@@ -22,15 +29,9 @@ submitFenBtn.addEventListener('click', clientLogic.setChessboardFen);
 // getMoves button for the .suggested-moves component
 const getMovesBtn = document.getElementById('js-get-moves');
 getMovesBtn.addEventListener('click', async.getSuggestedMoves);
-
-//Help center
-const helpTrigger = document.getElementById('js-help-trigger');
-const closeHelpTrigger = document.getElementById('js-close-help'); 
-
-helpTrigger.addEventListener('click', toggleHelp);
-closeHelpTrigger.addEventListener('click', toggleHelp);
-
-function toggleHelp() {
-	const helpEl = document.getElementById('js-help')
-	helpEl.classList.toggle('in-view');
-}
+// toggleHelp open
+const helpButtonOpen = document.getElementById('js-help-trigger');
+helpButtonOpen.addEventListener('click', clientLogic.toggleHelp);
+// toggleHelp close
+const helpButtonClose = document.getElementById('js-close-help');
+helpButtonClose.addEventListener('click', clientLogic.toggleHelp);
