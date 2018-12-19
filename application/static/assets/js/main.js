@@ -5,8 +5,15 @@ import CHESS_COMPONENT from "./components/Chess.component.js";
 $(document).ready(function () {
   // init chessboard element
   CHESS_COMPONENT.CHESSBOARD.start();
-  // init popover here
 
+  // init popover here
+    let fenDetails = $('#fen-details').html();
+    $('#js-fen-textarea').popover({
+        placement: "bottom",
+        trigger: "focus",
+        content: fenDetails,
+        html: true
+    });
   // get strategies from the server
   async.getStrategies();
 });
