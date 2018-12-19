@@ -123,6 +123,7 @@ html,
 /* .help component */
 .help {
   height: 100%;
+  width: 100%;
   background-color: rgb(199, 194, 194);
   position: absolute;
   top: 0;
