@@ -121,3 +121,32 @@ html,
 }
 
 /* .help component */
+.help {
+  height: 100%;
+  background-color: rgb(199, 194, 194);
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  transition: transform .3s ease-in-out, opacity .2s ease-in-out;
+  transform: translateY(-100%);
+  z-index: 3;
+}
+
+.help__content {
+    display: inline-block;
+}
+
+.help .help__close {
+  padding: 5px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  text-decoration: none;
+  z-index: 4;
+}
+
+.in-view {
+	opacity: 1;
+	pointer-events: auto;	
+	transform: translateY(0);
+}

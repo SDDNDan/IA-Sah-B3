@@ -22,3 +22,15 @@ submitFenBtn.addEventListener('click', clientLogic.setChessboardFen);
 // getMoves button for the .suggested-moves component
 const getMovesBtn = document.getElementById('js-get-moves');
 getMovesBtn.addEventListener('click', async.getSuggestedMoves);
+
+//Help center
+const helpTrigger = document.getElementById('js-help-trigger');
+const closeHelpTrigger = document.getElementById('js-close-help'); 
+
+helpTrigger.addEventListener('click', toggleHelp);
+closeHelpTrigger.addEventListener('click', toggleHelp);
+
+function toggleHelp() {
+	const helpEl = document.getElementById('js-help')
+	helpEl.classList.toggle('in-view');
+}
