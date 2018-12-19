@@ -18,6 +18,8 @@ export function setChessboardFen() {
     CHESS_COMPONENT.CHESSBOARD.position(fen);
     CHESS_COMPONENT.CHESS.load(fen);
   } else {
+    let validationResult = CHESS_COMPONENT.CHESS.validate_fen(fen);
+    $(fenFeedback).html(validationResult.error);
     // make it visible
     fenFeedback.style.opacity = 1;
     // hide it after a delay of 1.5s
