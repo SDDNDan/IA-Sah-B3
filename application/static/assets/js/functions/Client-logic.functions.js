@@ -26,3 +26,9 @@ export function setChessboardFen() {
     }, 1500);
   }
 }
+
+//Help center
+export function toggleHelp() {
+	const helpEl = document.getElementById('js-help')
+	helpEl.classList.toggle('in-view');
+}

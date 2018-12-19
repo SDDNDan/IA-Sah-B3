@@ -128,16 +128,18 @@ html,
   position: absolute;
   top: 0;
   pointer-events: none;
-  transition: transform .3s ease-in-out, opacity .2s ease-in-out;
+  transition: transform .3s ease-in-out;
+  opacity: .2s ease-in-out;
   transform: translateY(-100%);
   z-index: 3;
 }
 
 .help__content {
-    display: inline-block;
+  display: inline-block;
 }
 
-.help .help__close {
+.help 
+.help__close {
   padding: 5px;
   position: absolute;
   top: 5px;
