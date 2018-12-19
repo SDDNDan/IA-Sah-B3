@@ -170,8 +170,6 @@ Aceasta va insera în modalul `.commentary-modal`:
 * în câmpul `commentary-content` valoarea atributului `commentary`
 
 Funcția va fi scrisă în fișierul `Render.functions.js`.
-#### 7.2.3 `renderCommentaryModal()`
-Funcție ce va apela `createCommentaryModalMarkup` și va adăuga pe `<body>` modalele respective
 ## 8. Reîmprospătarea paginii de prezentare (cea de pe **branch**-ul `gh-pages`)
 ### 8.1 HTML + CSS
 Aplicarea unui design, la alegere, mai atrăgător decât cel actual. Conținutul textual al paginii va fi static, inclus în markup.
