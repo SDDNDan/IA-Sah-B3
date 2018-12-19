@@ -7,7 +7,7 @@ $(document).ready(function () {
   CHESS_COMPONENT.CHESSBOARD.start();
 
   // init popover here
-    var fenDetails = $('#fen-details').html();
+    let fenDetails = $('#fen-details').html();
     $('#js-fen-textarea').popover({
         placement: "bottom",
         trigger: "focus",
