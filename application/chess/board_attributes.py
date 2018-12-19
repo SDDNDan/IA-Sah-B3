@@ -92,10 +92,19 @@ class Attributes:
                 count += 1
         return count > 0
 
-    # @staticmethod
-    # def white_has_active_queen(board):
-    #     for q in board.queens:
-    #         print(q)
+    @staticmethod
+    def white_has_active_queen(board):
+        for k, v in board.piece_map().items():
+            if v == 'Q' and k >= 32:
+                return True
+        return False
+
+    @staticmethod
+    def black_has_active_queen(board):
+        for k, v in board.piece_map().items():
+            if v == 'q' and k < 32:
+                return True
+        return False
 
 
 def get_attribute_array(fen):
