@@ -137,9 +137,41 @@ Acest task presupune lucrul pe ramura `else` din funcția `setChessboardFen` car
 `eventListener`-ul va fi scris în `main.js`.
 ## 7. Crearea unei componente de comentarii
 ### 7.1 HTML + CSS
-TBA
+#### 7.1.1 `.commentary`
+Crearea unei componente `.commentary` care să conțină:
+* o zonă pentru istoricul mutărilor(`.commentary__history`) cu 3 coloane ([sugestie layout](https://lichess.org/M8B5xCTF/black)):
+  * una pentru numerotarea turelor/rundelor
+  * una pentru mutările culorii albe
+  * una pentru mutările culorii negre
+#### 7.1.2 `.commentary-modal`
+* Crearea unui buton de trigger cu textul "Get commentary"
+* Crearea unui modal ce va avea în `.modal-body` o listă de elemente de forma:
+  * `.strategy-name` - un element HTML de tip *heading*
+  * `commentary-content` - un element de tip *paragraph* pentru textul comentariului
+#### 7.1.3 `.load-match`
+O componentă formată din:
+* un `textarea`
+* un buton de submit
 ### 7.2 JS
-TBA
+#### 7.2.1 `getCommentary()`
+Funcție ce va face un request asincron de tip `GET` la ruta `/commentary` folosind ca valoare pentru parametrul `game` input-ul din componenta `.load-match`. Momentan pe back-end nu este nici o restricție pentru parametrul `game` așa că pentru testare se poate folosi orice string. Funcția va returna răspunsul primit.
+
+Funcția va fi scrisă în fișierul `Async.functions.js` și va fi atașată printr-un `eventListener` (în `main.js`) pe butonul de submit al componentei `.load-match`.
+#### 7.2.2 `renderCommentary( commentary )`
+Funcția va primi ca parametru un obiect de forma:
+```
+{
+  "strategy": "strategyName",
+  "commentary": "commentaryContent"
+}
+```
+Aceasta va insera în modalul `.commentary-modal`:
+* în câmpul `.strategy-name` valoare atributului `strategy`
+* în câmpul `commentary-content` valoarea atributului `commentary`
+
+Funcția va fi scrisă în fișierul `Render.functions.js`.
+#### 7.2.3 `renderCommentaryModal()`
+Funcție ce va apela `createCommentaryModalMarkup` și va adăuga pe `<body>` modalele respective
 ## 8. Reîmprospătarea paginii de prezentare (cea de pe **branch**-ul `gh-pages`)
 ### 8.1 HTML + CSS
 Aplicarea unui design, la alegere, mai atrăgător decât cel actual. Conținutul textual al paginii va fi static, inclus în markup.
