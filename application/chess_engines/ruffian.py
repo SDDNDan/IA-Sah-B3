@@ -1,9 +1,15 @@
 from application.chess.engine import Engine
 
+RUFFIAN_ENGINE_PATH = '../chess_engines_cpp/Ruffian/Ruffian_105.exe'
+
+print("Initializing class Engine for module " + __name__ + " ...")
+engine = Engine(engine_path=RUFFIAN_ENGINE_PATH)
+print("Engine class initialized successfully!")
+
+
 def get_strategy_name():
     return "Ruffian"
 
 
 def get_strategy_move(fen):
-    engine = Engine(engine_path='../chess_engines_cpp/Ruffian/Ruffian_105.exe')
     return engine.get_best_move(fen)

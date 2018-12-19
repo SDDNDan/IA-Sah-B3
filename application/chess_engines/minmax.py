@@ -1,7 +1,14 @@
 from application.chess.chess_game import Chess
 from application.chess.engine import Engine
-
 import copy
+
+print("Initializing class Engine for module " + __name__ + " ...")
+engine = Engine()
+print("Engine class initialized successfully!")
+
+print("Initializing class Chess for module " + __name__ + " ...")
+chess = Chess()
+print("Chess class initialized successfully!")
 
 
 def get_strategy_name():
@@ -9,24 +16,22 @@ def get_strategy_name():
 
 
 def get_strategy_move(fen):
-    return min_max(fen, 2, True, Engine(), Chess())[1]
+    return min_max(fen, 2, True)[1]
 
 
-def is_final_state(node, chess):
+def is_final_state(node):
     chess.set_fen(node)
     if chess.is_over():
         return True
     return False
 
 
-def heuristic_eval(fen, engine):
+def heuristic_eval(fen):
     engine.set_fen_position(fen)
-    # print(engine.get_evaluation_depth(1))
     return engine.get_evaluation_depth(1), 0  # Pentru test
 
 
-def get_possible_states(fen, chess):
-    #
+def get_possible_states(fen):
     """
     va returna o lista de tuple de forma (fen, mutare)
     unde fen e starea in forma fen iar mutarea este mutarea care a dus in starea aia  ( o vom folosi mai tarziu sa o returnam)
@@ -42,24 +47,24 @@ def get_possible_states(fen, chess):
     return states
 
 
-def min_max(fen, depth, maximizing_player, engine, chess):
-    if depth == 0 or is_final_state(fen, chess):
-        return heuristic_eval(fen, engine)
+def min_max(fen, depth, maximizing_player):
+    if depth == 0 or is_final_state(fen):
+        return heuristic_eval(fen)
 
     if maximizing_player:
         value = -999999999999999999
         best_move = "e2e4"
-        for child, move in get_possible_states(fen, chess):
-            temp = min_max(child, depth - 1, False, engine, chess)[0]
+        for child, move in get_possible_states(fen):
+            temp = min_max(child, depth - 1, False)[0]
             if value > temp:
                 best_move = move
                 value = temp
         return value, best_move
-    else: 
+    else:
         best_move = "e2e4"
         value = 999999999999999999
-        for child, move in get_possible_states(fen, chess):
-            temp = min_max(child, depth - 1, True, engine, chess)[0]
+        for child, move in get_possible_states(fen):
+            temp = min_max(child, depth - 1, True)[0]
             if value < temp:
                 value = temp
                 best_move = move
@@ -92,6 +97,3 @@ def min_max(fen, depth, maximizing_player, engine, chess):
 #             best_score = chess_clone_score
 #
 #     return best_move
-
-
-

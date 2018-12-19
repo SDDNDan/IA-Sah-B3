@@ -7,5 +7,4 @@ def get_strategy_name():
 
 def get_strategy_move(fen):
     rand_player = RandomPlayer()
-    # return rand_player.get_best_move(fen)
-    return "D2D4"
+    return str(rand_player.get_best_move(fen))
