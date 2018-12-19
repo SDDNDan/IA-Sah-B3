@@ -4,7 +4,7 @@ from termcolor import colored
 
 driver = webdriver.Chrome('./drivers/chromedriver.exe')
 
-driver.get('file:///F:/Faculta/AI/application/static/pages/index.html')
+driver.get('http://127.0.0.1:5000/')
 driver.set_page_load_timeout("30")
 
 generate_moves_btn = driver.find_element_by_id('js-get-moves')
