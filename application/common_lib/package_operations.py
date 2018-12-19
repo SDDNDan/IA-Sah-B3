@@ -1,15 +1,11 @@
-import imp
-import os
+import importlib
+import pkgutil
 
-MODULE_EXTENSIONS = ('.py')
+PYTHON_MODULES_EXTENSIONS = ('.py')
 
 
-def package_contents(package_name):
-    file, pathname, description = imp.find_module(package_name)
+def list_package_modules(package_name):
+    package = importlib.import_module(package_name)
+    prefix = package.__name__ + "."
 
-    if (file):
-        raise ImportError('Not a package: %r', package_name)
-
-    return set([os.path.splitext(module)[0]
-                for module in os.listdir(pathname)
-                if module.endswith(MODULE_EXTENSIONS)])
+    return [modname for importer, modname, ispkg in pkgutil.iter_modules(package.__path__, prefix) if not ispkg]

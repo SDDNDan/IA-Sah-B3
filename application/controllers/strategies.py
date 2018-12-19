@@ -1,12 +1,11 @@
-from application.common_lib.package_operations import package_contents
-
+from application.common_lib.package_operations import list_package_modules
 import json
 
-CHESS_ENGINES_PATH = '../chess_engines'
+CHESS_ENGINES_PACKAGE_NAME = 'application.chess_engines'
 
 
 def get_strategies_controller(request):
-    answer = [{"strategy": strategy} for strategy in package_contents(
-        CHESS_ENGINES_PATH) if strategy != '__init__']
+    answer = [{"strategy": strategy.split(".")[-1]}
+              for strategy in list_package_modules(CHESS_ENGINES_PACKAGE_NAME)]
 
     return json.dumps(answer)
