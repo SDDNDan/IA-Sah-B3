@@ -8,7 +8,7 @@ $(document).ready(function () {
 
   // init popover here
     let fenDetails = $('#js-fen-details').html();
-    $('#fen-textarea').popover({
+    $('#js-fen-textarea').popover({
         placement: "bottom",
         trigger: "focus",
         content: fenDetails,
