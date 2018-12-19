@@ -18,7 +18,7 @@ class testchess_game(unittest.TestCase):
     def testundo_last_move(self):
         self.chess.start_new_game()
         self.chess.move("e2e4")
-        self.chess.undo_last_move
+        self.chess.undo_last_move()
         boardFen=self.chess.get_fen()
         self.assertEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",boardFen,"Undo is not working")
     
