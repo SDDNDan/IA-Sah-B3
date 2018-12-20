@@ -6,14 +6,14 @@ import random
 from application.chess.engine import Engine
 
 SQUARES = [
-        A1, B1, C1, D1, E1, F1, G1, H1,
-        A2, B2, C2, D2, E2, F2, G2, H2,
-        A3, B3, C3, D3, E3, F3, G3, H3,
-        A4, B4, C4, D4, E4, F4, G4, H4,
-        A5, B5, C5, D5, E5, F5, G5, H5,
-        A6, B6, C6, D6, E6, F6, G6, H6,
-        A7, B7, C7, D7, E7, F7, G7, H7,
-        A8, B8, C8, D8, E8, F8, G8, H8] = range(64)
+    A1, B1, C1, D1, E1, F1, G1, H1,
+    A2, B2, C2, D2, E2, F2, G2, H2,
+    A3, B3, C3, D3, E3, F3, G3, H3,
+    A4, B4, C4, D4, E4, F4, G4, H4,
+    A5, B5, C5, D5, E5, F5, G5, H5,
+    A6, B6, C6, D6, E6, F6, G6, H6,
+    A7, B7, C7, D7, E7, F7, G7, H7,
+    A8, B8, C8, D8, E8, F8, G8, H8] = range(64)
 
 
 class Attributes:
@@ -106,6 +106,125 @@ class Attributes:
                 return True
         return False
 
+    @staticmethod
+    def white_can_castle_kingside(board):
+        return 'K' in board.fen()[44:]
+
+    @staticmethod
+    def black_can_castle_kingside(board):
+        return 'k' in board.fen()[44:]
+
+    @staticmethod
+    def white_can_castle_queenside(board):
+        return 'Q' in board.fen()[44:]
+
+    @staticmethod
+    def black_can_castle_queenside(board):
+        return 'q' in board.fen()[44:]
+
+    @staticmethod
+    def white_can_en_passant(board):
+        return 'w' in board.fen()[40:] and '-' not in board.fen()[44:]
+
+    @staticmethod
+    def black_can_en_passant(board):
+        return 'b' in board.fen()[40:] and '-' not in board.fen()[44:]
+
+    @staticmethod
+    def white_has_pinned_piece(board):
+        for square in chess.SQUARES:
+            if board.is_pinned(chess.WHITE, square):
+                return True
+        return False
+
+    @staticmethod
+    def black_has_pinned_piece(board):
+        for square in chess.SQUARES:
+            if board.is_pinned(chess.BLACK, square):
+                return True
+        return False
+
+    @staticmethod
+    def white_in_check(board):
+        if board.turn == chess.WHITE:
+            return board.is_check()
+
+    @staticmethod
+    def black_in_check(board):
+        if board.turn == chess.BLACK:
+            return board.is_check()
+
+
+"""
+    @staticmethod
+    def white_has_passing_pawns(board):
+        matrix_board = chess.Board(board.fen())
+
+        for col in range(8):
+            black_pawn = 0
+            white_pawn = 0
+            for lin in range(8):
+                if matrix_board[lin][col] == 'p':
+                    black_pawn = 1
+                elif matrix_board[lin][col] == 'P':
+                    white_pawn = 1
+            if white_pawn and not black_pawn:
+                return True
+
+        return False
+
+    @staticmethod
+    def black_has_passing_pawns(board):
+        matrix_board = chess.Board(board.fen())
+        for col in range(8):
+            black_pawn = 0
+            white_pawn = 0
+            for lin in range(8):
+                if matrix_board[lin][col] == 'p':
+                    black_pawn = 1
+                elif matrix_board[lin][col] == 'P':
+                    white_pawn = 1
+            if not white_pawn and black_pawn:
+                return True
+        return False
+
+    @staticmethod
+    def white_has_taken_diagonal(board):
+        matrix_board = chess.Board(board.fen())
+        for i in range(8):
+            if matrix_board[i][i] == 'B':
+                return True
+            if matrix_board[i][7-i] == 'B':
+                return True
+        return False
+
+    @staticmethod
+    def black_has_taken_diagonal(board):
+        matrix_board = chess.Board(board.fen())
+        for i in range(8):
+            if matrix_board[i][i] == 'b':
+                return True
+            if matrix_board[i][7-i] == 'b':
+                return True
+        return False
+"""
+
+# def white_knight_forks(board):
+
+# def white_bishop_fork(board):
+
+# def white_knight_fork(board)
+
+# def black_bishop_fork(board):
+
+# def white_has_promoted_pawns(board):
+
+# def black_has_promoted_pawns(board):
+
+# def white_in_zugzwang(board):
+
+# def black_in_zugzwang(board):
+
 
 def get_attribute_array(fen):
     board = chess.Board()
@@ -127,28 +246,31 @@ def compute_random_comment(features1, features2, god_move, pleb_move):
     if count1 > 0 and count2 > 0:
         thoughts = [
             'I would rather play {} because {}, while after playing {}, the disadvantages are {}'
-                .format(god_move, s1, pleb_move, s2),
+            .format(god_move, s1, pleb_move, s2),
             'I think {} is the best move because {}. I think your move {} is not as good because {}'
-                .format(god_move, s1, pleb_move, s2),
-            '{} good move. {} bad move. Get that, dum dum?'.format(god_move, pleb_move),
+            .format(god_move, s1, pleb_move, s2),
+            '{} good move. {} bad move. Get that, dum dum?'.format(
+                god_move, pleb_move),
             'After looking at 6 million positions I concluded that {} is the best move because {}. '
             'Your move {} leads to a position where {}, which is horrible! Well... at least you are pretty.'
-                .format(god_move, s1, pleb_move, s2),
+            .format(god_move, s1, pleb_move, s2),
             'HA! You thought {} is a good move. WRONG! Try a real move like {}: {}, but if you think that if '
             'a position where {} gets you anywhere... uhm, well at least you can operate a computer.'
-                .format(pleb_move, god_move, s1, s2),
+            .format(pleb_move, god_move, s1, s2),
             'Let\'s analyze my ultimate Chad move {} vs your virgin move {}. After my god-like move, {}, while you nerd'
-            ' are stuck in a position where {}. Good luck with that.'.format(god_move, pleb_move, s1, s2)
+            ' are stuck in a position where {}. Good luck with that.'.format(
+                god_move, pleb_move, s1, s2)
         ]
     elif count1 > 0:
         thoughts = [
-            'Well, after {} instead of {}, at least you get in a position where {}.'.format(god_move, pleb_move, s1)
+            'Well, after {} instead of {}, at least you get in a position where {}.'.format(
+                god_move, pleb_move, s1)
         ]
     elif count2 > 0:
         thoughts = [
             'Could you please tell me how is it good when {}. Hey, I will give you a slight hint: {} is '
             'the best move. {} might be a genius move, but this kind of genius doesn\'t play chess.'
-                .format(s2, god_move, pleb_move)
+            .format(s2, god_move, pleb_move)
         ]
     return random.choice(thoughts)
 
@@ -176,7 +298,8 @@ def diff_count(f1, f2):
 
 
 def get_comment(engine, fen, move):
-    sf = Engine('../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe')
+    sf = Engine(
+        '../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe')
 
     player_analysis_board = chess.Board()
     strategy_analysis_board = chess.Board()
