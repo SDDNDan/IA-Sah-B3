@@ -15,6 +15,10 @@ SQUARES = [
     A7, B7, C7, D7, E7, F7, G7, H7,
     A8, B8, C8, D8, E8, F8, G8, H8] = range(64)
 
+print("Initializing Engine class for board attributes ...")
+sf = Engine('../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe')
+print("Engine class initialized successfully!")
+
 
 class Attributes:
     """
@@ -298,9 +302,6 @@ def diff_count(f1, f2):
 
 
 def get_comment(engine, fen, move):
-    sf = Engine(
-        '../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe')
-
     player_analysis_board = chess.Board()
     strategy_analysis_board = chess.Board()
 
@@ -312,12 +313,20 @@ def get_comment(engine, fen, move):
     player_analysis_board.push_uci(move)
 
     sf.set_fen_position(strategy_analysis_board.fen())
-    strategy_eval = sf.get_evaluation_depth(12)
+    strategy_eval = -100
+    try:
+        strategy_eval = sf.get_evaluation_depth(12)
+    except:
+        print("EXCEPTION IN STRATEGY EVAL!!!")
 
     sf.set_fen_position(player_analysis_board.fen())
-    player_eval = sf.get_evaluation_depth(12)
+    player_eval = -100
+    try:
+        player_eval = sf.get_evaluation_depth(12)
+    except:
+        print("EXCEPTIO IN PLAYER EVAL!!!")
 
-    if abs(player_eval - strategy_eval) > 2:
+    if abs(player_eval - strategy_eval) > 0.4:
         attributes1 = get_attribute_array(strategy_analysis_board.fen())
         attributes2 = get_attribute_array(player_analysis_board.fen())
         while diff_count(attributes1, attributes2) < 3:
@@ -330,7 +339,7 @@ def get_comment(engine, fen, move):
             attributes1 = get_attribute_array(strategy_analysis_board.fen())
             attributes2 = get_attribute_array(player_analysis_board.fen())
         return generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move)
-    return ''
+    return None
 
 
 if __name__ == '__main__':

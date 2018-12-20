@@ -72,6 +72,9 @@ def min_max(fen, depth, maximizing_player):
         return value, best_move
 
 
+def get_strategy_comment(fen, move):
+    return get_comment(engine, fen, move)
+
 # def get_strategy_move(fen):
 #     chess = Chess()
 #     chess.set_fen(fen)

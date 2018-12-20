@@ -1,5 +1,6 @@
 from application.chess.chess_game import Chess
 from application.chess.engine import Engine
+from application.chess.board_attributes import get_comment
 
 print("Initializing class Engine for module " + __name__ + " ...")
 engine = Engine()
@@ -52,7 +53,8 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         best_move = ""
         value = -999999999999999999
         for child, move in get_possible_states(fen):
-            value = max(value, alpha_beta(child, depth - 1, alpha, beta, False)[0])
+            value = max(value, alpha_beta(
+                child, depth - 1, alpha, beta, False)[0])
             if value > alpha:
                 alpha = value
                 best_move = move
@@ -63,7 +65,8 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         best_move = ""
         value = 999999999999999999
         for child, move in get_possible_states(fen):
-            value = min(value, alpha_beta(child, depth - 1, alpha, beta, True)[0])
+            value = min(value, alpha_beta(
+                child, depth - 1, alpha, beta, True)[0])
             if value < beta:
                 beta = value
                 best_move = move
@@ -74,3 +77,7 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
 
 def get_strategy_move(fen):
     return alpha_beta(fen, 2, -999999999999999999, 999999999999999999, True)[1]
+
+
+def get_strategy_comment(fen, move):
+    return get_comment(engine, fen, move)

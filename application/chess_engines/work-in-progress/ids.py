@@ -1,5 +1,6 @@
 from application.chess.engine import Engine
 from application.chess.chess_game import Chess
+from application.chess.board_attributes import get_comment
 
 print("Initializing class Engine for module " + __name__ + " ...")
 engine = Engine()
@@ -95,3 +96,7 @@ def ids(fen, depth, maximizing_player, goal):
                 minim = value
                 best_move = move
         return value, best_move, False
+
+
+def get_strategy_comment(fen, move):
+    return get_comment(engine, fen, move)

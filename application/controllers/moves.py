@@ -15,7 +15,7 @@ def get_moves_controller(request):
     strategy = request.args.get('strategy', default='all', type=str).lower()
 
     if not valid_fen(fen):
-        return 'Fen is missing or is invalid!', 400
+        return 'Fen is invalid or missing!', 400
 
     start_millis_controller = current_millis_time()
     answer = []
