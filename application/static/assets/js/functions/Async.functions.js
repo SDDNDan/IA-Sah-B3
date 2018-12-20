@@ -30,6 +30,9 @@ export function getSuggestedMoves() {
 
   for (let i = 0; i < strategies.length; i++) {
     let strategyName = strategies[i];
+    const loader = document.getElementById(`js-loader-${strategyName}`);
+    // show loader
+    loader.classList.toggle('in-view');
 
     $.getJSON(url + strategyName, function (data) {
       // ATM the response to the request has the form
@@ -38,6 +41,8 @@ export function getSuggestedMoves() {
       let response = data[0];
 
       suggestedMoves.push(response);
+      // hide loader
+      loader.classList.toggle('in-view');
       render.renderSuggestedMove(strategyName, response.move);
     });
   }

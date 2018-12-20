@@ -79,8 +79,24 @@ export function createListGroupItemMarkup( strategyDetails ) {
   strategyInfo.appendChild(strategyName);
   strategyInfo.appendChild(strategyDesc);
 
+  // loader
+  // markup here https://loading.io/css/
+  let loader = document.createElement('div');
+  loader.classList = 'lds-ellipsis';
+  loader.id = `js-loader-${strategyDetails.strategy}`
+  let div1 = document.createElement('div');
+  let div2 = document.createElement('div');
+  let div3 = document.createElement('div');
+  let div4 = document.createElement('div');
+
+  loader.appendChild(div1);
+  loader.appendChild(div2);
+  loader.appendChild(div3);
+  loader.appendChild(div4);
+
   // append .strategy-move to .col-2.align-self-center
   col.appendChild(strategyMove);
+  col.appendChild(loader);
 
   // create .consecutive-moves button here
   
