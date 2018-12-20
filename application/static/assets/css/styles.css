@@ -113,7 +113,11 @@ html,
 
 .suggested-moves .strategy__move {
   opacity: 0;
-  transition: opacity .3s ease-in;
+  transition: opacity .15s ease-in-out;
+}
+
+.suggested-moves .strategy__move.in-view {
+  opacity: 1;
 }
 
 .suggested-moves-button {
@@ -128,6 +132,7 @@ html,
   position: absolute;
   top: -18px;
   left: 23px;
+  transition: display .2s ease-in-out;
 }
 
 .lds-ellipsis.in-view {
