@@ -30,6 +30,16 @@ export function getSuggestedMoves() {
 
   for (let i = 0; i < strategies.length; i++) {
     let strategyName = strategies[i];
+    let moveEl = document.getElementById(`js-move-${strategyName}`);
+    let loader = document.getElementById(`js-loader-${strategyName}`);
+    // hide move element
+    moveEl.style.opacity = 0;
+
+    if( loader.classList.contains('in-view') ) {
+      loader.classList.remove('in-view');
+    }
+    // show loader
+    loader.classList.toggle('in-view');
 
     $.getJSON(url + strategyName, function (data) {
       // ATM the response to the request has the form
@@ -37,7 +47,11 @@ export function getSuggestedMoves() {
       // It should be an object though
       let response = data[0];
 
-      suggestedMoves.push(response);
+      // suggestedMoves.push(response);
+      // hide loader
+      loader.classList.toggle('in-view');
+      // show move element
+      // moveEl.classList.toggle('in-view');
       render.renderSuggestedMove(strategyName, response.move);
     });
   }
