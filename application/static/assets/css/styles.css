@@ -19,7 +19,8 @@ html,
 .nav--header__logo {
   float: left;
   color: white;
-  height: 82px;
+  width: 50px;
+  height: auto;
   border-radius: 50px;
 }
 
@@ -27,16 +28,19 @@ html,
 .nav--header__app-title {
   float: left;
   color: #c0bbbb;
-  text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
   list-style-type: none;
   cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+
+.nav--header li:hover {
+  color: white;
 }
 
 .nav--header__app-title {
-  font-size: 36px;
+  font-size: 26px;
   text-decoration: none;
 }
 
@@ -45,6 +49,9 @@ html,
 }
 
 /* MAIN */
+.main {
+
+}
 
 /* chess component */
 

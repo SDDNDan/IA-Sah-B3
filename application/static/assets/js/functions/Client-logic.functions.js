@@ -25,7 +25,7 @@ export function setChessboardFen() {
     // hide it after a delay of 1.5s
     setTimeout( function () {
       fenFeedback.style = '';
-    }, 1500);
+    }, 3000);
   }
 }
 
