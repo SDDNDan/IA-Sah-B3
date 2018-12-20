@@ -45,15 +45,15 @@
           <ul class="d-flex flex-row-reverse bd-highlight">
             <li class="mt-3" class="p-2 bd-highlight" id="js-help-trigger" >Help</li>
             <li class="mt-3" class="p-2 bd-highlight">Match analysis</li>
-            <li class="mt-3" class="p-2 bd-highlight">Strategies details</li>
+            <li id="js-toggle-strategies-details" class="mt-3" class="p-2 bd-highlight">Strategies details</li>
           </ul>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="main">
-    <div class="container mb-5">
+  <main class="main pb-3 pt-3">
+    <div class="container">
       <div class="row">
         <div class="col-12 col-lg-5">
           <div class="chessboard-container">
@@ -102,26 +102,29 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <div id="js-strategies-details" class="strategies-details">
-            <h2 class="strategies-details__title">Strategies details</h2>
-            <!-- Strategies details component -->
-            <div class="container-fluid p-0">
-              <div class="row"></div>
+    <section id="js-strategies-details-section" class="strategies-details">
+      <a id="js-close-strategies-details" href="#" class="strategies-details__close">❌</a>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div id="js-strategies-details">
+              <h2 class="strategies-details__title mt-3 mr-3 mb-3">Strategies details</h2>
+              <!-- Strategies details component -->
+              <div class="container-fluid p-0">
+                <div class="row"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
     <section id="js-help" class="help">
       <a id="js-close-help" href="#" class="help__close">❌</a>
       <div class="help__content">
         <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
+          <div class="row justify-content-center">
+            <div class="col-10 pt-2">
                 <h1 class="display-5">Help center</h1>
                 <p class="lead">This application allows users to play chess in an easy way by offering the participants posibilities to see the next move using some specific strategies depending on the current configuration of the chess table. </p>
                 <h2 class="display-6">How can we see the next move?</h2>
