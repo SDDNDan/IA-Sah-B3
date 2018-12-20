@@ -1,4 +1,5 @@
 from application.chess.chess_game import Chess
+from application.chess.board_attributes import get_comment
 
 print("Initializing class Chess for module " + __name__ + " ...")
 chess = Chess()
@@ -29,3 +30,7 @@ def get_strategy_move(fen):
     chess.set_fen(fen)
     best_score, best_move = negamax(chess, 2, 1)
     return best_move
+
+
+def get_strategy_comment(fen, move):
+    return get_comment(engine, fen, move)
