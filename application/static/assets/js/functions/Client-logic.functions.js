@@ -7,14 +7,14 @@ export function setChessboardFen() {
   const fenTextarea = document.getElementById('js-fen-textarea');
   // element that displays an error if 
   // a non-FEN string is entered in the textarea
-  const fenFeedback = document.querySelector('.fen-loader + .fen-feedback');
+  const fenFeedback = document.querySelector('.fen-loader ~ .fen-feedback');
   // get the value of the textarea
   const fen = fenTextarea.value;
   
   // check if fen is valid
   if( parseFEN(fen) ) {
     // update currentFen global
-    currentFEN = fen;
+    // currentFEN = fen;
     CHESS_COMPONENT.CHESSBOARD.position(fen);
     CHESS_COMPONENT.CHESS.load(fen);
   } else {
@@ -37,4 +37,9 @@ export function toggleHelp() {
 
 export function toggleStrategyDetails( strategyDetailsEl ) {
   strategyDetailsEl.classList.toggle('in-view');
+}
+
+// https://stackoverflow.com/questions/7033639/split-large-string-in-n-size-chunks-in-javascript
+export function chunkString(str, length) {
+  return str.match(new RegExp('.{1,' + length + '}', 'g'));
 }

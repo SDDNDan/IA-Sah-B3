@@ -81,6 +81,10 @@ html,
 
 .fen-loader {
   margin-top: 20px;
+  display: none;
+}
+
+.fen-loader.in-view {
   display: flex;
 }
 
@@ -93,10 +97,33 @@ html,
   padding: 13px 15px;
 }
 
-.fen-loader + .fen-feedback {
+.fen-loader ~ .fen-feedback {
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease-out;
+}
+
+/* match loader */
+
+.match-loader {
+  margin-top: 20px;
+  display: none;
+}
+
+.match-loader.in-view {
+  display: flex;
+}
+
+.match-loader [name="match-textarea"] {
+  resize: none;
+  margin-right: 10px;
+}
+
+/* switch fen match input */
+
+.switch-fen-match-button {
+  padding: 15px;
+  margin-top: 10px;
 }
 
 /* .suggested-moves component */
@@ -195,8 +222,6 @@ html,
     transform: translate(19px, 0);
   }
 }
-
-
 
 /* flip chessboard */
 

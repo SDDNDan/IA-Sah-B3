@@ -114,3 +114,9 @@ export function createListGroupItemMarkup( strategyDetails ) {
 
   return link;
 }
+
+// export function createCommentMarkup( commentsArray ) {
+//   commentsArray.forEach( (strategy) => {
+    
+//   });
+// }

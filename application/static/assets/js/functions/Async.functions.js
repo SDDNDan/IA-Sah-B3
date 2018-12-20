@@ -56,3 +56,17 @@ export function getSuggestedMoves() {
     });
   }
 }
+
+// export function getMatchCommentary( match, matchHistory ) {
+//   $.ajax({
+//     type: 'GET',
+//     url: `${constants.BASE_URL}/commentary?game=${match}`,
+//     succes: data => {
+//       data.forEach(element => {
+//         if( element.length != 0 ) {
+          
+//         }
+//       });
+//     }
+//   });
+// }
