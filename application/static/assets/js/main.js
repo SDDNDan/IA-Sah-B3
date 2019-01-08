@@ -68,3 +68,8 @@ fenMatchSwitchBtn.addEventListener('click', () => {
 //   // console.log(matchHistory);
 //   async.getMatchCommentary( match );
 // });
+
+const matchSubmitBtn = document.getElementById('js-match-submit');
+matchSubmitBtn.addEventListener('click', ()=> {
+    async.getCommentary();
+});

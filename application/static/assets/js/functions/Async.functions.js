@@ -70,3 +70,22 @@ export function getSuggestedMoves() {
 //     }
 //   });
 // }
+
+export function getCommentary() {
+  let matchInput = document.getElementById('js-match-textarea').value;
+  let matchRespone;
+  $.ajax({
+      url: constants.BASE_URL + '/commentary',
+      type: "get",
+      data: {
+        game: matchInput
+      },
+      success: function(response) {
+          matchRespone = response;
+      },
+      error: function(xhr) {
+        alert('An error was encountered');
+      }
+  });
+  return matchRespone;
+}
