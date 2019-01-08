@@ -16,6 +16,8 @@ $(document).ready(function () {
     });
   // get strategies from the server
   async.getStrategies();
+  // renderCurrentFen() - call
+  
 });
 
 // Event Listeners
@@ -57,6 +59,8 @@ fenMatchSwitchBtn.addEventListener('click', () => {
   fenLoader.classList.toggle('in-view');
   matchLoader.classList.toggle('in-view');
 });
+
+
 // match input submit button
 // const matchInputSubmitBtn = document.getElementById('js-match-submit');
 // let matchHistory = [];

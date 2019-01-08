@@ -21,41 +21,42 @@ const CHESS_COMPONENT = (function() {
     // illegal move
     if (move === null) return 'snapback';
   
-    _updateChessboardStatus();
+    // renderCurrentFen() - call
+
   };
 
   const _onSnapEnd = function() {
     CHESSBOARD.position(CHESS.fen());
   };
 
-  const _updateChessboardStatus = function() {
-    let status = '';
+  // const _updateChessboardStatus = function() {
+  //   let status = '';
   
-    let moveColor = 'White';
-    if (CHESS.turn() === 'b') {
-      moveColor = 'Black';
-    }
+  //   let moveColor = 'White';
+  //   if (CHESS.turn() === 'b') {
+  //     moveColor = 'Black';
+  //   }
   
-    // checkmate?
-    if (CHESS.in_checkmate() === true) {
-      status = 'Game over, ' + moveColor + ' is in checkmate.';
-    }
+  //   // checkmate?
+  //   if (CHESS.in_checkmate() === true) {
+  //     status = 'Game over, ' + moveColor + ' is in checkmate.';
+  //   }
   
-    // draw?
-    else if (CHESS.in_draw() === true) {
-      status = 'Game over, drawn position';
-    }
+  //   // draw?
+  //   else if (CHESS.in_draw() === true) {
+  //     status = 'Game over, drawn position';
+  //   }
   
-    // game still on
-    else {
-      status = moveColor + ' to move';
+  //   // game still on
+  //   else {
+  //     status = moveColor + ' to move';
   
-      // check?
-      if (CHESS.in_check() === true) {
-        status += ', ' + moveColor + ' is in check';
-      }
-    }
-  };
+  //     // check?
+  //     if (CHESS.in_check() === true) {
+  //       status += ', ' + moveColor + ' is in check';
+  //     }
+  //   }
+  // };
 
   const CHESSBOARD_CONFIG = {
     draggable: true,
