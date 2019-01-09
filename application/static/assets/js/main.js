@@ -1,6 +1,7 @@
 import * as async from "./functions/Async.functions.js";
 import * as clientLogic from "./functions/Client-logic.functions.js";
 import CHESS_COMPONENT from "./components/Chess.component.js";
+import * as renderer from "./functions/Render.functions.js";
 
 $(document).ready(function () {
   // init chessboard element
@@ -18,7 +19,8 @@ $(document).ready(function () {
   async.getStrategies();
   // renderCurrentFen() - call
 
-  renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
+  renderer.renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
+
 });
 
 // Event Listeners

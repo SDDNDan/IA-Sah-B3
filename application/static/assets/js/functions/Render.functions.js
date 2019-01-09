@@ -36,8 +36,9 @@ export function renderSuggestedMove( strategyName, strategyMove ) {
 }
 
 export function renderCurrentFEN( currentFEN ) {
-    const fenContainer = document.getElementByClass(`current-fen`);
-    alert("am ajuns");
-    fenContainer.firstChild.innerText = currentFEN;
+    const fenContainer = document.getElementsByClassName(`current-fen`)[0];
+    const width = document.getElementById('js-chessboard').firstChild.firstChild.style.width;
 
+    fenContainer.width = width;
+    fenContainer.getElementsByTagName("p")[0].innerHTML = currentFEN;
 }

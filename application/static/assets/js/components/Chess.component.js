@@ -1,3 +1,5 @@
+import * as renderer from "../functions/Render.functions.js";
+
 const CHESS_COMPONENT = (function() {
 
   const _onDragStart = function(source, piece, position, orientation) {
@@ -23,7 +25,7 @@ const CHESS_COMPONENT = (function() {
   
     // renderCurrentFen() - call
 
-    renderCurrentFEN(CHESS.fen());
+    renderer.renderCurrentFEN(CHESS.fen());
   };
 
   const _onSnapEnd = function() {

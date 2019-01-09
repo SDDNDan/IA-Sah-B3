@@ -398,6 +398,7 @@ img {
 .current-fen {
   font-size: 16px;
   word-break: break-word;
+  margin-top: 20px;
 }
 
 .current-fen p{
