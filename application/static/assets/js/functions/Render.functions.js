@@ -34,3 +34,10 @@ export function renderSuggestedMove( strategyName, strategyMove ) {
   moveEl.innerText = strategyMove;
   moveEl.style.opacity = 1;
 }
+
+export function renderCurrentFEN( currentFEN ) {
+    const fenContainer = document.getElementByClass(`current-fen`);
+    alert("am ajuns");
+    fenContainer.firstChild.innerText = currentFEN;
+
+}

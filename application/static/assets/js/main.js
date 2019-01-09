@@ -17,7 +17,8 @@ $(document).ready(function () {
   // get strategies from the server
   async.getStrategies();
   // renderCurrentFen() - call
-  
+
+  renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
 });
 
 // Event Listeners

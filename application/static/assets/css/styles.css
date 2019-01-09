@@ -24,7 +24,7 @@ html,
   border-radius: 50px;
 }
 
-.nav--header li, 
+.nav--header li,
 .nav--header__app-title {
   float: left;
   color: #c0bbbb;
@@ -302,7 +302,7 @@ html,
 
 .help.in-view {
 	/* opacity: 1; */
-	pointer-events: auto;	
+	pointer-events: auto;
 	transform: translateY(0);
 }
 
@@ -391,4 +391,17 @@ ol, ul {
 
 img {
   vertical-align: middle;
+}
+
+/* current fen component*/
+
+.current-fen {
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.current-fen p{
+  font-size: 14px;
+  padding-left: 5px;
+  border-radius: 5px;
 }

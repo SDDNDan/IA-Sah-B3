@@ -23,6 +23,7 @@ const CHESS_COMPONENT = (function() {
   
     // renderCurrentFen() - call
 
+    renderCurrentFEN(CHESS.fen());
   };
 
   const _onSnapEnd = function() {
