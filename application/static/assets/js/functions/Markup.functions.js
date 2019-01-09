@@ -6,7 +6,8 @@ export function createCardMarkup( strategyDetails ) {
   // https://getbootstrap.com/docs/4.1/components/card/#using-grid-markup
   // .card element
   let card = document.createElement('div');
-  card.classList = 'card';
+  card.classList = 'card mb-3';
+  card.setAttribute('data-strategy-name', strategyDetails.strategy);
 
   // .card-body container
   let cardBody = document.createElement('div');
@@ -43,6 +44,7 @@ export function createListGroupItemMarkup( strategyDetails ) {
   // link
   let link = document.createElement('a');
   link.classList = 'list-group-item list-group-item-action strategy';
+  link.setAttribute('data-strategy-name', strategyDetails.strategy)
 
   // .container-fluid
   let container = document.createElement('div');

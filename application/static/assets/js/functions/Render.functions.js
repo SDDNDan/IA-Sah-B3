@@ -8,20 +8,14 @@ export function renderStrategiesDetails( strategiesResponse ) {
   // navigate down to the .row descendant
   const container = strategiesDetails.children[1];
   const row = container.children[0];
+  const col = row.children[0];
 
-  strategiesResponse.forEach( strategy => {
-    // .col element
-    let col = document.createElement('div');
-    col.classList = 'col-12 mb-3';
-
+  strategiesResponse.forEach( strategyObj => {
     // .card
-    let card = markup.createCardMarkup(strategy);
+    let card = markup.createCardMarkup(strategyObj);
 
     // append .card to .col
     col.appendChild(card);
-
-    // append markup to the .row
-    row.appendChild(col);
   });
 }
 

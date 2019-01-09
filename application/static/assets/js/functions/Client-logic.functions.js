@@ -35,8 +35,17 @@ export function toggleHelp() {
 	helpEl.classList.toggle('in-view');
 }
 
-export function toggleStrategyDetails( strategyDetailsEl ) {
-  strategyDetailsEl.classList.toggle('in-view');
+export function toggleStrategyDetails( eventTarget ) {
+  // get parent of the cards
+  // containing the strategies details
+  let cardsParent = $( "#js-strategies-details .container-fluid .row .col-12" );
+  // hide all the cards
+  $.each(cardsParent.children(), (index, child) => child.style.opacity = 0);
+
+  console.log(eventTarget.tagName);
+  // if( eventTarget.parentElement.getAttribute('data-strategy-name') || eventTarget.getAttribute('data-strategy-name') ) {
+  //   cardsParent.children().closest('[data-strategy-name]')
+  // }
 }
 
 // https://stackoverflow.com/questions/7033639/split-large-string-in-n-size-chunks-in-javascript
