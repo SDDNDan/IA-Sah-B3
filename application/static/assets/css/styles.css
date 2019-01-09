@@ -49,9 +49,6 @@ html,
 }
 
 /* MAIN */
-.main {
-
-}
 
 /* chess component */
 
@@ -247,7 +244,7 @@ html,
 
 .strategies-details__close {
   position: absolute;
-  top: 5px;
+  top: 21px;
   right: 10px;
   z-index: 1;
   font-size: 20px;

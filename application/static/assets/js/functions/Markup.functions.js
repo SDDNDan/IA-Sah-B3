@@ -27,6 +27,7 @@ export function createCardMarkup( strategyDetails ) {
   let link = document.createElement('a');
   link.classList = 'btn btn-primary';
   link.innerText = 'Documentation';
+  link.setAttribute('target', '_blank');
   link.href = strategyDetails.documentation;
 
   // append everything to .card-body

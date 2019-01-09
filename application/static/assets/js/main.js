@@ -44,12 +44,18 @@ helpButtonClose.addEventListener('click', clientLogic.toggleHelp);
 
 // toggleStrategiesDetails
 const suggestedMovesContainer = document.getElementById('js-suggested-moves-container');
+// const suggestedMovesContainer = $('#js-suggested-moves-container');
 const strategyDetailsSectionEl = document.getElementById('js-strategies-details-section');
 const strategyDetailsClose = document.getElementById('js-close-strategies-details');
 
 suggestedMovesContainer.addEventListener('click', (e) => {
+  // show only the clicked strategy's details
   clientLogic.toggleStrategyDetails( e.target );
-  strategyDetailsSectionEl.classList.toggle('in-view');
+  // toggle the .strategies-details
+  // only if it isn't already in view
+  if( !strategyDetailsSectionEl.classList.contains('in-view') ) {
+    strategyDetailsSectionEl.classList.toggle('in-view');
+  }
 });
 
 strategyDetailsClose.addEventListener('click', () => strategyDetailsSectionEl.classList.toggle('in-view') );
