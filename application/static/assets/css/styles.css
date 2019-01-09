@@ -49,9 +49,6 @@ html,
 }
 
 /* MAIN */
-.main {
-
-}
 
 /* chess component */
 
@@ -134,6 +131,7 @@ html,
 
 .suggested-moves .list-group-item:hover {
   z-index: auto;
+  cursor: pointer;
 }
 
 .suggested-moves .desc {
@@ -237,16 +235,16 @@ html,
   width: 43%;
   position: fixed;
   top: 0;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   pointer-events: none;
   transform: translateX(-100%);
   transition: transform .3s ease-in-out;
-  background-color: var(--gray);
+  background-color: var(--secondary);
 }
 
 .strategies-details__close {
   position: absolute;
-  top: 5px;
+  top: 21px;
   right: 10px;
   z-index: 1;
   font-size: 20px;
@@ -262,6 +260,14 @@ html,
 
 .strategies-details__title {
   color: #c0bbbb;
+}
+
+.strategies-details .container-fluid .row .col-12 .card {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  right: 15px;
+  opacity: 0;
 }
 
 /* .help component */
