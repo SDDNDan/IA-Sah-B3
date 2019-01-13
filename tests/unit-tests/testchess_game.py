@@ -6,10 +6,11 @@ engine_path = '../../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64
 class testchess_game(unittest.TestCase):
     chess=Chess(engine_path)
     chess.start_new_game()
+    
     def testGetfen(self):
         boardFen=self.chess.get_fen()
         self.assertEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",boardFen,"Fen getter is wrong")
-   
+    
     def testMoveTest(self):
         self.chess.move("e2e4")
         boardFen=self.chess.get_fen()
