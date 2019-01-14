@@ -253,17 +253,17 @@ def compute_random_comment(features1, features2, god_move, pleb_move):
             .format(god_move, s1, pleb_move, s2),
             'I think {} is the best move because {}. I think your move {} is not as good because {}'
             .format(god_move, s1, pleb_move, s2),
-            '{} good move. {} bad move. Get that, dum dum?'.format(
-                god_move, pleb_move),
-            'After looking at 6 million positions I concluded that {} is the best move because {}. '
-            'Your move {} leads to a position where {}, which is horrible! Well... at least you are pretty.'
-            .format(god_move, s1, pleb_move, s2),
-            'HA! You thought {} is a good move. WRONG! Try a real move like {}: {}, but if you think that if '
-            'a position where {} gets you anywhere... uhm, well at least you can operate a computer.'
-            .format(pleb_move, god_move, s1, s2),
-            'Let\'s analyze my ultimate Chad move {} vs your virgin move {}. After my god-like move, {}, while you nerd'
-            ' are stuck in a position where {}. Good luck with that.'.format(
-                god_move, pleb_move, s1, s2)
+            # '{} good move. {} bad move. Get that, dum dum?'
+            # .format(god_move, pleb_move),
+            # 'After looking at 6 million positions I concluded that {} is the best move because {}. '
+            # 'Your move {} leads to a position where {}, which is horrible! Well... at least you are pretty.'
+            # .format(god_move, s1, pleb_move, s2),
+            # 'HA! You thought {} is a good move. WRONG! Try a real move like {}: {}, but if you think that if '
+            # 'a position where {} gets you anywhere... uhm, well at least you can operate a computer.'
+            # .format(pleb_move, god_move, s1, s2),
+            # 'Let\'s analyze my ultimate Chad move {} vs your virgin move {}. After my god-like move, {}, while you nerd'
+            # ' are stuck in a position where {}. Good luck with that.'
+            # .format(god_move, pleb_move, s1, s2)
         ]
     elif count1 > 0:
         thoughts = [
