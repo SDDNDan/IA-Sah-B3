@@ -18,13 +18,28 @@ $(document).ready(function () {
   });
 
   $('.copy-current-fen').popover({
-    placement: 'left',
+    placement: 'top',
     trigger: 'hover'
+  });
+
+  // init clipboard.js
+  const clipboard = new ClipboardJS('#js-copy-current-fen');
+  clipboard.on('success', (e) => {
+    const copyFenFeedback = document.querySelector('.current-fen > .feedback.bg-success');
+
+    // make it visible
+    copyFenFeedback.style.opacity = 1;
+    copyFenFeedback.style.pointerEvents = 'auto';
+    // hide it after a delay of 1.5s
+    setTimeout( function () {
+      copyFenFeedback.style = '';
+    }, 3000);
+
+    e.clearSelection();
   });
 
   // get strategies from the server
   async.getStrategies();
-  // renderCurrentFen() - call
 
   renderer.renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
 

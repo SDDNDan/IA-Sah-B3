@@ -29,6 +29,8 @@
   <script src="/static/assets/js/vendor/chessboard-0.3.0.js"></script>
   <!-- chess.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.2/chess.js"></script>
+  <!-- clipboard.js -->
+  <script src="/static/assets/js/vendor/clipboard.min.js"></script>
 
   <title>Chess Mentor</title>
 </head>
@@ -60,8 +62,8 @@
           <!-- .current-fen component goes here -->
           <div class="current-fen d-flex align-items-baseline justify-content-between">
             <span>Current FEN:</span>
-            <p class="border border-info"></p>
-            <button id="js-copy-current-fen" class="copy-current-fen" data-placement="left" data-content="Copy current FEN">
+            <p id="js-current-fen-value" class="border border-info"></p>
+            <button id="js-copy-current-fen" class="copy-current-fen" data-clipboard-target="#js-current-fen-value" data-placement="left" data-content="Copy current FEN">
               <i class="far fa-copy"></i>
             </button>
             <p class="feedback bg-success align-self-center">FEN copied successfuly!</p>

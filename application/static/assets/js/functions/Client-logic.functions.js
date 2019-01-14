@@ -53,30 +53,3 @@ export function toggleStrategyDetails( eventTarget ) {
 export function chunkString(str, length) {
   return str.match(new RegExp('.{1,' + length + '}', 'g'));
 }
-
-// copy current fen to clipboard
-export function copyCurrentFen() {
-  const currentFen = document.querySelector('.border.border-info');
-  const copyFenFeedback = document.querySelector('.current-fen > .feedback.bg-success');
-
-  // https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
-  if (document.selection) { 
-    let range = document.body.createTextRange();
-    range.moveToElementText(currentFen);
-    range.select().createTextRange();
-    document.execCommand("copy"); 
-  } else if (window.getSelection) {
-      let range = document.createRange();
-      range.selectNode(currentFen);
-      window.getSelection().addRange(range);
-      document.execCommand("copy");
-  }
-
-  // make it visible
-  copyFenFeedback.style.opacity = 1;
-  copyFenFeedback.style.pointerEvents = 'auto';
-  // hide it after a delay of 1.5s
-  setTimeout( function () {
-    copyFenFeedback.style = '';
-  }, 3000);
-}
