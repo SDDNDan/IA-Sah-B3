@@ -44,7 +44,6 @@
           <span href="#home" class="nav--header__app-title">CHESS</span>
           <ul class="d-flex flex-row-reverse p-0">
             <li class="p-2" id="js-help-trigger" >Help</li>
-            <li class="p-2">Match analysis</li>
           </ul>
         </div>
       </div>
@@ -54,19 +53,22 @@
   <main class="main pb-3 pt-3">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-lg-5">
+        <div class="col-12 col-lg-6">
           <div class="chessboard-container">
             <div id="js-chessboard"></div>
           </div>
           <!-- .current-fen component goes here -->
-            <div class="current-fen">
-              Current FEN state:
-              <p class="border border-info"></p>
-            </div>
-          
+          <div class="current-fen d-flex align-items-baseline justify-content-between">
+            <span>Current FEN:</span>
+            <p class="border border-info"></p>
+            <button id="js-copy-current-fen" class="copy-current-fen" data-placement="left" data-content="Copy current FEN">
+              <i class="far fa-copy"></i>
+            </button>
+            <p class="feedback bg-success align-self-center">FEN copied successfuly!</p>
+          </div>
         </div>
 
-        <div class="col-12 col-lg-7">
+        <div class="col-12 col-lg-6">
           <div class="suggested-moves">
             <div class="list-group">
               <h4 class="list-group-item active">Suggested Moves</h4>
@@ -150,28 +152,7 @@
       </div>
     </section>
 
-    <section id="js-commentary" class="commentary">
-      <div class="container">
-        <div class="row">
-            <h3>Commentary</h3>
-            <div class="comment">
-              <div class="comment__for-move">
-                <h6></h6>
-              </div>
-              <div class="comment__from-strategy">
-                <h6></h6>
-                <div class="comment__content">
-                  
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
-
-    </section>
   </main>
-
-  <!-- .commentary-modal -->
 
   <script src="/static/assets/js/main.js" type="module"></script>
 </body>

@@ -8,13 +8,20 @@ $(document).ready(function () {
   CHESS_COMPONENT.CHESSBOARD.start();
 
   // init popover here
-    let fenDetails = $('#js-fen-details').html();
-    $('#js-fen-textarea').popover({
-        placement: "left",
-        trigger: "focus",
-        content: fenDetails,
-        html: true
-    });
+  let fenDetails = $('#js-fen-details').html();
+
+  $('#js-fen-textarea').popover({
+      placement: "left",
+      trigger: "focus",
+      content: fenDetails,
+      html: true
+  });
+
+  $('.copy-current-fen').popover({
+    placement: 'left',
+    trigger: 'hover'
+  });
+
   // get strategies from the server
   async.getStrategies();
   // renderCurrentFen() - call
@@ -47,7 +54,6 @@ helpButtonClose.addEventListener('click', clientLogic.toggleHelp);
 
 // toggleStrategiesDetails
 const suggestedMovesContainer = document.getElementById('js-suggested-moves-container');
-// const suggestedMovesContainer = $('#js-suggested-moves-container');
 const strategyDetailsSectionEl = document.getElementById('js-strategies-details-section');
 const strategyDetailsClose = document.getElementById('js-close-strategies-details');
 
@@ -88,7 +94,12 @@ fenMatchSwitchBtn.addEventListener('click', () => {
 //   async.getMatchCommentary( match );
 // });
 
+// 
 const matchSubmitBtn = document.getElementById('js-match-submit');
-matchSubmitBtn.addEventListener('click', ()=> {
-    async.getCommentary();
+matchSubmitBtn.addEventListener('click', () => {
+    let matchCommentary = async.getCommentary();
 });
+
+// copy current fen
+const copyCurrentFenBtn = document.getElementById('js-copy-current-fen');
+copyCurrentFenBtn.addEventListener('click', clientLogic.copyCurrentFen);
