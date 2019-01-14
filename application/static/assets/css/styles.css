@@ -74,6 +74,44 @@ html,
   text-transform: uppercase;
 }
 
+/* .current-fen component */
+
+.current-fen {
+  margin-top: 35px;
+  position: relative;
+  font-size: 16px;
+  word-break: break-word;
+}
+
+.current-fen > .border.border-info {
+  padding: 3px;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.current-fen > .copy-current-fen {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.current-fen > .feedback {
+  padding: 3px 5px;
+  border-radius: 4px;
+  margin: 0;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transition: all .25s ease-in-out;
+}
+
 /* .fen-loader component */
 
 .fen-loader {
@@ -391,18 +429,4 @@ ol, ul {
 
 img {
   vertical-align: middle;
-}
-
-/* current fen component*/
-
-.current-fen {
-  font-size: 16px;
-  word-break: break-word;
-  margin-top: 20px;
-}
-
-.current-fen p{
-  font-size: 14px;
-  padding-left: 5px;
-  border-radius: 5px;
 }

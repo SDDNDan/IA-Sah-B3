@@ -73,7 +73,8 @@ export function getSuggestedMoves() {
 
 export function getCommentary() {
   let matchInput = document.getElementById('js-match-textarea').value;
-  let matchRespone;
+  let matchCommentary;
+
   $.ajax({
       url: constants.BASE_URL + '/commentary',
       type: "get",
@@ -81,11 +82,12 @@ export function getCommentary() {
         game: matchInput
       },
       success: function(response) {
-          matchRespone = response;
+          matchCommentary = response;
       },
-      error: function(xhr) {
-        alert('An error was encountered');
+      error: function(error) {
+        alert('An error was encountered', error);
       }
   });
-  return matchRespone;
+
+  return matchCommentary;
 }

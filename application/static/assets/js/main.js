@@ -8,16 +8,38 @@ $(document).ready(function () {
   CHESS_COMPONENT.CHESSBOARD.start();
 
   // init popover here
-    let fenDetails = $('#js-fen-details').html();
-    $('#js-fen-textarea').popover({
-        placement: "left",
-        trigger: "focus",
-        content: fenDetails,
-        html: true
-    });
+  let fenDetails = $('#js-fen-details').html();
+
+  $('#js-fen-textarea').popover({
+      placement: "left",
+      trigger: "focus",
+      content: fenDetails,
+      html: true
+  });
+
+  $('.copy-current-fen').popover({
+    placement: 'top',
+    trigger: 'hover'
+  });
+
+  // init clipboard.js
+  const clipboard = new ClipboardJS('#js-copy-current-fen');
+  clipboard.on('success', (e) => {
+    const copyFenFeedback = document.querySelector('.current-fen > .feedback.bg-success');
+
+    // make it visible
+    copyFenFeedback.style.opacity = 1;
+    copyFenFeedback.style.pointerEvents = 'auto';
+    // hide it after a delay of 1.5s
+    setTimeout( function () {
+      copyFenFeedback.style = '';
+    }, 3000);
+
+    e.clearSelection();
+  });
+
   // get strategies from the server
   async.getStrategies();
-  // renderCurrentFen() - call
 
   renderer.renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
 
@@ -47,7 +69,6 @@ helpButtonClose.addEventListener('click', clientLogic.toggleHelp);
 
 // toggleStrategiesDetails
 const suggestedMovesContainer = document.getElementById('js-suggested-moves-container');
-// const suggestedMovesContainer = $('#js-suggested-moves-container');
 const strategyDetailsSectionEl = document.getElementById('js-strategies-details-section');
 const strategyDetailsClose = document.getElementById('js-close-strategies-details');
 
@@ -88,7 +109,12 @@ fenMatchSwitchBtn.addEventListener('click', () => {
 //   async.getMatchCommentary( match );
 // });
 
+// 
 const matchSubmitBtn = document.getElementById('js-match-submit');
-matchSubmitBtn.addEventListener('click', ()=> {
-    async.getCommentary();
+matchSubmitBtn.addEventListener('click', () => {
+    let matchCommentary = async.getCommentary();
 });
+
+// copy current fen
+const copyCurrentFenBtn = document.getElementById('js-copy-current-fen');
+copyCurrentFenBtn.addEventListener('click', clientLogic.copyCurrentFen);
