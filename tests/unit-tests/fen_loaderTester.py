@@ -9,9 +9,9 @@ class fen_loaderTester(unittest.TestCase):
     chess.start_new_game()
     def get_fens_from_movesTest(self):
         board= set()
-        board.add(chess.move("e2e4"))
-        board.add(chess.move("e2e3"))
-        self.assertIn(chess.get_fens_from_moves({"e2e4", "e2e3"}),board)
+        board.add(self.chess.move("e2e4"))
+        board.add(self.chess.move("e2e3"))
+        self.assertIn(chess.get_fens_from_moves({"e2e4", "e2e3"}),board,"False")
     #def get_fents_from_movesTest():
     #def get_fens_from_pgn_fileTest():
     #def get_fens_from_fen_fileTest():

@@ -15,7 +15,7 @@ class testchess_game(unittest.TestCase):
         self.chess.move("e2e4")
         boardFen=self.chess.get_fen()
         self.assertEqual("rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",boardFen, "Moving didn't work corectly")
-        
+       
     def testundo_last_move(self):
         self.chess.start_new_game()
         self.chess.move("e2e4")
@@ -34,6 +34,12 @@ class testchess_game(unittest.TestCase):
     def testis_white_winnerTest(self):
         self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
         self.assertEqual(True,self.chess.is_white_winner(), "Function returned false")
+    
+    def testset_fen_position(self): 
+        self.chess.start_new_game()
+        Fen = self.chess.get_fen()
+        self.assertEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",Fen,"Fen is wrong")
+
     
 
 suite = unittest.TestLoader().loadTestsFromTestCase(testchess_game)
