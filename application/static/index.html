@@ -60,10 +60,9 @@
             <div id="js-chessboard"></div>
           </div>
           <!-- .current-fen component goes here -->
-          <div class="current-fen d-flex align-items-baseline justify-content-between">
-            <span>Current FEN:</span>
+          <div class="current-fen d-flex">
             <p id="js-current-fen-value" class="border border-info"></p>
-            <button id="js-copy-current-fen" class="copy-current-fen" data-clipboard-target="#js-current-fen-value" data-placement="left" data-content="Copy current FEN">
+            <button id="js-copy-current-fen" class="copy-current-fen" data-clipboard-target="#js-current-fen-value" data-content="Copy current FEN">
               <i class="far fa-copy"></i>
             </button>
             <p class="feedback bg-success align-self-center">FEN copied successfuly!</p>
@@ -81,7 +80,7 @@
             <div class="col-12 p-0">
               <button id="js-get-moves" class="btn btn-primary suggested-moves-button">Get suggested moves</button>
               <!-- flip-chessboard button goes here -->
-              <button id="js-flip-chessboard" class="btn btn-primary flip-button">Flip board</button>
+              <button id="js-flip-chessboard" class="btn btn-primary flip-button">Change color</button>
               <button id="js-switch-fen-match" class="btn btn-primary switch-fen-match-button">Switch to match input</button>
               <!-- Get commentary modal trigger -->
             </div>

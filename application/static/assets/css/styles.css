@@ -77,17 +77,20 @@ html,
 /* .current-fen component */
 
 .current-fen {
-  margin-top: 35px;
-  position: relative;
+  margin-top: 25px;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   word-break: break-word;
 }
 
 .current-fen > .border.border-info {
   padding: 3px;
+  margin-bottom: 0;
   border-radius: 5px;
   font-size: 13px;
 }
+
 
 .current-fen > .copy-current-fen {
   border: none;

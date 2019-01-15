@@ -1,13 +1,13 @@
 import * as async from "./functions/Async.functions.js";
 import * as clientLogic from "./functions/Client-logic.functions.js";
 import CHESS_COMPONENT from "./components/Chess.component.js";
-import * as renderer from "./functions/Render.functions.js";
+import * as render from "./functions/Render.functions.js";
 
-$(document).ready(function () {
+$( document ).ready( function() {
   // init chessboard element
   CHESS_COMPONENT.CHESSBOARD.start();
 
-  // init popover here
+  // init popover
   let fenDetails = $('#js-fen-details').html();
 
   $('#js-fen-textarea').popover({
@@ -40,9 +40,8 @@ $(document).ready(function () {
 
   // get strategies from the server
   async.getStrategies();
-
-  renderer.renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
-
+  // render initial fen
+  render.renderCurrentFEN(CHESS_COMPONENT.CHESS.fen());
 });
 
 // Event Listeners
@@ -109,7 +108,7 @@ fenMatchSwitchBtn.addEventListener('click', () => {
 //   async.getMatchCommentary( match );
 // });
 
-// 
+// submit match
 const matchSubmitBtn = document.getElementById('js-match-submit');
 matchSubmitBtn.addEventListener('click', () => {
     let matchCommentary = async.getCommentary();
