@@ -71,11 +71,11 @@ export function createListGroupItemMarkup( strategyDetails ) {
 
   // .col-2.align-self-center
   let col = document.createElement('div');
-  col.classList = 'col-2 align-self-center';
+  col.classList = 'col-2 p-0 text-center align-self-center';
 
   // .strategy-move
   let strategyMove = document.createElement('span');
-  strategyMove.classList = 'alert alert-success strategy__move';
+  strategyMove.classList = 'strategy__move';
   strategyMove.id = `js-move-${strategyDetails.strategy}`;
 
   // append .name & .desc to .strategy__info

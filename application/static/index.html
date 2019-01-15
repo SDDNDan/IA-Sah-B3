@@ -42,7 +42,7 @@
       <div class="row">
         <div class="nav--header">
           <!-- .nav--header component -->
-          <img src="/static/assets/img/vendor/common/logo.jpg" class="nav--header__logo" alt="logo">
+          <img src="/static/assets/img/vendor/common/logo_small.jpg" class="nav--header__logo" alt="logo">
           <span href="#home" class="nav--header__app-title">CHESS</span>
           <ul class="d-flex flex-row-reverse p-0">
             <li class="p-2" id="js-help-trigger" >Help</li>
@@ -61,7 +61,7 @@
           </div>
           <!-- .current-fen component goes here -->
           <div class="current-fen d-flex">
-            <p id="js-current-fen-value" class="border border-info"></p>
+            <p id="js-current-fen-value" class="border border-info shadow-sm"></p>
             <button id="js-copy-current-fen" class="copy-current-fen" data-clipboard-target="#js-current-fen-value" data-content="Copy current FEN">
               <i class="far fa-copy"></i>
             </button>
@@ -71,38 +71,69 @@
 
         <div class="col-12 col-lg-6">
           <div class="suggested-moves">
-            <div class="list-group">
-              <h4 class="list-group-item active">Suggested Moves</h4>
-              <!-- Suggested Moves component -->
-              <div id="js-suggested-moves-container" class="suggested-moves__container">
-              </div>
-            </div>
-            <div class="col-12 p-0">
-              <button id="js-get-moves" class="btn btn-primary suggested-moves-button">Get suggested moves</button>
-              <!-- flip-chessboard button goes here -->
-              <button id="js-flip-chessboard" class="btn btn-primary flip-button">Change color</button>
-              <button id="js-switch-fen-match" class="btn btn-primary switch-fen-match-button">Switch to match input</button>
-              <!-- Get commentary modal trigger -->
-            </div>
-          </div>
+            <div class="accordion shadow" id="actions-accordion">
+              <div class="card border-0">
+                <div class="card-header" id="suggested-moves-heading">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#suggested-moves-tab-content" aria-expanded="false" aria-controls="suggested-moves-tab-content">
+                      Suggested moves
+                    </button>
+                  </h2>
+                </div>
 
-          <div class="col-12 p-0">
-            <div id="js-fen-loader" class="fen-loader in-view">
-              <!-- FEN loader component -->
-              <textarea name="fen-textarea" id="js-fen-textarea" class="form-control" data-toggle="popover" data-placement="bottom" rows="2" placeholder="Enter FEN"></textarea>
-              <div id="js-fen-details" style="display: none">
-                <p><strong>Forsyth-Edwards Notation (FEN)</strong> is a standard notation for describing a particular board position of a Chess game.</p>
-                <p>The purpose of FEN notation is to provide all the necessary information to restart a game from a particular position.</p>
-                <p>You can find more about FEN  <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation" target="_blank">here</a></p>
+                <div id="suggested-moves-tab-content" class="collapse" aria-labelledby="suggested-moves-heading" data-parent="#actions-accordion">
+                  <div class="card-body p-2">
+                    <div class="list-group">
+                      <!-- Suggested Moves component -->
+                      <div id="js-suggested-moves-container" class="suggested-moves__container border shadow-sm"></div>
+
+                      <div class="col-12 p-0">
+                        <button id="js-get-moves" class="btn shadow-sm suggested-moves-button">Get suggested moves</button>
+                        <!-- flip-chessboard button -->
+                        <button id="js-flip-chessboard" class="btn shadow-sm flip-button">Change color</button>
+                        <div id="js-fen-loader" class="fen-loader">
+                          <!-- FEN loader component -->
+                          <textarea name="fen-textarea" id="js-fen-textarea" class="form-control" data-toggle="popover" data-placement="bottom" rows="2" placeholder="Enter FEN"></textarea>
+                          <div id="js-fen-details" style="display: none">
+                            <p><strong>Forsyth-Edwards Notation (FEN)</strong> is a standard notation for describing a particular board position of a Chess game.</p>
+                            <p>The purpose of FEN notation is to provide all the necessary information to restart a game from a particular position.</p>
+                            <p>You can find more about FEN  <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation" target="_blank">here</a></p>
+                          </div>
+                          <button id="js-fen-submit" class="align-self-center fen-button btn">Submit</button>
+                        </div>
+                        <p class="fen-feedback text-danger"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <button id="js-fen-submit" class="align-self-center fen-button btn btn-primary">Submit</button>
+
+              <!-- commentary -->
+              <div class="card border-0">
+                <div class="card-header" id="commentary-heading">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#commentary-tab-content" aria-expanded="false" aria-controls="commentary-tab-content">
+                      Commentary
+                    </button>
+                  </h2>
+                </div>
+            
+                <div id="commentary-tab-content" class="collapse" aria-labelledby="commentary-heading" data-parent="#actions-accordion">
+                  <div class="card-body p-2">
+                    <!-- .commentary component -->
+                    <div id="js-commentary" class="commentary">
+                      
+                    </div>
+                    <div class="col-12 p-0">
+                      <div id="js-match-loader" class="match-loader">
+                        <textarea name="match-textarea" id="js-match-textarea" rows="2" class="form-control" placeholder="Enter match"></textarea>
+                        <button id="js-match-submit" class="btn">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="js-match-loader" class="match-loader">
-              <textarea name="match-textarea" id="js-match-textarea" rows="2" class="form-control" placeholder="Enter match"></textarea>
-              <button id="js-match-submit" class="btn btn-primary">Submit</button>
-            </div>
-            <p class="fen-feedback text-danger"></p>
-            <!-- .load-match component -->
           </div>
         </div>
       </div>
