@@ -119,15 +119,34 @@ export function createListGroupItemMarkup( strategyDetails ) {
 }
 
 export function createCommentMarkup( comment ) {
-    let commentaryContent = '';
-    if(comment.strategy != "undefined" && comment.commentary != "undefined"){
-        var strategyLabel = '<span class="strategy-label">' + comment.strategy + ': </span>';
-        commentaryContent = commentaryContent + '<p class="commentary__line">'+ strategyLabel + comment.commentary + '</p>';
-
-        //<a href="" class="suggested-move" data-previous-fen="abc">g3g4</a>
-        //<a href="" class="userMove" data-previous-fen="abc">e3e4</a>
-    }
-
     let commentarySection = document.getElementById('js-commentary');
-    $(commentarySection).append(commentaryContent);
+
+    if(comment.strategy != "undefined" && comment.commentary != "undefined"){
+        let strategyLabel = document.createElement('span');
+        strategyLabel.classList = 'strategy-label';
+        strategyLabel.innerText =  comment.strategy;
+
+        let commentaryText = document.createElement('span');
+        commentaryText.classList = 'commentary-text';
+        commentaryText.innerText =  comment.commentary;
+
+        let suggestedMove = document.createElement('a');
+        suggestedMove.classList = 'suggested-move';
+        suggestedMove.innerText = "Suggested move: " + comment.suggestedMove;
+
+        let userMove = document.createElement('a');
+        userMove.classList = 'user-move';
+        userMove.innerText =  "Your move: " + comment.userMove;
+
+
+        let commentaryContent = document.createElement('p');
+        commentaryContent.classList = 'commentary__line';
+
+        commentaryContent.appendChild(strategyLabel);
+        commentaryContent.appendChild(commentaryText);
+        commentaryContent.appendChild(suggestedMove);
+        commentaryContent.appendChild(userMove);
+
+        $(commentarySection).append(commentaryContent);
+    }
 }

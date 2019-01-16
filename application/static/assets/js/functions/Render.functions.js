@@ -45,7 +45,6 @@ export function renderCurrentFEN( currentFEN ) {
 }
 
 export function renderCommentary( commentaryText  ) {
-    console.log(commentaryText);
     let commentary = JSON.parse(commentaryText);
 
     jQuery.each(commentary, function(index, el){
