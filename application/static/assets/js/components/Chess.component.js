@@ -2,7 +2,6 @@ import * as render from "../functions/Render.functions.js";
 import * as async from "../functions/Async.functions.js"
 
 const CHESS_COMPONENT = (function() {
-  let history = "";
 
   const _onDragStart = function(source, piece, position, orientation) {
     // do not pick up pieces if the game is over
@@ -32,7 +31,6 @@ const CHESS_COMPONENT = (function() {
     // history
     let newMove = CHESS.history({ verbose: true });
     history += `${newMove[newMove.length - 1].from}${newMove[newMove.length - 1].to}`;
-    console.log(history);
   };
 
   const _onSnapEnd = function() {
@@ -78,6 +76,7 @@ const CHESS_COMPONENT = (function() {
 
   const CHESS = new Chess();
   const CHESSBOARD = ChessBoard('js-chessboard', CHESSBOARD_CONFIG);
+  let history = "";
   
   return {
     // instance of chess.js
