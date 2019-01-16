@@ -1,4 +1,5 @@
 import * as render from "../functions/Render.functions.js";
+import * as async from "../functions/Async.functions.js"
 
 const CHESS_COMPONENT = (function() {
 
@@ -26,6 +27,10 @@ const CHESS_COMPONENT = (function() {
     // renderCurrentFen() - call
 
     render.renderCurrentFEN(CHESS.fen());
+    
+    // history
+    let newMove = CHESS.history({ verbose: true });
+    history += `${newMove[newMove.length - 1].from}${newMove[newMove.length - 1].to}`;
   };
 
   const _onSnapEnd = function() {
@@ -71,6 +76,7 @@ const CHESS_COMPONENT = (function() {
 
   const CHESS = new Chess();
   const CHESSBOARD = ChessBoard('js-chessboard', CHESSBOARD_CONFIG);
+  let history = "";
   
   return {
     // instance of chess.js
