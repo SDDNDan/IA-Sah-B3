@@ -54,16 +54,16 @@ export function createListGroupItemMarkup( strategyDetails ) {
   // .row
   let row = document.createElement('div');
   row.classList = 'row';
-  
+
   // .strategy__info.col
   let strategyInfo = document.createElement('div');
   strategyInfo.classList = 'strategy__info col p-0';
-  
+
   // strategy .name
   let strategyName = document.createElement('h5');
   strategyName.classList = 'mb-1 name';
   strategyName.innerText = strategyDetails.strategy;
-  
+
   // strategy .desc
   let strategyDesc = document.createElement('p');
   strategyDesc.classList = 'mb-1 desc';
@@ -102,13 +102,13 @@ export function createListGroupItemMarkup( strategyDetails ) {
   col.appendChild(loader);
 
   // create .consecutive-moves button here
-  
+
   // append .strategy__info & .col-2.align-self-cente
   // to .row
   row.appendChild(strategyInfo);
   row.appendChild(col);
   // append .consecutive-moves button to .row here
-  
+
   // append .row to .container-fluid
   container.appendChild(row);
 
@@ -118,8 +118,16 @@ export function createListGroupItemMarkup( strategyDetails ) {
   return link;
 }
 
-// export function createCommentMarkup( commentsArray ) {
-//   commentsArray.forEach( (strategy) => {
-    
-//   });
-// }
+export function createCommentMarkup( comment ) {
+    let commentaryContent = '';
+    if(comment.strategy != "undefined" && comment.commentary != "undefined"){
+        var strategyLabel = '<span class="strategy-label">' + comment.strategy + ': </span>';
+        commentaryContent = commentaryContent + '<p class="commentary__line">'+ strategyLabel + comment.commentary + '</p>';
+
+        //<a href="" class="suggested-move" data-previous-fen="abc">g3g4</a>
+        //<a href="" class="userMove" data-previous-fen="abc">e3e4</a>
+    }
+
+    let commentarySection = document.getElementById('js-commentary');
+    $(commentarySection).append(commentaryContent);
+}

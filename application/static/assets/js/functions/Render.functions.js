@@ -43,3 +43,14 @@ export function renderCurrentFEN( currentFEN ) {
     fenContainer.width = width;
     currentFenEl.innerText = currentFEN;
 }
+
+export function renderCommentary( commentaryText  ) {
+    console.log(commentaryText);
+    let commentary = JSON.parse(commentaryText);
+
+    jQuery.each(commentary, function(index, el){
+        if(el.length > 0 && el[0] != "undefined"){
+            markup.createCommentMarkup(el[0]);
+        }
+    });
+}
