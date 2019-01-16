@@ -130,12 +130,14 @@ export function createCommentMarkup( comment ) {
         suggestedMove.classList = 'suggested-move';
         suggestedMove.setAttribute('href', "#");
         suggestedMove.setAttribute('data-fen', comment.fen);
+        suggestedMove.setAttribute('data-move', comment.suggestedMove);
         suggestedMove.innerText = comment.suggestedMove;
 
         let userMove = document.createElement('a');
         userMove.classList = 'user-move';
         userMove.setAttribute('href', "#");
         userMove.setAttribute('data-fen', comment.fen);
+        userMove.setAttribute('data-move', comment.userMove);
         userMove.innerText =  comment.userMove;
 
         let parsedCommentary = comment.commentary;
