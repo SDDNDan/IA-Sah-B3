@@ -1,6 +1,7 @@
 from application.chess.chess_game import Chess
 from application.chess.engine import Engine
-import copy
+from application.chess.board_attributes import get_comment
+
 
 print("Initializing class Engine for module " + __name__ + " ...")
 engine = Engine()
@@ -13,10 +14,6 @@ print("Chess class initialized successfully!")
 
 def get_strategy_name():
     return "MinMax"
-
-
-def get_strategy_move(fen):
-    return min_max(fen, 2, True)[1]
 
 
 def is_final_state(node):
@@ -53,19 +50,19 @@ def min_max(fen, depth, maximizing_player):
 
     if maximizing_player:
         value = -999999999999999999
-        best_move = "e2e4"
+        best_move = ""
         for child, move in get_possible_states(fen):
-            temp = min_max(child, depth - 1, False)[0]
-            if value > temp:
+            temp = max(value,min_max(child, depth - 1, False)[0])
+            if temp > value:
                 best_move = move
                 value = temp
         return value, best_move
     else:
-        best_move = "e2e4"
+        best_move = ""
         value = 999999999999999999
         for child, move in get_possible_states(fen):
-            temp = min_max(child, depth - 1, True)[0]
-            if value < temp:
+            temp = min(value,min_max(child, depth - 1, True)[0])
+            if temp < value :
                 value = temp
                 best_move = move
 
@@ -74,6 +71,9 @@ def min_max(fen, depth, maximizing_player):
 
 def get_strategy_comment(fen, move):
     return get_comment(engine, fen, move)
+
+def get_strategy_move(fen):
+    return min_max(fen, 2, True)[1]
 
 # def get_strategy_move(fen):
 #     chess = Chess()
