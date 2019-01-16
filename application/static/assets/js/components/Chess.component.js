@@ -1,6 +1,11 @@
 import * as render from "../functions/Render.functions.js";
 
 const CHESS_COMPONENT = (function() {
+  const CHESS = new Chess();
+  const CHESSBOARD = ChessBoard('js-chessboard', CHESSBOARD_CONFIG);
+  let _history = "";
+
+  const 
 
   const _onDragStart = function(source, piece, position, orientation) {
     // do not pick up pieces if the game is over
@@ -24,7 +29,6 @@ const CHESS_COMPONENT = (function() {
     if (move === null) return 'snapback';
   
     // renderCurrentFen() - call
-
     render.renderCurrentFEN(CHESS.fen());
   };
 
@@ -68,9 +72,6 @@ const CHESS_COMPONENT = (function() {
     onDrop: _onDrop,
     onSnapEnd: _onSnapEnd
   };
-
-  const CHESS = new Chess();
-  const CHESSBOARD = ChessBoard('js-chessboard', CHESSBOARD_CONFIG);
   
   return {
     // instance of chess.js
