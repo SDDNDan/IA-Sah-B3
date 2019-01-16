@@ -101,6 +101,7 @@ html,
   outline: none;
   cursor: pointer;
   font-size: 20px;
+  color: var(--info);
 }
 
 .current-fen > .feedback {
@@ -175,12 +176,21 @@ html,
 
 /* actions accordion */
 
+.accordion {
+  border: 1px solid;
+  border-left: 0;
+  border-bottom: 0;
+  border-color: #dee2e6;
+}
+
 .accordion > .card > .card-header {
   padding: 0;
-  border-bottom: 0;
-  
   border-radius: 0;
   background-color: white;
+}
+
+.accordion > .card > .card-header > h2 {
+  text-align: center;
 }
 
 .accordion > .card:first-of-type > .card-header {
