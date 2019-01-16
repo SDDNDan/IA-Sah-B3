@@ -131,7 +131,7 @@ html,
 }
 
 .fen-loader .fen-button {
-  padding: 13px 15px;
+  padding: 5px 10px;
   color: white;
   background-color: var(--teal);
 }
@@ -155,6 +155,7 @@ html,
 .match-loader {
   margin-top: 20px;
   display: flex;
+  align-items: center;
 }
 
 .match-loader [name="match-textarea"] {
@@ -264,6 +265,7 @@ html,
 .suggested-moves__container .strategy__move {
   padding: 5px 10px;
   border-radius: 5px;
+  color: white;
   background-color: var(--teal);
   opacity: 0;
   transition: opacity .15s ease-in-out;
@@ -291,7 +293,7 @@ html,
 .lds-ellipsis {
   display: none;
   position: absolute;
-  top: -19px;
+  top: -3px;
   left: 9px;
   transition: display .2s ease-in-out;
 }

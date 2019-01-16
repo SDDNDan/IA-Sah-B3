@@ -71,7 +71,7 @@ export function createListGroupItemMarkup( strategyDetails ) {
 
   // .col-2.align-self-center
   let col = document.createElement('div');
-  col.classList = 'col-2 p-0 text-center align-self-center';
+  col.classList = 'col-2 p-0 d-flex justify-content-center align-items-center';
 
   // .strategy-move
   let strategyMove = document.createElement('span');
