@@ -29,11 +29,11 @@ def get_commentary_controller(request):
                 continue
 
             try:
-                commentary = chess_engine_module.get_strategy_comment(
+                commentary, strategy_best_move = chess_engine_module.get_strategy_comment(
                     current_board.fen(), move)
                 if commentary is not None:
                     answer[-1].append(
-                        {"strategy": chess_engine_module.get_strategy_name(), "commentary": commentary})
+                        {"strategy": chess_engine_module.get_strategy_name(), "commentary": commentary, "fen": current_board.fen(), "userMove": move, "suggestedMove": strategy_best_move})
             except ValueError as e:
                 print("Error generating commentaries: {}".format(e))
                 return 'Invalid move {} after {} moves!'.format(move, len(answer) - 1), 400

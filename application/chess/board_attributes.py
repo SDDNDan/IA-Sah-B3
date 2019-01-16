@@ -338,8 +338,8 @@ def get_comment(engine, fen, move):
 
             attributes1 = get_attribute_array(strategy_analysis_board.fen())
             attributes2 = get_attribute_array(player_analysis_board.fen())
-        return generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move)
-    return None
+        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move), strategy_best_move)
+    return (None, None)
 
 
 if __name__ == '__main__':
