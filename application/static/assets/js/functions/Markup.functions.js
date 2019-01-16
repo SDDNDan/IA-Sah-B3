@@ -124,28 +124,33 @@ export function createCommentMarkup( comment ) {
     if(comment.strategy != "undefined" && comment.commentary != "undefined"){
         let strategyLabel = document.createElement('span');
         strategyLabel.classList = 'strategy-label';
-        strategyLabel.innerText =  comment.strategy;
-
-        let commentaryText = document.createElement('span');
-        commentaryText.classList = 'commentary-text';
-        commentaryText.innerText =  comment.commentary;
+        strategyLabel.innerText =  comment.strategy + ": ";
 
         let suggestedMove = document.createElement('a');
         suggestedMove.classList = 'suggested-move';
-        suggestedMove.innerText = "Suggested move: " + comment.suggestedMove;
+        suggestedMove.setAttribute('href', "#");
+        suggestedMove.setAttribute('data-fen', comment.fen);
+        suggestedMove.innerText = comment.suggestedMove;
 
         let userMove = document.createElement('a');
         userMove.classList = 'user-move';
-        userMove.innerText =  "Your move: " + comment.userMove;
+        userMove.setAttribute('href', "#");
+        userMove.setAttribute('data-fen', comment.fen);
+        userMove.innerText =  comment.userMove;
 
+        let parsedCommentary = comment.commentary;
+        parsedCommentary = parsedCommentary.replace(comment.suggestedMove, suggestedMove.outerHTML)
+        parsedCommentary = parsedCommentary.replace(comment.userMove, userMove.outerHTML)
+
+        let commentaryText = document.createElement('span');
+        commentaryText.classList = 'commentary-text';
+        commentaryText.innerHTML =  parsedCommentary;
 
         let commentaryContent = document.createElement('p');
         commentaryContent.classList = 'commentary__line';
 
         commentaryContent.appendChild(strategyLabel);
         commentaryContent.appendChild(commentaryText);
-        commentaryContent.appendChild(suggestedMove);
-        commentaryContent.appendChild(userMove);
 
         $(commentarySection).append(commentaryContent);
     }
