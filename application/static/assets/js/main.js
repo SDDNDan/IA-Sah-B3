@@ -83,19 +83,6 @@ suggestedMovesContainer.addEventListener('click', (e) => {
 
 strategyDetailsClose.addEventListener('click', () => strategyDetailsSectionEl.classList.toggle('in-view') );
 
-// toggle between fen and match input
-// const fenMatchSwitchBtn = document.getElementById('js-switch-fen-match');
-// const fenLoader = document.getElementById('js-fen-loader');
-// const matchLoader = document.getElementById('js-match-loader');
-
-// fenMatchSwitchBtn.addEventListener('click', () => {
-//   fenMatchSwitchBtn.innerHTML === 'Switch to match input' ? fenMatchSwitchBtn.innerHTML = 'Switch to FEN input'
-//     : fenMatchSwitchBtn.innerHTML = 'Switch to match input';
-//   fenLoader.classList.toggle('in-view');
-//   matchLoader.classList.toggle('in-view');
-// });
-
-
 // match input submit button
 // const matchInputSubmitBtn = document.getElementById('js-match-submit');
 // let matchHistory = [];

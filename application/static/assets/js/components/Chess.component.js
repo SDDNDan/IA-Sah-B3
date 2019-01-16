@@ -1,4 +1,4 @@
-import * as renderer from "../functions/Render.functions.js";
+import * as render from "../functions/Render.functions.js";
 
 const CHESS_COMPONENT = (function() {
 
@@ -25,7 +25,7 @@ const CHESS_COMPONENT = (function() {
   
     // renderCurrentFen() - call
 
-    renderer.renderCurrentFEN(CHESS.fen());
+    render.renderCurrentFEN(CHESS.fen());
   };
 
   const _onSnapEnd = function() {
