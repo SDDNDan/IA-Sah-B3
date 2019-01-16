@@ -1,64 +1,106 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="default.css">
     <link rel="stylesheet" type="text/css" href="containers.css">
-<title>Page Title</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+    <script src="index.js"></script>
+    <title>Page Title</title>
 </head>
+
 <body>
-    
-    <div class="title-container">
-        <p class="title">Chess Artificial Intelligence</p>
-    </div>
 
-    <div class="about-container">
-        <div class="square-about-container">
-            <div class="square-image">
+    <header>
+        <h1 class="title">Chess Artificial Intelligence</h1>
+    </header>
+    <div id="content">
+        <div class="about-container">
+            <h1 class="about-title">About</h1>
 
-            </div>
-            <div class="square-about">
-                <div class="square-about-title">
-                    <p class="about-title-font">About</p>
-                </div>
-                <div>
-                    <p class="about-description">Chess is a two-player strategy board game played on a chessboard, a checkered gameboard with 64 squares arranged in an 8×8 grid.
-                        Using arficial intelligence , we want you to learn how to play chess from a computer because it's faster and more accurate then a human , help you to learn from
-                        best players in the world and analyzing their movements , play chess using our application an find out in real time what are the best moves you can do to win everytime.
-                    </p>
-                </div>
-            </div>
+            <p class="about-container-text"> 
+                &nbsp;&nbsp;&nbsp;&nbsp;Chess is a two-player strategy board game played on a chessboard, a checkered gameboard with 64 squares arranged
+                in an 8×8 grid. The game is played by millions of people worldwide. Chess is believed to have originated
+                in India sometime before the 7th century. The game was derived from the Indian game chaturanga, which is
+                also the likely ancestor of the Eastern strategy games xiangqi, janggi, and shogi. Chess reached Europe by
+                the 9th century, due to the Umayyad conquest of Hispania. The pieces assumed their current powers in Spain
+                in the late 15th century; the rules were standardized in the 19th century.</p>
+            <p class="about-container-text">
+                &nbsp;&nbsp;&nbsp;&nbsp;Play does not involve hidden information. Each player begins with 16 pieces: one king, one queen, two rooks, two knights,
+                two bishops, and eight pawns. Each of the six piece types moves differently, with the most powerful being
+                the queen and the least powerful the pawn. The objective is to checkmate[note 1] the opponent's king by placing
+                it under an inescapable threat of capture. To this end, a player's pieces are used to attack and capture
+                the opponent's pieces, while supporting each other. During the game, play typically involves making exchanges
+                of one piece for an opponent's similar piece, but also finding and engineering opportunities to trade one
+                piece for two, or to get a better position. In addition to checkmate, a player wins the game if the opponent
+                resigns, or (in a timed game) runs out of time. There are also several ways that a game can end in a draw.
+            </p>
+
         </div>
-    </div>
-    <div class="tutorial-title">
-        <p class="title-tutorial">Tutorial</p>
-    </div>
-    <div class="tutorial-about-container">
+
         <div class="tutorial-container">
-            <div class="tutorial-description">
-                        <p class="description-tutorial">Want to play chess? Don't know how? Don't worry. This section will help you.</p>
-                        <p class="description-tutorial2">This tutorial covers the rules of chess, and is designed for people who have never played before. If you're new to the game, then this is the place to start. There isn't much here for advanced players, but it could be a useful refresher for people who have not played in a long time, or are confused about one or more rules of the game.
-                            Because we using artifical intelligence , your learn process will be faster and in some weeks you will see that you can compete with other people and your win rate will get bigger and bigger.
-                        </p>
-                    </div>
-            <div class="tutorial-about-title">
-                    
-            </div> 
+            <h1 class="tutorial-title">Tutorial</h1>
+
+            <p class="tutorial-container-text"> 
+                &nbsp;&nbsp;&nbsp;&nbsp;Regulile oficiale ale jocului sunt întreținute de Federația Internațională de Șah sau FIDE[17]. Jocul se desfășoară
+                pe tabla de șah. Aceasta are o formă pătrată și este împărțită în 8 linii și 8 coloane ce formează 64 de
+                pătrate cu suprafețe egale, numite câmpuri colorate alternativ în alb și negru. La început fiecare jucător
+                are 16 piese: 8 pioni, 2 turnuri (ture), 2 cai, 2 nebuni, un rege și o regină. Unul dintre jucători controlează
+                piesele albe iar celălalt piesele negre. Jucătorii mută pe rând, respectând anumite reguli; prima mutare
+                (începutul partidei) revine jucătorului cu piese albe. Scopul jocului este obținerea matului. Acesta survine
+                atunci când un rege este atacat și nu poate evita capturarea. Regulile oficiale ale jocului sunt întreținute
+                de Federația Internațională de Șah sau FIDE[17]. Jocul se desfășoară pe tabla de șah. Aceasta are o formă
+                pătrată și este împărțită în 8 linii și 8 coloane ce formează 64 de pătrate cu suprafețe egale, numite câmpuri
+                colorate alternativ în alb și negru. La început fiecare jucător are 16 piese: 8 pioni, 2 turnuri (ture),
+                2 cai, 2 nebuni, un rege și o regină. Unul dintre jucători controlează piesele albe iar celălalt piesele
+                negre. Jucătorii mută pe rând, respectând anumite reguli; prima mutare (începutul partidei) revine jucătorului
+                cu piese albe. Scopul jocului este obținerea matului. Acesta survine atunci când un rege este atacat și nu
+                poate evita capturarea. Regulile oficiale ale jocului sunt întreținute de Federația Internațională de Șah
+                sau FIDE[17]. Jocul se desfășoară pe tabla de șah. Aceasta are o formă pătrată și este împărțită în 8 linii
+                și 8 coloane ce formează 64 de pătrate cu suprafețe egale, numite câmpuri colorate alternativ în alb și negru.
+                La început fiecare jucător are 16 piese: 8 pioni, 2 turnuri (ture), 2 cai, 2 nebuni, un rege și o regină.
+                Unul dintre jucători controlează piesele albe iar celălalt piesele negre. Jucătorii mută pe rând, respectând
+                anumite reguli; prima mutare (începutul partidei) revine jucătorului cu piese albe. Scopul jocului este obținerea
+                matului. Acesta survine atunci când un rege este atacat și nu poate evita capturarea. Regulile oficiale ale
+                jocului sunt întreținute de Federația Internațională de Șah sau FIDE[17]. Jocul se desfășoară pe tabla de
+                șah. Aceasta are o formă pătrată și este împărțită în 8 linii și 8 coloane ce formează 64 de pătrate cu suprafețe
+                egale, numite câmpuri colorate alternativ în alb și negru. La început fiecare jucător are 16 piese: 8 pioni,
+                2 turnuri (ture), 2 cai, 2 nebuni, un rege și o regină. Unul dintre jucători controlează piesele albe iar
+                celălalt piesele negre. Jucătorii mută pe rând, respectând anumite reguli; prima mutare (începutul partidei)
+                revine jucătorului cu piese albe. Scopul jocului este obținerea matului. Acesta survine atunci când un rege
+                este atacat și nu poate evita capturarea. Regulile oficiale ale jocului sunt întreținute de Federația Internațională
+                de Șah sau FIDE[17]. Jocul se desfășoară pe tabla de șah. Aceasta are o formă pătrată și este împărțită în
+                8 linii și 8 coloane ce formează 64 de pătrate cu suprafețe egale, numite câmpuri colorate alternativ în
+                alb și negru. La început fiecare jucător are 16 piese: 8 pioni, 2 turnuri (ture), 2 cai, 2 nebuni, un rege
+                și o regină. Unul dintre jucători controlează piesele albe iar celălalt piesele negre. Jucătorii mută pe
+                rând, respectând anumite reguli; prima mutare (începutul partidei) revine jucătorului cu piese albe. Scopul
+                jocului este obținerea matului. Acesta survine atunci când un rege este atacat și nu poate evita capturarea.
+                Regulile oficiale ale jocului sunt întreținute de Federația Internațională de Șah sau FIDE[17]. Jocul se
+                desfășoară pe tabla de șah. Aceasta are o formă pătrată și este împărțită în 8 linii și 8 coloane ce formează
+                64 de pătrate cu suprafețe egale, numite câmpuri colorate alternativ în alb și negru. La început fiecare
+                jucător are 16 piese: 8 pioni, 2 turnuri (ture), 2 cai, 2 nebuni, un rege și o regină. Unul dintre jucători
+                controlează piesele albe iar celălalt piesele negre. Jucătorii mută pe rând, respectând anumite reguli; prima
+                mutare (începutul partidei) revine jucătorului cu piese albe. Scopul jocului este obținerea matului. Acesta
+                survine atunci când un rege este atacat și nu poate evita capturarea. Regulile oficiale ale jocului sunt
+                întreținute de Federația Internațională de Șah sau FIDE[17]. Jocul se desfășoară pe tabla de șah. Aceasta
+                are o formă pătrată și este împărțită în 8 linii și 8 coloane ce formează 64 de pătrate cu suprafețe egale,
+                numite câmpuri colorate alternativ în alb și negru. La început fiecare jucător are 16 piese: 8 pioni, 2 turnuri
+                (ture), 2 cai, 2 nebuni, un rege și o regină. Unul dintre jucători controlează piesele albe iar celălalt
+                piesele negre. Jucătorii mută pe rând, respectând anumite reguli; prima mutare (începutul partidei) revine
+                jucătorului cu piese albe. Scopul jocului este obținerea matului. Acesta survine atunci când un rege este
+                atacat și nu poate evita capturarea. Regulile oficiale ale jocului sunt întreținute de Federația Internațională
+                de Șah sau FIDE[17]. Jocul se desfășoară pe tabla de șah. Aceasta are o formă pătrată și este împărțită în
+                8 linii și 8 coloane ce formează 64 de pătrate cu suprafețe egale, numite câmpuri colorate alternativ în
+                alb și negru. La început fiecare jucător are 16 piese: 8 pioni, 2 turnuri (ture), 2 cai, 2 nebuni, un rege
+                și o regină. Unul dintre jucători controlează piesele albe iar celălalt piesele negre. Jucătorii mută pe
+                rând, respectând anumite reguli; prima mutare (începutul partidei) revine jucătorului cu piese albe. Scopul
+                jocului este obținerea matului. Acesta survine atunci când un rege este atacat și nu poate evita capturarea.
+            </p>
+
         </div>
+
     </div>
-    <div class="tutorial-title">
-            <p class="title-tutorial">Analyze</p>
-        </div>
-        <div class="tutorial-about-container">
-            <div class="tutorial-container">
-                <div class="tutorial-description">
-                            <p class="description-tutorial">A person who never made a mistake never tried anything new</p>
-                            <p class="description-tutorial2">With our application you will be able to analyze the best players in the world and you will be able to see where they are doing, what they are doing wrong, and what would have been the best move they could have ever made in one of the game's moments. More than that, but you will also receive some commentary on the moves it has made and why the move is or is not the best.
-                            </p>
-                        </div>
-                <div class="tutorial-about-title image2">
-                        
-                </div> 
-            </div>
-        </div>
+
 </body>
+
 </html>

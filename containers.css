@@ -1,134 +1,70 @@
-.title-container{
+header{
     width: 100%;
-    height: 700px;
     background-image: url('BackGroundImage.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.about-container{
     width: 100%;
-    height: 700px;
-    background-color: blanchedalmond;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    height: 500px;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    transition: height 1000ms ease;
 }
 
-.square-about-container{
-    width: 70%;
-    height: 80%;
-    background-color: white;
-    display:flex;
+header.sticky {
+    height: 70px;
 }
 
 .title{
     font-size: 60px;
+    text-align: center;
     font-style: italic;
-    font-family: "Times New Roman", Times, serif;
+    position: absolute;
+    background-image: inherit;
     color: white;
-    padding-left: 30%;
-    padding-top: 13%;
-}
-
-.square-image{
-    flex:1;
-    background-image: url('about.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.about-title-font{
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.square-about-title{
-    width: 50px;
-    height: 50px;
-}
-.about-description{
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.square-about{
-    flex:1;
-    padding-left: 20px;
-    padding-top: 15%;
-}
-
-.tutorial-title{
     width: 100%;
-    height: 250px;
-    background-color: white;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    border: none;
+    opacity: .6;
+    position: fixed;
+    z-index: 1;
 }
 
-.title-tutorial{
-    font-size: 60px;
-    color: black;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+.about-title,
+.tutorial-title
+{
+    text-align: center;
+    margin: 20px;
+    font-size: 36px;
 }
 
-.tutorial-container{
-    width: 70%;
-    height: 80%;
-    background-color: white;
-    display:flex;
-    
+
+.about-container{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 200px;
+    position: relative;
+    margin-top: 650px;
 }
 
-.tutorial-description{
-    flex:1;
-    font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-left: 20px;
-    padding-top: 15%;
-
-}
-.tutorial-about-title{
-    flex:1;
-    background-image: url('1.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.tutorial-container
+{
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 200px;
+    position: relative;
+    margin-top: 200px;
 }
 
-.tutorial-about-container{
-    width: 100%;
-    height: 700px;
-    background-color: blanchedalmond;
-    display:flex;
-    justify-content: center;
-    align-items: center;
+.about-container-text{
+    margin-top: 30px;
+    font-size: 24px;
+
 }
 
-.description-tutorial{
-    font-size: 20px;
-    font-style: italic;
-    font-family: "Times New Roman", Times, serif;
-    color: black;
+.tutorial-container-text{
+    margin-top: 30px;
+    font-size: 24px;
 }
 
-.description-tutorial2{
-    padding-top: 50px;
-}
-
-.image2{
-    background-image: url('analyze.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.image3{
-    background-image: url('free.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+hr{
+    box-shadow: 2px 2px 2px 2px;
 }
