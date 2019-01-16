@@ -65,11 +65,10 @@ export function getCommentary() {
       },
       success: function(response) {
           matchCommentary = response;
+          render.renderCommentary( matchCommentary );
       },
       error: function(error) {
         alert('An error was encountered', error);
       }
   });
-
-  return matchCommentary;
 }

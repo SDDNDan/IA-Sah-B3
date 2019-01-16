@@ -364,6 +364,15 @@ html,
 
 /* .commentary component */
 
+.commentary .commentary__line{
+  font-size: 13px;
+}
+
+.commentary .commentary__line span.strategy-label{
+  font-weight: 500;
+}
+
+
 /* flip chessboard */
 
 .flip-button {
