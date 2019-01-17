@@ -40,7 +40,16 @@ class testchess_game(unittest.TestCase):
         Fen = self.chess.get_fen()
         self.assertEqual("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",Fen,"Fen is wrong")
 
+    def testget_valid_moves(self): 
+        moves_str=["rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"]
+        self.chess.start_new_game()
+        Fen = self.chess.get_valid_moves()
+        self.assertEqual(moves_str,Fen,"Fen is wrong")
     
+    def testget_evaluation_depth(self):
+         depth = self.chess.get_evaluation_depth(2)
+         self.assertEqual(5,depth,"Depth is wrong")
+
 
 suite = unittest.TestLoader().loadTestsFromTestCase(testchess_game)
 unittest.TextTestRunner().run(suite)
