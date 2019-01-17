@@ -29,14 +29,21 @@ class engine_tests(unittest.TestCase):
 
     def teststart_analyzing_millis(self):
         self.chess.start_new_game()
-        evaluationMillis = self.chess.get_evaluation_millis(self)
+        evaluationMillis = self.chess.engine.get_evaluation_millis(self)
         self.assertGreaterEqual(1.0,evaluationMillis,"Evaluation is correct")
 
     #def teststart_analyzing_millis(self):
 
     #def testget_evaluation_depth():
+
     #def testget_evaluation_millis():
-    #def testget_best_move_depth():
+    def testget_best_move_depth(self):
+        self.chess.start_new_game()
+        #self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
+        analyzingDepth = self.chess.engine.get_best_move("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
+        self.assertNotEqual(True,analyzingDepth,"the best move returns False ")
+        
+
     #def testget_best_move_millis():
     #def testget_engine_name():
     
