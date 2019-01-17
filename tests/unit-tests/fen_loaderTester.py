@@ -17,5 +17,9 @@ class fen_loaderTester(unittest.TestCase):
     #def get_fens_from_fen_fileTest():
     #def get_fens_recursivelyTest():
 
+    def test_validFen(self):
+        move=self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
+        self.assertEqual(valid_fen(move),True)
+
 suite = unittest.TestLoader().loadTestsFromTestCase(fen_loaderTester)
 unittest.TextTestRunner().run(suite)
