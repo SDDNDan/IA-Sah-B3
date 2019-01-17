@@ -27,6 +27,11 @@ class engine_tests(unittest.TestCase):
         evaluationDepth = self.chess.get_evaluation_depth(self)
         self.assertGreaterEqual(1.0,evaluationDepth,"Evaluation is correct")
 
+    def teststart_analyzing_millis(self):
+        self.chess.start_new_game()
+        evaluationMillis = self.chess.get_evaluation_millis(self)
+        self.assertGreaterEqual(1.0,evaluationMillis,"Evaluation is correct")
+
     #def teststart_analyzing_millis(self):
 
     #def testget_evaluation_depth():
