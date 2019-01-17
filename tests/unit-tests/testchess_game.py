@@ -34,6 +34,10 @@ class testchess_game(unittest.TestCase):
     def testis_white_winnerTest(self):
         self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
         self.assertEqual(True,self.chess.is_white_winner(), "Function returned false")
+
+    def testis_white_not_winnerTest(self):
+        self.chess.set_fen("1rbq1b1r/p1p1pk1p/1pn5/1B1n2p1/5p2/2NPB1P1/PPPKQP1P/4R1NR w KQkq - 0 16")
+        self.assertEqual(False,self.chess.is_white_winner(), "Function returned true")
     
     def testset_fen_position(self): 
         self.chess.start_new_game()

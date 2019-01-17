@@ -21,5 +21,9 @@ class fen_loaderTester(unittest.TestCase):
         move=self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPPP1PPP/RNB1K1NR b KQkq - 0 4")
         self.assertEqual(valid_fen(move),True)
 
+    def test_invalidFen(self):
+        move=self.chess.set_fen("r1bqkbnr/pppp1Q1p/2n3p1/4p3/2B1P3/8/PPQP1PPP/RNB1Q1NR b KQkq - 0 4")
+        self.assertEqual(valid_fen(move),False)
+
 suite = unittest.TestLoader().loadTestsFromTestCase(fen_loaderTester)
 unittest.TextTestRunner().run(suite)
