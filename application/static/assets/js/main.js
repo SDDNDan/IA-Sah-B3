@@ -87,6 +87,7 @@ strategyDetailsClose.addEventListener('click', () => strategyDetailsSectionEl.cl
 const matchSubmitBtn = document.getElementById('js-match-submit');
 
 matchSubmitBtn.addEventListener('click', () => {
+  let matchInput = document.getElementById('js-match-textarea').value;
   let commentaryEl = document.getElementById('js-commentary');
   let childNodes = commentaryEl.getElementsByClassName('commentary__line');
   let placeholder = commentaryEl.children[0];
@@ -103,7 +104,7 @@ matchSubmitBtn.addEventListener('click', () => {
     placeholder.style.display = 'block';
   }
 
-  async.getCommentary();
+  async.getCommentary( matchInput );
 });
 
 // copy current fen

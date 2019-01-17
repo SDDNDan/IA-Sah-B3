@@ -54,10 +54,8 @@ export function getSuggestedMoves() {
   }
 }
 
-export function getCommentary() {
-  let matchInput = document.getElementById('js-match-textarea').value;
-
-  if( matchInput !== "" ) {
+export function getCommentary( matchString ) {
+  if( matchString !== "" ) {
     // let loader = document.querySelector('#js-commentary > .lds-ellipsis');
     
     // if( loader.classList.contains('in-view') ) {
@@ -71,7 +69,7 @@ export function getCommentary() {
         url: constants.BASE_URL + '/commentary',
         type: "get",
         data: {
-          game: matchInput
+          game: matchString
         },
         success: function(response) {
             let commentaryEl = document.getElementById('js-commentary');

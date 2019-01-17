@@ -13,8 +13,7 @@ export function setChessboardFen() {
   
   // check if fen is valid
   if( parseFEN(fen) ) {
-    // update currentFen global
-    // currentFEN = fen;
+    CHESS_COMPONENT.history = "";
     CHESS_COMPONENT.CHESSBOARD.position(fen);
     CHESS_COMPONENT.CHESS.load(fen);
   } else {

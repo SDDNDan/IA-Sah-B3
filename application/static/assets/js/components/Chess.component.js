@@ -33,7 +33,7 @@ const CHESS_COMPONENT = (function() {
     history += `${newMove[newMove.length - 1].from}${newMove[newMove.length - 1].to}`;
 
     if(CHESS.game_over() === true) {
-      async.getCommentary();
+      async.getCommentary( history );
     }
   };
 
@@ -86,7 +86,8 @@ const CHESS_COMPONENT = (function() {
     // instance of chess.js
     CHESS,
     // instance of chessboard.js
-    CHESSBOARD
+    CHESSBOARD,
+    history
   }
 })();
 
