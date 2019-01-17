@@ -44,7 +44,10 @@ class engine_tests(unittest.TestCase):
         self.assertNotEqual(True,analyzingDepth,"the best move returns False ")
         
 
-    #def testget_best_move_millis():
+    def testget_best_move_millis(self):
+        self.chess.start_new_game()
+        analyzingMillis = self.chess.get_best_move_millis(self)
+        self.assertNotEqual(True,analyzingMillis,"the best move returns False ")
     #def testget_engine_name():
     
 
