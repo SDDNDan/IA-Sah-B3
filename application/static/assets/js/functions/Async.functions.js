@@ -1,5 +1,6 @@
 import * as constants from "../utils/Constants.utils.js";
 import * as render from "./Render.functions.js";
+import * as clientLogic from "../functions/Client-logic.functions.js"
 import CHESS_COMPONENT from "../components/Chess.component.js";
 
 /* ********Async functions******** */
@@ -55,20 +56,45 @@ export function getSuggestedMoves() {
 
 export function getCommentary() {
   let matchInput = document.getElementById('js-match-textarea').value;
-  let matchCommentary;
 
-  $.ajax({
-      url: constants.BASE_URL + '/commentary',
-      type: "get",
-      data: {
-        game: matchInput
-      },
-      success: function(response) {
-          matchCommentary = response;
-          render.renderCommentary( matchCommentary );
-      },
-      error: function(error) {
-        alert('An error was encountered', error);
-      }
-  });
+  if( matchInput !== "" ) {
+    // let loader = document.querySelector('#js-commentary > .lds-ellipsis');
+    
+    // if( loader.classList.contains('in-view') ) {
+    //   loader.classList.remove('in-view');
+    // }
+
+    // show loader
+    // loader.classList.toggle('in-view');
+
+    $.ajax({
+        url: constants.BASE_URL + '/commentary',
+        type: "get",
+        data: {
+          game: matchInput
+        },
+        success: function(response) {
+            let commentaryEl = document.getElementById('js-commentary');
+            let placeholder = commentaryEl.children[0];
+
+            // hide placeholder text
+            placeholder.style.display = 'none';
+            commentaryEl.style.overflowY = 'scroll';
+
+            render.renderCommentary( response );
+
+            // hide loader
+            // loader.classList.toggle('in-view');
+
+            // add eventListeners for the moves
+            // in the commentary
+            clientLogic.commentaryLinksEvents();
+        },
+        error: function(error) {
+          console.log('An error was encountered');
+        }
+    });
+  } else {
+    console.log("Match input empty!", matchInput);
+  }
 }

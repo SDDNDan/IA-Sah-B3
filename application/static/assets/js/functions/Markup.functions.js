@@ -119,41 +119,39 @@ export function createListGroupItemMarkup( strategyDetails ) {
 }
 
 export function createCommentMarkup( comment ) {
-    let commentarySection = document.getElementById('js-commentary');
+  if(comment.strategy != "undefined" && comment.commentary != "undefined" && comment.userMove !== comment.suggestedMove) {
+    let strategyLabel = document.createElement('span');
+    strategyLabel.classList = 'strategy-label';
+    strategyLabel.innerText =  comment.strategy + ": ";
 
-    if(comment.strategy != "undefined" && comment.commentary != "undefined"){
-        let strategyLabel = document.createElement('span');
-        strategyLabel.classList = 'strategy-label';
-        strategyLabel.innerText =  comment.strategy + ": ";
+    let suggestedMove = document.createElement('a');
+    suggestedMove.classList = 'suggested-move shadow-sm';
+    suggestedMove.setAttribute('href', "#");
+    suggestedMove.setAttribute('data-fen', comment.fen);
+    suggestedMove.setAttribute('data-move', comment.suggestedMove);
+    suggestedMove.innerText = comment.suggestedMove;
 
-        let suggestedMove = document.createElement('a');
-        suggestedMove.classList = 'suggested-move';
-        suggestedMove.setAttribute('href', "#");
-        suggestedMove.setAttribute('data-fen', comment.fen);
-        suggestedMove.setAttribute('data-move', comment.suggestedMove);
-        suggestedMove.innerText = comment.suggestedMove;
+    let userMove = document.createElement('a');
+    userMove.classList = 'user-move shadow-sm';
+    userMove.setAttribute('href', "#");
+    userMove.setAttribute('data-fen', comment.fen);
+    userMove.setAttribute('data-move', comment.userMove);
+    userMove.innerText =  comment.userMove;
 
-        let userMove = document.createElement('a');
-        userMove.classList = 'user-move';
-        userMove.setAttribute('href', "#");
-        userMove.setAttribute('data-fen', comment.fen);
-        userMove.setAttribute('data-move', comment.userMove);
-        userMove.innerText =  comment.userMove;
+    let parsedCommentary = comment.commentary;
+    parsedCommentary = parsedCommentary.replace(comment.suggestedMove, suggestedMove.outerHTML)
+    parsedCommentary = parsedCommentary.replace(comment.userMove, userMove.outerHTML)
 
-        let parsedCommentary = comment.commentary;
-        parsedCommentary = parsedCommentary.replace(comment.suggestedMove, suggestedMove.outerHTML)
-        parsedCommentary = parsedCommentary.replace(comment.userMove, userMove.outerHTML)
+    let commentaryText = document.createElement('span');
+    commentaryText.classList = 'commentary-text';
+    commentaryText.innerHTML =  parsedCommentary;
 
-        let commentaryText = document.createElement('span');
-        commentaryText.classList = 'commentary-text';
-        commentaryText.innerHTML =  parsedCommentary;
+    let commentaryContent = document.createElement('p');
+    commentaryContent.classList = 'commentary__line';
 
-        let commentaryContent = document.createElement('p');
-        commentaryContent.classList = 'commentary__line';
-
-        commentaryContent.appendChild(strategyLabel);
-        commentaryContent.appendChild(commentaryText);
-
-        $(commentarySection).append(commentaryContent);
-    }
+    commentaryContent.appendChild(strategyLabel);
+    commentaryContent.appendChild(commentaryText);
+    
+    return commentaryContent;
+  }
 }

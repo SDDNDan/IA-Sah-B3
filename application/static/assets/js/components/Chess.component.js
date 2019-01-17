@@ -31,6 +31,10 @@ const CHESS_COMPONENT = (function() {
     // history
     let newMove = CHESS.history({ verbose: true });
     history += `${newMove[newMove.length - 1].from}${newMove[newMove.length - 1].to}`;
+
+    if(CHESS.game_over() === true) {
+      async.getCommentary();
+    }
   };
 
   const _onSnapEnd = function() {

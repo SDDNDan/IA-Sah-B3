@@ -118,11 +118,13 @@
                   </h2>
                 </div>
             
-                <div id="commentary-tab-content" class="collapse" aria-labelledby="commentary-heading" data-parent="#actions-accordion">
+                <div id="commentary-tab-content" class="collapse show" aria-labelledby="commentary-heading" data-parent="#actions-accordion">
                   <div class="card-body p-2">
                     <!-- .commentary component -->
-                    <div id="js-commentary" class="commentary">
-                      
+                    <div id="js-commentary" class="commentary border p-2 shadow-sm">
+                      <p class="placeholder">Play until checkmate or load a match to see the commentary.</p>
+                      <!-- loader -->
+                      <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
                     </div>
                     <div class="col-12 p-0">
                       <div id="js-match-loader" class="match-loader">

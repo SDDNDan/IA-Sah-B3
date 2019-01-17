@@ -44,12 +44,15 @@ export function renderCurrentFEN( currentFEN ) {
     currentFenEl.innerText = currentFEN;
 }
 
-export function renderCommentary( commentaryText  ) {
-    let commentary = JSON.parse(commentaryText);
+export function renderCommentary( commentaryText ) {
+  let commentary = JSON.parse(commentaryText);
+  let commentaryEl = document.getElementById('js-commentary');
 
-    jQuery.each(commentary, function(index, el){
-        if(el.length > 0 && el[0] != "undefined"){
-            markup.createCommentMarkup(el[0]);
-        }
-    });
+  jQuery.each(commentary, function(index, el) {
+    if(el.length > 0 && el[0] != "undefined") {
+      let comment = markup.createCommentMarkup(el[0]);
+
+      $(commentaryEl).append(comment);
+    }
+  });
 }

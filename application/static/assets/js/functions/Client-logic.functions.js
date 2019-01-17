@@ -53,3 +53,22 @@ export function toggleStrategyDetails( eventTarget ) {
 export function chunkString(str, length) {
   return str.match(new RegExp('.{1,' + length + '}', 'g'));
 }
+
+export function commentaryLinksEvents() {
+  const moveLinks = document.querySelectorAll(`#js-commentary .commentary__line .commentary-text a.user-move,
+    #js-commentary .commentary__line .commentary-text a.suggested-move`
+  );
+
+  moveLinks.forEach( (link) => {
+    link.addEventListener('click', () => {
+      let fen = link.dataset.fen;
+
+      if( parseFEN(fen) ) {
+        CHESS_COMPONENT.CHESSBOARD.position(fen);
+        CHESS_COMPONENT.CHESS.load(fen);
+      } else {
+        console.log(fen);
+      }
+    });
+  });
+}

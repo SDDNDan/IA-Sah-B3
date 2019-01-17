@@ -303,8 +303,6 @@ html,
 .lds-ellipsis {
   display: none;
   position: absolute;
-  top: -3px;
-  left: 9px;
   transition: display .2s ease-in-out;
 }
 
@@ -321,22 +319,54 @@ html,
   background: var(--warning);
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
+
+/* .strategy__move loader */
+
+.strategy .strategy__move + .lds-ellipsis {
+  top: -3px;
+  left: 9px;
+}
+
+.strategy .strategy__move + .lds-ellipsis div {
+  top: 27px;
+  width: 5px;
+  height: 5px;
+}
+
+/* .commentary loader */
+
+.commentary > .lds-ellipsis {
+  display: none;
+  top: 55px;
+  right: 228px;
+}
+
+.commentary > .lds-ellipsis div {
+  top: 0;
+  width: 12px;
+  height: 12px;
+}
+
 .lds-ellipsis div:nth-child(1) {
   left: 6px;
   animation: lds-ellipsis1 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(2) {
   left: 6px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(3) {
   left: 26px;
   animation: lds-ellipsis2 0.6s infinite;
 }
+
 .lds-ellipsis div:nth-child(4) {
   left: 45px;
   animation: lds-ellipsis3 0.6s infinite;
 }
+
 @keyframes lds-ellipsis1 {
   0% {
     transform: scale(0);
@@ -345,6 +375,7 @@ html,
     transform: scale(1);
   }
 }
+
 @keyframes lds-ellipsis3 {
   0% {
     transform: scale(1);
@@ -353,6 +384,7 @@ html,
     transform: scale(0);
   }
 }
+
 @keyframes lds-ellipsis2 {
   0% {
     transform: translate(0, 0);
@@ -364,14 +396,67 @@ html,
 
 /* .commentary component */
 
-.commentary .commentary__line{
-  font-size: 13px;
+.commentary {
+  border-radius: 5px;
+  position: relative;
+  min-height: 130px;
+  max-height: 60vh;
+  background-color: white;
 }
 
-.commentary .commentary__line span.strategy-label{
+.commentary .placeholder {
+  text-align: center;
+  font-size: 32px;
+  color:	hsl(208, 7%, 85%);
+}
+
+.commentary .commentary__line {
+  display: flex;
+  font-size: 14px;
+}
+
+.commentary .commentary__line span.strategy-label {
+  margin-right: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.commentary .commentary__line .user-move,
+.commentary .commentary__line .suggested-move {
+  padding: 0 3px;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+
+  display: inline-block;
+  font-size: 1.1em;
   font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all .15s ease-in-out;
 }
 
+.commentary .commentary__line .user-move {
+  background-color: hsl(211, 100%, 94%);
+  color: var(--primary);
+}
+
+.commentary .commentary__line .suggested-move {
+  background-color:	hsl(151, 84%, 95%);
+  color: var(--teal);
+}
+
+.commentary .commentary__line .user-move:hover,
+.commentary .commentary__line .suggested-move:hover {
+  text-decoration: none;
+}
+
+.commentary .commentary__line .user-move:hover {
+  border-color: var(--primary)
+}
+
+.commentary .commentary__line .suggested-move:hover {
+  border-color: var(--teal)
+}
 
 /* flip chessboard */
 

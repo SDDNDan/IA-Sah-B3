@@ -83,22 +83,27 @@ suggestedMovesContainer.addEventListener('click', (e) => {
 
 strategyDetailsClose.addEventListener('click', () => strategyDetailsSectionEl.classList.toggle('in-view') );
 
-// match input submit button
-// const matchInputSubmitBtn = document.getElementById('js-match-submit');
-// let matchHistory = [];
-// matchInputSubmitBtn.addEventListener('click', () => {
-//   const matchTextarea = document.getElementById('js-match-textarea');
-//   let match = matchTextarea.value;
-
-//   matchHistory = clientLogic.chunkString(match, 4);
-//   // console.log(matchHistory);
-//   async.getMatchCommentary( match );
-// });
-
 // submit match
 const matchSubmitBtn = document.getElementById('js-match-submit');
+
 matchSubmitBtn.addEventListener('click', () => {
-    let matchCommentary = async.getCommentary();
+  let commentaryEl = document.getElementById('js-commentary');
+  let childNodes = commentaryEl.getElementsByClassName('commentary__line');
+  let placeholder = commentaryEl.children[0];
+
+  if( childNodes.length !== 0 ) {
+    // https://stackoverflow.com/a/6795938/9080110
+    for(let i = childNodes.length - 1; i >= 0; i--) {
+      let childNode = childNodes[i];
+  
+      childNode.parentNode.removeChild(childNode);
+    }
+
+    // show placeholder text
+    placeholder.style.display = 'block';
+  }
+
+  async.getCommentary();
 });
 
 // copy current fen
