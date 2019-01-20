@@ -50,7 +50,6 @@ header.sticky {
 
 .square-about-container{
     width: 70%;
-    height: 80%;
     background-color: white;
     display:flex;
 }
@@ -82,6 +81,7 @@ header.sticky {
     flex:1;
     padding-left: 20px;
     padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .tutorial-title{
@@ -105,7 +105,8 @@ header.sticky {
     height: 80%;
     background-color: white;
     display:flex;
-    
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .tutorial-description{
@@ -114,7 +115,7 @@ header.sticky {
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 20px;
     padding-top: 5%;
-
+    padding-bottom: 5%;
 }
 .tutorial-about-title{
     flex:1;
@@ -127,7 +128,6 @@ header.sticky {
 
 .tutorial-about-container{
     width: 100%;
-    height: 1600px;
     background-color: blanchedalmond;
     display:flex;
     justify-content: center;
