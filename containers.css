@@ -39,9 +39,9 @@ header.sticky {
 }
 
 .about-container{
-    margin-top: 30%;
+    margin-top: 25%;
     width: 100%;
-    height: 700px;
+    height: 1200px;
     background-color: blanchedalmond;
     display:flex;
     justify-content: center;
@@ -64,7 +64,7 @@ header.sticky {
 }
 
 .about-title-font{
-    font-size: 30px;
+    font-size: 70px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -73,14 +73,15 @@ header.sticky {
     height: 50px;
 }
 .about-description{
-    font-size: 16px;
+    font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
+    padding-top: 5%;
 }
 
 .square-about{
     flex:1;
     padding-left: 20px;
-    padding-top: 15%;
+    padding-top: 5%;
 }
 
 .tutorial-title{
@@ -109,23 +110,24 @@ header.sticky {
 
 .tutorial-description{
     flex:1;
-    font-size: 16px;
+    font-size: 25px;
     font-family: Arial, Helvetica, sans-serif;
     padding-left: 20px;
-    padding-top: 15%;
+    padding-top: 5%;
 
 }
 .tutorial-about-title{
     flex:1;
-    background-image: url('1.jpg');
-    background-position: center;
+    background-image: url('tutorial.jpg');
+    background-position-x: 70px;
+    background-position-y: 130px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 1000px;
 }
 
 .tutorial-about-container{
     width: 100%;
-    height: 700px;
+    height: 1600px;
     background-color: blanchedalmond;
     display:flex;
     justify-content: center;
@@ -133,8 +135,9 @@ header.sticky {
 }
 
 .description-tutorial{
-    font-size: 20px;
+    font-size: 50px;
     font-style: italic;
+    font-weight: bold;
     font-family: "Times New Roman", Times, serif;
     color: black;
 }
@@ -143,14 +146,8 @@ header.sticky {
     padding-top: 50px;
 }
 
-.image2{
-    background-image: url('analyze.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 .image3{
-    background-image: url('free.jpg');
+    background-image: url('1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
