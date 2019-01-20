@@ -49,7 +49,7 @@ export function renderCommentary( commentaryText ) {
   let commentaryEl = document.getElementById('js-commentary');
 
   jQuery.each(commentary, function(index, el) {
-    if(el.length > 0 && el[0] != "undefined") {
+    if(el.length > 0 && el[0] !== "undefined") {
       let comment = markup.createCommentMarkup(el[0]);
 
       $(commentaryEl).append(comment);

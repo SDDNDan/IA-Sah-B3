@@ -41,9 +41,6 @@ export function getSuggestedMoves() {
     loader.classList.toggle('in-view');
 
     $.getJSON( `${url}${strategyName}`, function( data ) {
-      // ATM the response to the request has the form
-      // [{strategy: ..., move: ...}]
-      // It should be an object though
       let response = data[0];
 
       // hide loader
@@ -93,6 +90,6 @@ export function getCommentary( matchString ) {
         }
     });
   } else {
-    console.log("Match input empty!", matchInput);
+    console.log("Match input empty!", matchString);
   }
 }
