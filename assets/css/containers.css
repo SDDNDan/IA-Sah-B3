@@ -1,6 +1,6 @@
 header{
     width: 100%;
-    background-image: url('BackGroundImage.jpg');
+    background-image: url('assets/img/BackGroundImage.jpg');
     width: 100%;
     height: 500px;
     background-size: cover;
@@ -32,7 +32,7 @@ header.sticky {
 .title-container{
     width: 100%;
     height: 700px;
-    background-image: url('BackGroundImage.jpg');
+    background-image: url('assets/img/BackGroundImage.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -56,7 +56,7 @@ header.sticky {
 
 .square-image{
     flex:1;
-    background-image: url('about.jpg');
+    background-image: url('assets/img/about.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -119,7 +119,7 @@ header.sticky {
 }
 .tutorial-about-title{
     flex:1;
-    background-image: url('tutorial.jpg');
+    background-image: url('assets/img/tutorial.jpg');
     background-position-x: 70px;
     background-position-y: 130px;
     background-repeat: no-repeat;
@@ -147,7 +147,7 @@ header.sticky {
 }
 
 .image3{
-    background-image: url('1.jpg');
+    background-image: url('assets/img/1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
