@@ -214,7 +214,7 @@ class Attributes:
             for k in range(-1, 2):
                 v_column = column + k
                 for j in range(1, line):
-                    if matrix_board[j][v_column] == 'p':
+                    if 0 <= v_column <= 7 and matrix_board[j][v_column] == 'p':
                         is_free = False
             if is_free:
                 return True
@@ -238,7 +238,7 @@ class Attributes:
             for k in range(-1, 2):
                 v_column = column + k
                 for j in range(line + 1, 8):
-                    if matrix_board[j][v_column] == 'P':
+                    if 0 <= v_column <= 7 and matrix_board[j][v_column] == 'P':
                         is_free = False
             if is_free:
                 return True
@@ -346,6 +346,7 @@ class Attributes:
                 return True
         return False
 
+
 """
 pioni in fata regelui
 detectie deschidere
@@ -370,7 +371,7 @@ def get_matrix(board):
     for k, v in board.piece_map().items():
         line = k // 8
         column = k % 8
-        matrix[7-line][column] = v.symbol()
+        matrix[7 - line][column] = v.symbol()
     return matrix
 
 
