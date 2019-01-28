@@ -564,8 +564,10 @@ html,
   z-index: 3;
 }
 
-.help__content {
-  display: inline-block;
+.help.in-view {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0);
 }
 
 .help .help__close {
@@ -578,10 +580,16 @@ html,
   z-index: 4;
 }
 
-.help.in-view {
-	opacity: 1;
-	pointer-events: auto;
-	transform: translateY(0);
+.help__content {
+  display: inline-block;
+}
+
+/* .help__content dl {
+  font-size: 1.1em;
+} */
+
+.help__content hr {
+  border-color: var(--dark);
 }
 
 /* comments component */

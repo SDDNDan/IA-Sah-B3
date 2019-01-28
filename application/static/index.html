@@ -167,19 +167,42 @@
       <div class="help__content">
         <div class="container-fluid">
           <div class="row justify-content-center">
-            <div class="col-10 pt-2">
-                <h1 class="display-5">Help center</h1>
-                <p class="lead">This application allows users to play chess in an easy way by offering the participants posibilities to see the next move using some specific strategies depending on the current configuration of the chess table. </p>
-                <h2 class="display-6">How can we see the next move?</h2>
-                <p class="lead">"Get suggested moves" BUTTON shows us a series of moves computed by some algorithms that analyse the best move related to the current possition of the table.</p>
-                <h2 class="display-6">How can we flip the board?</h2>
-                <p class="lead">We can flip the board by pressing the "Flip board" BUTTON.</p>
-                <h2 class="display-6">How can we set the interactive board in a specific state? </h2>
-                <p class="lead">We can set the interactive board by introducing in the "FEN " INPUT a state of table and then press the "Submit" BUTTON. </p>
-                <h2 class="display-6">How can we see the strategies details?</h2>
-                <p class="lead">In the navigation bar you can use the "Strategies details" BUTTON, which presents the information every strategy that has been used in the game.</p>
-                <h2 class="display-6">What contains "Match analysis"?</h2>
-                <p class="lead">The "Match analysis" page contains a interactive table, a component with the following zones: game history and game controller(play, pause, undo, reset).</p>
+            <div class="col-10 pt-2 pb-2">
+              <section>
+                <!-- <h2>Help center</h2> -->
+                <h5>Suggested Moves</h5>
+                <p class="mb-1">The suggested moves component can be opened by clicking on the green <em>Suggested moves</em> link. From the expanded area you can choose to do one of the following:
+                <dl class="pl-4 mb-1">
+                  <dt>Get suggested moves</dt>
+                  <dd>Clicking the button will trigger all the strategies &amp; algorithms to suggest a best move, given the current state of the board. Hovering over any of the strategies highlights the move on the chessboard.</dd>
+
+                  <dt>Flip the chessboard</dt>
+                  <dd><em>Flip the board</em> button literally flips the table so the opposite color is in front of you.</dd>
+
+                  <dt>Set the chessboard FEN</dt>
+                  <dd>If you want to set the chessboard to a specific configuration, you can use the <em>Set chessboard FEN</em> field. You can learn more about the FEN notation <a href="https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation" target="_blank">here</a>.</dd>
+
+                  <dt>See details about a strategy</dt>
+                  <dd>Except from the short description found right under the name of the strategy/algorithm, clicking on any strategy will bring up an element with a more detailed overview and a link to some documentation.</dd>
+                </dl>
+              </section>
+              <hr class="mt-2 mb-2">
+              <section>
+                <h5>Commentary</h5>
+                <p class="mb-1">The commentary component can be opened by clicking the <em>Commentary</em> blue link. Said component produces a summary of a finished match exposing key points in a match where the platform computed a better move. The computed moves are highlighted with the color <b>blue</b>, while the user's move are highlighted with <b>green</b>. Clicking either the blue or green move from a commentary line will set the chessboard configuration to the on right before that move. Hovering over the moves highlights them on the chessboard but only after a click happened.</p>
+                <p class="mb-1">
+                  In order to achieve the finished state you can do one of two things:
+                  <ol>
+                    <li>Play using the interactive chessboard until checkmate. In this scenario the app will automatically generate a summary.</li>
+                    <li>Using the match loader field submit a string that represents a sequence of (from, to)moves. The string must represent a match from start until checkmate. Press the <em>Submit</em> button to get the summary.</li>
+                  </ol>
+                </p>
+              </section>
+              <hr class="mt-2 mb-2">
+              <section>
+                <h5>Current FEN</h5>
+                <p class="mb-1">The current FEN (configuration) is right under the chessboard it's always updating as a reaction to any move that takes place. Right next to it there is <em>Copy to clipboard</em> button, in case you want to save the current state.</p>
+              </section>
             </div>
           </div>
         </div>
@@ -190,5 +213,4 @@
 
   <script src="/static/assets/js/main.js" type="module"></script>
 </body>
-
 </html>

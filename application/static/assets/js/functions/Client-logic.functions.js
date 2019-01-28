@@ -106,9 +106,16 @@ export function highlightMove( strategyName, onHover = true ) {
 export function clearSuggestedMoves() {
   const suggestedMovesContainer = document.getElementById("js-suggested-moves-container");
   const movesEls = suggestedMovesContainer.querySelectorAll(".strategy .strategy__move");
+  const loaders = suggestedMovesContainer.querySelectorAll(".strategy .strategy__move + .lds-ellipsis");
 
   movesEls.forEach((moveEl) => {
     moveEl.innerText = "";
     moveEl.style.opacity = 0;
+  });
+
+  loaders.forEach((loader) => {
+    if ( loader.classList.contains("in-view") ) {
+      loader.classList.remove("in-view");
+    }
   });
 }

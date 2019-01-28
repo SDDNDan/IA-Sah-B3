@@ -87,7 +87,7 @@ export function getCommentary( matchString ) {
             clientLogic.commentaryLinksEvents();
         },
         error: function(error) {
-          console.log('An error was encountered');
+          console.log('An error was encountered:', error);
         }
     });
   } else {
