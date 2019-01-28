@@ -12,10 +12,6 @@ chess = Chess()
 print("Chess class initialized successfully!")
 
 
-def get_strategy_name():
-    return "MinMax"
-
-
 def is_final_state(node):
     chess.set_fen(node)
     if chess.is_over():
@@ -52,7 +48,7 @@ def min_max(fen, depth, maximizing_player):
         value = -999999999999999999
         best_move = ""
         for child, move in get_possible_states(fen):
-            temp = max(value,min_max(child, depth - 1, False)[0])
+            temp = max(value, min_max(child, depth - 1, False)[0])
             if temp > value:
                 best_move = move
                 value = temp
@@ -61,19 +57,13 @@ def min_max(fen, depth, maximizing_player):
         best_move = ""
         value = 999999999999999999
         for child, move in get_possible_states(fen):
-            temp = min(value,min_max(child, depth - 1, True)[0])
-            if temp < value :
+            temp = min(value, min_max(child, depth - 1, True)[0])
+            if temp < value:
                 value = temp
                 best_move = move
 
         return value, best_move
 
-
-def get_strategy_comment(fen, move):
-    return get_comment(engine, fen, move)
-
-def get_strategy_move(fen):
-    return min_max(fen, 2, True)[1]
 
 # def get_strategy_move(fen):
 #     chess = Chess()
@@ -100,3 +90,22 @@ def get_strategy_move(fen):
 #             best_score = chess_clone_score
 #
 #     return best_move
+
+def get_strategy_name():
+    return "Minmax"
+
+
+def get_strategy_move(fen):
+    return min_max(fen, 2, True)[1]
+
+
+def get_strategy_short_description():
+    return 'Minimax is an algorithm used in artificial intelligence, decision theory, game theory, statistics and philosophy for minimizing the possible loss for a worst case (maximum loss) scenario.'
+
+
+def get_strategy_description():
+    return 'Minimax is an algorithm used to determine the score in a zero-sum game after a certain number of moves, with best play according to an evaluation function. The algorithm can be explained like this: In a one-ply search, where only move sequences with length one are examined, the side to move (max player) can simply look at the evaluation after playing all possible moves. The move with the best evaluation is chosen. But for a two-ply search, when the opponent also moves, things become more complicated. The opponent (min player) also chooses the move that gets the best score. Therefore, the score of each move is now the score of the worst that the opponent can do.'
+
+
+def get_strategy_documentation_link():
+    return 'https://www.chessprogramming.org/index.php?title=Minimax&mobileaction=toggle_view_mobile'

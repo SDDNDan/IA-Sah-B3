@@ -11,10 +11,6 @@ chess = Chess()
 print("Chess class initialized successfully!")
 
 
-def get_strategy_name():
-    return "Alpha-beta pruning"
-
-
 def is_final_state(node):
     chess.set_fen(node)
 
@@ -75,9 +71,21 @@ def alpha_beta(fen, depth, alpha, beta, maximizing_player):
         return value, best_move
 
 
+def get_strategy_name():
+    return "Alpha-Beta Pruning"
+
+
 def get_strategy_move(fen):
     return alpha_beta(fen, 2, -999999999999999999, 999999999999999999, True)[1]
 
 
-def get_strategy_comment(fen, move):
-    return get_comment(engine, fen, move)
+def get_strategy_short_description():
+    return 'The alpha-beta prunning algorithm is a significant enhancement to the minmax algorithm that eliminates the need to search large portions of the game tree applying a branch-and-bound technique.'
+
+
+def get_strategy_description():
+    return 'The Alpha-Beta algorithm (Alpha-Beta Pruning, Alpha-Beta Heuristic) is a significant enhancement to the minimax search algorithm that  eliminates the need to search large portions of the game tree applying a branch-and-bound technique. Remarkably, it does this without any potential  of overlooking a better move. If one already has found a quite good move and search for alternatives, one refutation is enough to avoid it. No need  to look for even stronger refutations. The algorithm maintains two values, alpha and beta. They represent the minimum score that the maximizing player  is assured of and the maximum score that the minimizing player is assured of respectively. Consider checking the full documentation for more details.'
+
+
+def get_strategy_documentation_link():
+    return 'https://www.chessprogramming.org/Alpha-Beta'
