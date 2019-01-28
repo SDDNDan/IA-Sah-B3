@@ -154,66 +154,227 @@ class Attributes:
     def white_in_check(board):
         if board.turn == chess.WHITE:
             return board.is_check()
+        else:
+            return False
 
     @staticmethod
     def black_in_check(board):
         if board.turn == chess.BLACK:
             return board.is_check()
-
-
-"""
-    @staticmethod
-    def white_has_passing_pawns(board):
-        matrix_board = chess.Board(board.fen())
-
-        for col in range(8):
-            black_pawn = 0
-            white_pawn = 0
-            for lin in range(8):
-                if matrix_board[lin][col] == 'p':
-                    black_pawn = 1
-                elif matrix_board[lin][col] == 'P':
-                    white_pawn = 1
-            if white_pawn and not black_pawn:
-                return True
-
-        return False
+        else:
+            return False
 
     @staticmethod
-    def black_has_passing_pawns(board):
-        matrix_board = chess.Board(board.fen())
-        for col in range(8):
-            black_pawn = 0
-            white_pawn = 0
-            for lin in range(8):
-                if matrix_board[lin][col] == 'p':
-                    black_pawn = 1
-                elif matrix_board[lin][col] == 'P':
-                    white_pawn = 1
-            if not white_pawn and black_pawn:
+    def white_has_active_knight(board):
+        for k, v in board.piece_map().items():
+            if v == 'N' and k >= 32:
                 return True
         return False
 
     @staticmethod
-    def white_has_taken_diagonal(board):
-        matrix_board = chess.Board(board.fen())
+    def black_has_active_knight(board):
+        for k, v in board.piece_map().items():
+            if v == 'n' and k < 32:
+                return True
+        return False
+
+    @staticmethod
+    def white_has_active_bishop(board):
+        for k, v in board.piece_map().items():
+            if v == 'B' and k >= 32:
+                return True
+        return False
+
+    @staticmethod
+    def black_has_active_bishop(board):
+        for k, v in board.piece_map().items():
+            if v == 'b' and k < 32:
+                return True
+        return False
+
+    @staticmethod
+    def white_has_active_rook(board):
+        for k, v in board.piece_map().items():
+            if v == 'R' and k >= 32:
+                return True
+        return False
+
+    @staticmethod
+    def black_has_active_rook(board):
+        for k, v in board.piece_map().items():
+            if v == 'r' and k < 32:
+                return True
+        return False
+
+    @staticmethod
+    def white_has_advanced_pawn(board):
+        for k, v in board.piece_map().items():
+            if v == 'P' and k >= 32:
+                return True
+        return False
+
+    @staticmethod
+    def black_has_advanced_pawn(board):
+        for k, v in board.piece_map().items():
+            if v == 'p' and k < 32:
+                return True
+        return False
+
+    @staticmethod
+    def white_has_passing_pawn(board):
+        matrix_board = get_matrix(board)
+        pawn_lines = []
+        pawn_columns = []
+
+        for line in range(8):
+            for column in range(8):
+                if matrix_board[line][column] == 'P':
+                    pawn_lines.append(line)
+                    pawn_columns.append(column)
+        for i in range(len(pawn_lines)):
+            line = pawn_lines[i]
+            column = pawn_columns[i]
+            is_free = True
+            for k in range(-1, 2):
+                v_column = column + k
+                for j in range(1, line):
+                    if matrix_board[j][v_column] == 'p':
+                        is_free = False
+            if is_free:
+                return True
+        return False
+
+    @staticmethod
+    def black_has_passing_pawn(board):
+        matrix_board = get_matrix(board)
+        pawn_lines = []
+        pawn_columns = []
+
+        for line in range(8):
+            for column in range(8):
+                if matrix_board[line][column] == 'p':
+                    pawn_lines.append(line)
+                    pawn_columns.append(column)
+        for i in range(len(pawn_lines)):
+            line = pawn_lines[i]
+            column = pawn_columns[i]
+            is_free = True
+            for k in range(-1, 2):
+                v_column = column + k
+                for j in range(line + 1, 8):
+                    if matrix_board[j][v_column] == 'P':
+                        is_free = False
+            if is_free:
+                return True
+        return False
+
+    @staticmethod
+    def white_controls_main_diagonal_with_a_strong_bishop(board):
+        matrix_board = get_matrix(board)
+
+        for i in range(8):
+            if matrix_board[i][7 - i] == 'B':
+                return True
+        return False
+
+    @staticmethod
+    def white_controls_secondary_diagonal_with_a_strong_bishop(board):
+        matrix_board = get_matrix(board)
+
         for i in range(8):
             if matrix_board[i][i] == 'B':
                 return True
-            if matrix_board[i][7-i] == 'B':
+        return False
+
+    @staticmethod
+    def black_controls_main_diagonal_with_a_strong_bishop(board):
+        matrix_board = get_matrix(board)
+
+        for i in range(8):
+            if matrix_board[i][7 - i] == 'b':
                 return True
         return False
 
     @staticmethod
-    def black_has_taken_diagonal(board):
-        matrix_board = chess.Board(board.fen())
+    def black_controls_secondary_diagonal_with_a_strong_bishop(board):
+        matrix_board = get_matrix(board)
+
         for i in range(8):
             if matrix_board[i][i] == 'b':
                 return True
-            if matrix_board[i][7-i] == 'b':
+        return False
+
+    @staticmethod
+    def white_controls_open_column(board):
+        matrix_board = get_matrix(board)
+        for column in range(8):
+            has_white_rook = False
+            has_black_rook = False
+            is_open = True
+            for line in range(8):
+                if matrix_board[line][column] == 'R':
+                    has_white_rook = True
+                if matrix_board[line][column] == 'r':
+                    has_black_rook = True
+                if matrix_board[line][column] == 'p' or matrix_board[line][column] == 'P':
+                    is_open = False
+            if is_open and has_white_rook and not has_black_rook:
                 return True
         return False
+
+    @staticmethod
+    def black_controls_open_column(board):
+        matrix_board = get_matrix(board)
+        for column in range(8):
+            has_white_rook = False
+            has_black_rook = False
+            is_open = True
+            for line in range(8):
+                if matrix_board[line][column] == 'R':
+                    has_white_rook = True
+                if matrix_board[line][column] == 'r':
+                    has_black_rook = True
+                if matrix_board[line][column] == 'p' or matrix_board[line][column] == 'P':
+                    is_open = False
+            if is_open and not has_white_rook and has_black_rook:
+                return True
+        return False
+
+    @staticmethod
+    def white_controls_semi_open_column(board):
+        matrix_board = get_matrix(board)
+        for column in range(8):
+            has_white_rook = False
+            has_black_pawn = False
+            for line in range(8):
+                if matrix_board[line][column] == 'R':
+                    has_white_rook = True
+                if matrix_board[line][column] == 'p':
+                    has_black_pawn = True
+            if has_black_pawn and has_white_rook:
+                return True
+        return False
+
+    @staticmethod
+    def black_controls_semi_open_column(board):
+        matrix_board = get_matrix(board)
+        for column in range(8):
+            has_black_rook = False
+            has_white_pawn = False
+            for line in range(8):
+                if matrix_board[line][column] == 'r':
+                    has_black_rook = True
+                if matrix_board[line][column] == 'P':
+                    has_white_pawn = True
+            if has_black_rook and has_white_pawn:
+                return True
+        return False
+
 """
+pioni in fata regelui
+detectie deschidere
+"""
+
 
 # def white_knight_forks(board):
 
@@ -223,14 +384,18 @@ class Attributes:
 
 # def black_bishop_fork(board):
 
-# def white_has_promoted_pawns(board):
 
-# def black_has_promoted_pawns(board):
-
-# def white_in_zugzwang(board):
-
-# def black_in_zugzwang(board):
-
+def get_matrix(board):
+    matrix = []
+    for i in range(8):
+        matrix.append([])
+        for j in range(8):
+            matrix[i].append('.')
+    for k, v in board.piece_map().items():
+        line = k // 8
+        column = k % 8
+        matrix[line][column] = v
+    return matrix
 
 def get_attribute_array(fen):
     board = chess.Board()
@@ -258,9 +423,9 @@ def compute_random_comment(features1, features2, god_move, pleb_move, color_to_m
     if count1 > 0 and count2 > 0:
         thoughts = [
             'I would rather play {} because {}, while after playing {}, the disadvantages are {}'
-            .format(god_move, s1, pleb_move, s2),
+                .format(god_move, s1, pleb_move, s2),
             'I think {} is the best move because {}. I think your move {} is not as good because {}'
-            .format(god_move, s1, pleb_move, s2),
+                .format(god_move, s1, pleb_move, s2),
             # '{} good move. {} bad move. Get that, dum dum?'
             # .format(god_move, pleb_move),
             # 'After looking at 6 million positions I concluded that {} is the best move because {}. '
@@ -282,7 +447,7 @@ def compute_random_comment(features1, features2, god_move, pleb_move, color_to_m
         thoughts = [
             'Could you please tell me how is it good when {}. Hey, I will give you a slight hint: {} is '
             'the best move. {} might be a genius move, but this kind of genius doesn\'t play chess.'
-            .format(s2, god_move, pleb_move)
+                .format(s2, god_move, pleb_move)
         ]
     else:
         thoughts = ['I can\'t explain why but my move {} is just better than your {}.'.format(
@@ -362,7 +527,8 @@ def get_comment(engine, fen, move):
             attributes1 = get_attribute_array(strategy_analysis_board.fen())
             attributes2 = get_attribute_array(player_analysis_board.fen())
         """
-        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move, color_to_move, color_not_to_move), strategy_best_move)
+        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move,
+                                 color_to_move, color_not_to_move), strategy_best_move)
     return (None, None)
 
 
