@@ -527,6 +527,7 @@ html,
   left: 15px;
   right: 15px;
   opacity: 0;
+  pointer-events: none;
 }
 
 /* .help component */
