@@ -33,18 +33,19 @@ export function getSuggestedMoves() {
     let loader = document.getElementById(`js-loader-${strategyName}`);
     // hide move element
     moveEl.style.opacity = 0;
+    moveEl.innerText = "";
 
-    if( loader.classList.contains('in-view') ) {
+    if ( loader.classList.contains('in-view') ) {
       loader.classList.remove('in-view');
     }
     // show loader
-    loader.classList.toggle('in-view');
+    loader.classList.add('in-view');
 
     $.getJSON( `${url}${strategyName}`, function( data ) {
       let response = data[0];
 
       // hide loader
-      loader.classList.toggle('in-view');
+      loader.classList.remove('in-view');
       // show move element
       render.renderSuggestedMove(strategyName, response.move);
     });

@@ -1,5 +1,6 @@
 import * as render from "../functions/Render.functions.js";
 import * as async from "../functions/Async.functions.js"
+import * as clientLogic from "../functions/Client-logic.functions.js";
 
 const CHESS_COMPONENT = (function() {
 
@@ -24,9 +25,8 @@ const CHESS_COMPONENT = (function() {
     // illegal move
     if (move === null) return 'snapback';
   
-    // renderCurrentFen() - call
-
     render.renderCurrentFEN(CHESS.fen());
+    clientLogic.clearSuggestedMoves();
     
     // history
     let newMove = CHESS.history({ verbose: true });

@@ -1,4 +1,5 @@
 import * as markup from "./Markup.functions.js";
+import * as clientLogic from "./Client-logic.functions.js";
 
 /* ********render functions******** */
 
@@ -25,6 +26,20 @@ export function renderSuggestedMovesMarkup( strategiesResponse ) {
   strategiesResponse.forEach( (strategy) => {
     let groupItem = markup.createListGroupItemMarkup( strategy );
     suggestedMovesContainer.appendChild( groupItem );
+  });
+
+  // highlight suggested move
+  const strategyEls = suggestedMovesContainer.querySelectorAll(".strategy");
+
+  strategyEls.forEach((strategyEl) => {
+    strategyEl.addEventListener("mouseenter", () => {
+      const strategyName = strategyEl.getAttribute("data-strategy-name");
+      clientLogic.highlightMove(strategyName);
+    });
+    strategyEl.addEventListener("mouseleave", () => {
+      const strategyName = strategyEl.getAttribute("data-strategy-name");
+      clientLogic.highlightMove(strategyName, false);
+    });
   });
 }
 
