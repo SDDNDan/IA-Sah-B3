@@ -74,6 +74,24 @@ html,
   text-transform: uppercase;
 }
 
+[data-square]:before {
+  content: "";
+  border: 3px solid var(--teal);
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 50ms ease-in;
+  transform: scale(0.9);
+}
+
+[data-square].highlight:before {
+  opacity: 1;
+}
+
 /* .current-fen component */
 
 .current-fen {
@@ -255,6 +273,7 @@ html,
 }
 
 .suggested-moves .desc {
+  max-width: 95%;
   font-size: 14px;
 }
 
@@ -311,19 +330,20 @@ html,
 /* loader */
 
 .lds-ellipsis {
-  display: none;
-  position: absolute;
-  transition: display .2s ease-in-out;
-  transform: translateZ(0);
+  display: inline-block;
+  position: relative;
+  transition: opacity 75ms ease-out;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .lds-ellipsis.in-view {
-  display: inline-block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .lds-ellipsis div {
   position: absolute;
-  top: 27px;
   width: 5px;
   height: 5px;
   border-radius: 50%;
@@ -334,12 +354,10 @@ html,
 /* .strategy__move loader */
 
 .strategy .strategy__move + .lds-ellipsis {
-  top: -3px;
-  left: 9px;
+  left: -50%;
 }
 
 .strategy .strategy__move + .lds-ellipsis div {
-  top: 27px;
   width: 7px;
   height: 7px;
 }
@@ -348,7 +366,7 @@ html,
 
 .commentary > .lds-ellipsis {
   display: none;
-  top: 55px;
+  /* top: 55px; */
   right: 228px;
 }
 

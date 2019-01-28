@@ -80,3 +80,35 @@ export function commentaryLinksEvents() {
     });
   });
 }
+
+export function highlightMove( strategyName, onHover = true ) {
+  const chessboadContainer = document.getElementById("js-chessboard");
+  const chessboardEl = chessboadContainer.querySelector(`div[class^="chessboard"] > div[class^="board"]`);
+  const move = document.getElementById(`js-move-${strategyName}`).innerText;
+
+  if ( move === "" ) {
+    return
+  } else {
+    const fromTo = chunkString(move, 2);
+    const fromSquareEl = chessboardEl.querySelector(`[data-square=${fromTo[0]}]`);
+    const toSquareEl = chessboardEl.querySelector(`[data-square=${fromTo[1]}]`);
+
+    if ( onHover ) {
+      fromSquareEl.classList.add("highlight");
+      toSquareEl.classList.add("highlight");
+    } else {
+      fromSquareEl.classList.remove("highlight");
+      toSquareEl.classList.remove("highlight");
+    }
+  }
+}
+
+export function clearSuggestedMoves() {
+  const suggestedMovesContainer = document.getElementById("js-suggested-moves-container");
+  const movesEls = suggestedMovesContainer.querySelectorAll(".strategy .strategy__move");
+
+  movesEls.forEach((moveEl) => {
+    moveEl.innerText = "";
+    moveEl.style.opacity = 0;
+  });
+}
