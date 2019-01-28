@@ -313,13 +313,17 @@ class Attributes:
         matrix_board = get_matrix(board)
         for column in range(8):
             has_white_rook = False
+            has_white_pawn = False
             has_black_pawn = False
+
             for line in range(8):
                 if matrix_board[line][column] == 'R':
                     has_white_rook = True
                 if matrix_board[line][column] == 'p':
                     has_black_pawn = True
-            if has_black_pawn and has_white_rook:
+                if matrix_board[line][column] == 'P':
+                    has_white_pawn = True
+            if has_black_pawn and has_white_rook and not has_white_rook:
                 return True
         return False
 
@@ -329,12 +333,15 @@ class Attributes:
         for column in range(8):
             has_black_rook = False
             has_white_pawn = False
+            has_black_pawn = False
             for line in range(8):
                 if matrix_board[line][column] == 'r':
                     has_black_rook = True
                 if matrix_board[line][column] == 'P':
                     has_white_pawn = True
-            if has_black_rook and has_white_pawn:
+                if matrix_board[line][column] == 'p':
+                    has_black_pawn = True
+            if has_black_rook and has_white_pawn and not has_black_pawn:
                 return True
         return False
 
@@ -488,7 +495,7 @@ def get_comment(engine, fen, move):
 
     sf.set_fen_position(strategy_analysis_board.fen())
     sf.set_fen_position(player_analysis_board.fen())
-    """
+
     strategy_eval = -100
     try:
         strategy_eval = sf.get_evaluation_depth(12)
@@ -503,20 +510,20 @@ def get_comment(engine, fen, move):
 
     if abs(player_eval - strategy_eval) > 0.4:
 
-        attributes1 = get_attribute_array(strategy_analysis_board.fen(), color_to_move)
-        attributes2 = get_attribute_array(player_analysis_board.fen(), color_not_to_move)
-        while diff_count(attributes1, attributes2, color_to_move) < 3:
+        # attributes1 = get_attribute_array(strategy_analysis_board.fen(), color_to_move)
+        # attributes2 = get_attribute_array(player_analysis_board.fen(), color_not_to_move)
+        for i in range(3):  # preferably odd number
             sf.set_fen_position(strategy_analysis_board.fen())
             strategy_analysis_board.push_uci(sf.get_best_move_depth(12))
 
             sf.set_fen_position(player_analysis_board.fen())
             player_analysis_board.push_uci(sf.get_best_move_depth(12))
 
-            attributes1 = get_attribute_array(strategy_analysis_board.fen())
-            attributes2 = get_attribute_array(player_analysis_board.fen())
-        """
-    return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move,
-                             color_to_move, color_not_to_move), strategy_best_move)
+            # attributes1 = get_attribute_array(strategy_analysis_board.fen())
+            # attributes2 = get_attribute_array(player_analysis_board.fen())
+
+        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move,
+                                 color_to_move, color_not_to_move), strategy_best_move)
     # return (None, None)
 
 
