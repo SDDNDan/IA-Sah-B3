@@ -396,8 +396,6 @@ def get_attribute_array(fen):
 
 
 def compute_random_comment(features1, features2, god_move, pleb_move, color_to_move, color_not_to_move):
-    features1 = [s for s in features1 if s.startswith(color_to_move)]
-    features2 = [s for s in features2 if s.startswith(color_not_to_move)]
 
     s1 = ', '.join(features1)
     s2 = ', '.join(features2)
@@ -453,6 +451,18 @@ def generate_comment(fen1, fen2, engine_move, player_move, color_to_move, color_
     for attribute_name2, attribute_value2 in attributes2.items():
         if attribute_value2 and not attributes1[attribute_name2]:
             features2.append(attribute_name2)
+
+    features1 = [s for s in features1 if s.startswith(color_to_move)]
+    features2 = [s for s in features2 if s.startswith(color_not_to_move)]
+
+    if len(features1) == 0 and len(features2) == 0:
+        common = []
+        for attribute_name1, attribute_value1 in attributes1.items():
+            if attribute_value1 and attributes2[attribute_name1]:
+                common.append(attribute_name1)
+        thought = 'Well, the positions we think about are quite similar. We both think at a position where {}.'\
+            .format(', '.join(common))
+        return thought
     return compute_random_comment(features1, features2, engine_move, player_move, color_to_move, color_not_to_move)
 
 
@@ -485,13 +495,14 @@ def get_comment(engine, fen, move):
     player_analysis_board.push_uci(move)
 
     sf.set_fen_position(strategy_analysis_board.fen())
+    sf.set_fen_position(player_analysis_board.fen())
+    """
     strategy_eval = -100
     try:
         strategy_eval = sf.get_evaluation_depth(12)
     except:
         print("EXCEPTION IN STRATEGY EVAL!!!")
 
-    sf.set_fen_position(player_analysis_board.fen())
     player_eval = -100
     try:
         player_eval = sf.get_evaluation_depth(12)
@@ -499,7 +510,7 @@ def get_comment(engine, fen, move):
         print("EXCEPTION IN PLAYER EVAL!!!")
 
     if abs(player_eval - strategy_eval) > 0.4:
-        """
+
         attributes1 = get_attribute_array(strategy_analysis_board.fen(), color_to_move)
         attributes2 = get_attribute_array(player_analysis_board.fen(), color_not_to_move)
         while diff_count(attributes1, attributes2, color_to_move) < 3:
@@ -512,9 +523,9 @@ def get_comment(engine, fen, move):
             attributes1 = get_attribute_array(strategy_analysis_board.fen())
             attributes2 = get_attribute_array(player_analysis_board.fen())
         """
-        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move,
-                                 color_to_move, color_not_to_move), strategy_best_move)
-    return (None, None)
+    return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move,
+                             color_to_move, color_not_to_move), strategy_best_move)
+    # return (None, None)
 
 
 if __name__ == '__main__':
