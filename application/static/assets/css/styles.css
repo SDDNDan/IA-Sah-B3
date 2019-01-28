@@ -11,44 +11,38 @@ html,
 /* HEADER */
 /* .nav--header */
 .nav--header {
-  overflow: hidden;
-  width: 100%;
-  background-color: var(--gray);
+  padding: .5em .8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  background-color: var(--dark);
 }
 
-.nav--header__logo {
-  float: left;
-  color: white;
-  width: 50px;
-  height: auto;
-  border-radius: 50px;
-}
-
-.nav--header li,
-.nav--header__app-title {
-  float: left;
-  color: #c0bbbb;
-  text-decoration: none;
-  font-size: 17px;
-  list-style-type: none;
+.nav--header span.help-trigger {
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  color: hsl(210, 17%, 98%);
+  font-size: 1.2em;
 }
 
-.nav--header li:hover {
-  color: white;
+.nav--header span.help-trigger:hover {
+  color: hsl(211, 100%, 50%);
 }
 
-.nav--header__app-title {
-  font-size: 26px;
-  text-decoration: none;
+.logo {
+  width: 192px;
+  height: auto;
 }
 
-.nav--header__app-title:hover {
-  color: white;
+.logo--dark {
+  display: none;
 }
 
 /* MAIN */
+
+.main {
+  max-height: 85vh;
+}
 
 /* chess component */
 

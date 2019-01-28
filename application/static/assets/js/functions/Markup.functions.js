@@ -20,7 +20,7 @@ export function createCardMarkup( strategyDetails ) {
 
   // .card-text
   let cardText = document.createElement('p');
-  cardText.classList = 'card-text';
+  cardText.classList = 'card-text lead';
   cardText.innerText = strategyDetails.description;
 
   // .btn.btn-primary link to documentation
