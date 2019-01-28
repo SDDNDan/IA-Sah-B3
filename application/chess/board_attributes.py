@@ -4,6 +4,7 @@ import chess
 import random
 
 from application.chess.engine import Engine
+from application.chess.chess_game import Chess
 
 SQUARES = [
     A1, B1, C1, D1, E1, F1, G1, H1,
@@ -17,6 +18,7 @@ SQUARES = [
 
 print("Initializing Engine class for board attributes ...")
 sf = Engine('../chess_engines_cpp/stockfish-10-win/Windows/stockfish_10_x64.exe')
+c = Chess()  # our wrapper
 print("Engine class initialized successfully!")
 
 
@@ -239,14 +241,20 @@ def get_attribute_array(fen):
             method = getattr(Attributes, method_name)
             name = method_name.replace("_", " ")
             result[name] = method(board=board)
+
     return result
 
 
-def compute_random_comment(features1, features2, god_move, pleb_move):
+def compute_random_comment(features1, features2, god_move, pleb_move, color_to_move, color_not_to_move):
+    features1 = [s for s in features1 if s.startswith(color_to_move)]
+    features2 = [s for s in features2 if s.startswith(color_not_to_move)]
+
     s1 = ', '.join(features1)
     s2 = ', '.join(features2)
+
     count1 = len(features1)
     count2 = len(features2)
+
     if count1 > 0 and count2 > 0:
         thoughts = [
             'I would rather play {} because {}, while after playing {}, the disadvantages are {}'
@@ -276,10 +284,15 @@ def compute_random_comment(features1, features2, god_move, pleb_move):
             'the best move. {} might be a genius move, but this kind of genius doesn\'t play chess.'
             .format(s2, god_move, pleb_move)
         ]
+    else:
+        thoughts = ['I can\'t explain why but my move {} is just better than your {}.'.format(
+            god_move, pleb_move)
+        ]
+
     return random.choice(thoughts)
 
 
-def generate_comment(fen1, fen2, engine_move, player_move):
+def generate_comment(fen1, fen2, engine_move, player_move, color_to_move, color_not_to_move):
     attributes1 = get_attribute_array(fen1)
     attributes2 = get_attribute_array(fen2)
     features1 = []
@@ -290,7 +303,7 @@ def generate_comment(fen1, fen2, engine_move, player_move):
     for attribute_name2, attribute_value2 in attributes2.items():
         if attribute_value2 and not attributes1[attribute_name2]:
             features2.append(attribute_name2)
-    return compute_random_comment(features1, features2, engine_move, player_move)
+    return compute_random_comment(features1, features2, engine_move, player_move, color_to_move, color_not_to_move)
 
 
 def diff_count(f1, f2):
@@ -302,11 +315,20 @@ def diff_count(f1, f2):
 
 
 def get_comment(engine, fen, move):
+    c.set_fen(fen)
+
     player_analysis_board = chess.Board()
     strategy_analysis_board = chess.Board()
 
     player_analysis_board.set_fen(fen)
     strategy_analysis_board.set_fen(fen)
+
+    if c.is_white_to_move():
+        color_to_move = 'white'
+        color_not_to_move = 'black'
+    else:
+        color_to_move = 'black'
+        color_not_to_move = 'white'
 
     strategy_best_move = engine.get_best_move(fen)
     strategy_analysis_board.push_uci(strategy_best_move)
@@ -324,12 +346,13 @@ def get_comment(engine, fen, move):
     try:
         player_eval = sf.get_evaluation_depth(12)
     except:
-        print("EXCEPTIO IN PLAYER EVAL!!!")
+        print("EXCEPTION IN PLAYER EVAL!!!")
 
     if abs(player_eval - strategy_eval) > 0.4:
-        attributes1 = get_attribute_array(strategy_analysis_board.fen())
-        attributes2 = get_attribute_array(player_analysis_board.fen())
-        while diff_count(attributes1, attributes2) < 3:
+        """
+        attributes1 = get_attribute_array(strategy_analysis_board.fen(), color_to_move)
+        attributes2 = get_attribute_array(player_analysis_board.fen(), color_not_to_move)
+        while diff_count(attributes1, attributes2, color_to_move) < 3:
             sf.set_fen_position(strategy_analysis_board.fen())
             strategy_analysis_board.push_uci(sf.get_best_move_depth(12))
 
@@ -338,7 +361,8 @@ def get_comment(engine, fen, move):
 
             attributes1 = get_attribute_array(strategy_analysis_board.fen())
             attributes2 = get_attribute_array(player_analysis_board.fen())
-        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move), strategy_best_move)
+        """
+        return (generate_comment(strategy_analysis_board.fen(), player_analysis_board.fen(), strategy_best_move, move, color_to_move, color_not_to_move), strategy_best_move)
     return (None, None)
 
 

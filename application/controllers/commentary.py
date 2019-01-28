@@ -9,6 +9,7 @@ game_checker_re = re.compile("([a-h][1-8][a-h][1-8]){4,}$")
 
 
 def get_commentary_controller(request):
+    print('Starting to generate new commentary ...')
     game = request.args.get('game', type=str).lower()
 
     if game is None or not game_checker_re.match(game):

@@ -14,6 +14,10 @@ def get_strategy_move(fen):
     return engine.get_best_move(fen)
 
 
+def get_strategy_comment(fen, move):
+    return get_comment(engine, fen, move)
+
+
 def get_strategy_short_description():
     return 'Stockfish is consistently ranked first or near the top of most chess-engine rating lists and is the strongest open-source chess engine in the world.'
 
