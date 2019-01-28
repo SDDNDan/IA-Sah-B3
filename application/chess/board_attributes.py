@@ -112,29 +112,29 @@ class Attributes:
                 return True
         return False
 
-    @staticmethod
-    def white_can_castle_kingside(board):
-        return 'K' in board.fen()[44:]
+    # @staticmethod
+    # def white_can_castle_kingside(board):
+    #     return 'K' in board.fen()[44:]
+    #
+    # @staticmethod
+    # def black_can_castle_kingside(board):
+    #     return 'k' in board.fen()[44:]
+    #
+    # @staticmethod
+    # def white_can_castle_queenside(board):
+    #     return 'Q' in board.fen()[44:]
+    #
+    # @staticmethod
+    # def black_can_castle_queenside(board):
+    #     return 'q' in board.fen()[44:]
 
-    @staticmethod
-    def black_can_castle_kingside(board):
-        return 'k' in board.fen()[44:]
-
-    @staticmethod
-    def white_can_castle_queenside(board):
-        return 'Q' in board.fen()[44:]
-
-    @staticmethod
-    def black_can_castle_queenside(board):
-        return 'q' in board.fen()[44:]
-
-    @staticmethod
-    def white_can_en_passant(board):
-        return 'w' in board.fen()[40:] and '-' not in board.fen()[44:]
-
-    @staticmethod
-    def black_can_en_passant(board):
-        return 'b' in board.fen()[40:] and '-' not in board.fen()[44:]
+    # @staticmethod
+    # def white_can_en_passant(board):
+    #     return 'w' in board.fen()[40:] and '-' not in board.fen()[44:]
+    #
+    # @staticmethod
+    # def black_can_en_passant(board):
+    #     return 'b' in board.fen()[40:] and '-' not in board.fen()[44:]
 
     @staticmethod
     def white_has_pinned_piece(board):
@@ -394,8 +394,16 @@ def get_matrix(board):
     for k, v in board.piece_map().items():
         line = k // 8
         column = k % 8
-        matrix[line][column] = v
+        matrix[7-line][column] = v
     return matrix
+
+
+# if __name__ == '__main__':
+#     b = chess.Board()
+#     matrix = get_matrix(b)
+#     m = b.piece_map()
+#     print(m)
+
 
 def get_attribute_array(fen):
     board = chess.Board()
