@@ -41,4 +41,5 @@ def get_commentary_controller(request):
 
         current_board.push_uci(move)
 
+    print(answer)
     return json.dumps(answer)
