@@ -33,14 +33,6 @@ class Attributes:
     """
 
     @staticmethod
-    def white_has_queen(board):
-        return 'Q' in board.fen().split()[0]
-
-    @staticmethod
-    def black_has_queen(board):
-        return 'q' in board.fen().split()[0]
-
-    @staticmethod
     def white_has_pair_of_bishops(board):
         fen = board.fen().split()[0]
         return fen.count('B') == 2 and fen.count('b') != 2
@@ -460,8 +452,8 @@ def generate_comment(fen1, fen2, engine_move, player_move, color_to_move, color_
         for attribute_name1, attribute_value1 in attributes1.items():
             if attribute_value1 and attributes2[attribute_name1]:
                 common.append(attribute_name1)
-        thought = 'Well, the positions we think about are quite similar. We both think at a position where {}.'\
-            .format(', '.join(common))
+        thought = 'We both think at a position where {}, but I think that my move {} gives you the edge '\
+            .format(', '.join(common), engine_move)
         return thought
     return compute_random_comment(features1, features2, engine_move, player_move, color_to_move, color_not_to_move)
 
