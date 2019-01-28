@@ -314,6 +314,7 @@ html,
   display: none;
   position: absolute;
   transition: display .2s ease-in-out;
+  transform: translateZ(0);
 }
 
 .lds-ellipsis.in-view {
@@ -339,8 +340,8 @@ html,
 
 .strategy .strategy__move + .lds-ellipsis div {
   top: 27px;
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
 }
 
 /* .commentary loader */

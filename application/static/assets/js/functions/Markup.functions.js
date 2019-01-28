@@ -16,7 +16,7 @@ export function createCardMarkup( strategyDetails ) {
   // .card-title 
   let cardTitle = document.createElement('h2');
   cardTitle.classList = 'card-title';
-  cardTitle.innerText = strategyDetails.strategy;
+  cardTitle.innerText = strategyDetails.strategyPrettyName;
 
   // .card-text
   let cardText = document.createElement('p');
@@ -62,12 +62,12 @@ export function createListGroupItemMarkup( strategyDetails ) {
   // strategy .name
   let strategyName = document.createElement('h5');
   strategyName.classList = 'mb-1 name';
-  strategyName.innerText = strategyDetails.strategy;
+  strategyName.innerText = strategyDetails.strategyPrettyName;
 
   // strategy .desc
   let strategyDesc = document.createElement('p');
   strategyDesc.classList = 'mb-1 desc';
-  strategyDesc.innerText = strategyDetails.description;
+  strategyDesc.innerText = strategyDetails.shortDescription;
 
   // .col-2.align-self-center
   let col = document.createElement('div');
@@ -86,7 +86,7 @@ export function createListGroupItemMarkup( strategyDetails ) {
   // markup here https://loading.io/css/
   let loader = document.createElement('div');
   loader.classList = 'lds-ellipsis';
-  loader.id = `js-loader-${strategyDetails.strategy}`
+  loader.id = `js-loader-${strategyDetails.strategy}`;
   let div1 = document.createElement('div');
   let div2 = document.createElement('div');
   let div3 = document.createElement('div');
