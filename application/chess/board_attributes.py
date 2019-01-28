@@ -454,14 +454,14 @@ def generate_comment(fen1, fen2, engine_move, player_move, color_to_move, color_
     features1 = [s for s in features1 if s.startswith(color_to_move)]
     features2 = [s for s in features2 if s.startswith(color_not_to_move)]
 
-    if len(features1) == 0 and len(features2) == 0:
-        common = []
-        for attribute_name1, attribute_value1 in attributes1.items():
-            if attribute_value1 and attributes2[attribute_name1]:
-                common.append(attribute_name1)
-        thought = 'We both think at a position where {}, but I think that my move {} gives you the edge '\
-            .format(', '.join(common), engine_move)
-        return thought
+    # if len(features1) == 0 and len(features2) == 0:
+    #     common = []
+    #     for attribute_name1, attribute_value1 in attributes1.items():
+    #         if attribute_value1 and attributes2[attribute_name1]:
+    #             common.append(attribute_name1)
+    #     thought = 'We both think at a position where {}, but I think that my move {} gives you the edge '\
+    #         .format(', '.join(common), engine_move)
+    #     return thought
     return compute_random_comment(features1, features2, engine_move, player_move, color_to_move, color_not_to_move)
 
 
