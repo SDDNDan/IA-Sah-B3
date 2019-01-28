@@ -101,40 +101,16 @@ class Attributes:
     @staticmethod
     def white_has_active_queen(board):
         for k, v in board.piece_map().items():
-            if v == 'Q' and k >= 32:
+            if v.symbol() == 'Q' and k >= 32:
                 return True
         return False
 
     @staticmethod
     def black_has_active_queen(board):
         for k, v in board.piece_map().items():
-            if v == 'q' and k < 32:
+            if v.symbol() == 'q' and k < 32:
                 return True
         return False
-
-    # @staticmethod
-    # def white_can_castle_kingside(board):
-    #     return 'K' in board.fen()[44:]
-    #
-    # @staticmethod
-    # def black_can_castle_kingside(board):
-    #     return 'k' in board.fen()[44:]
-    #
-    # @staticmethod
-    # def white_can_castle_queenside(board):
-    #     return 'Q' in board.fen()[44:]
-    #
-    # @staticmethod
-    # def black_can_castle_queenside(board):
-    #     return 'q' in board.fen()[44:]
-
-    # @staticmethod
-    # def white_can_en_passant(board):
-    #     return 'w' in board.fen()[40:] and '-' not in board.fen()[44:]
-    #
-    # @staticmethod
-    # def black_can_en_passant(board):
-    #     return 'b' in board.fen()[40:] and '-' not in board.fen()[44:]
 
     @staticmethod
     def white_has_pinned_piece(board):
@@ -167,56 +143,56 @@ class Attributes:
     @staticmethod
     def white_has_active_knight(board):
         for k, v in board.piece_map().items():
-            if v == 'N' and k >= 32:
+            if v.symbol() == 'N' and k >= 32:
                 return True
         return False
 
     @staticmethod
     def black_has_active_knight(board):
         for k, v in board.piece_map().items():
-            if v == 'n' and k < 32:
+            if v.symbol() == 'n' and k < 32:
                 return True
         return False
 
     @staticmethod
     def white_has_active_bishop(board):
         for k, v in board.piece_map().items():
-            if v == 'B' and k >= 32:
+            if v.symbol() == 'B' and k >= 32:
                 return True
         return False
 
     @staticmethod
     def black_has_active_bishop(board):
         for k, v in board.piece_map().items():
-            if v == 'b' and k < 32:
+            if v.symbol() == 'b' and k < 32:
                 return True
         return False
 
     @staticmethod
     def white_has_active_rook(board):
         for k, v in board.piece_map().items():
-            if v == 'R' and k >= 32:
+            if v.symbol() == 'R' and k >= 32:
                 return True
         return False
 
     @staticmethod
     def black_has_active_rook(board):
         for k, v in board.piece_map().items():
-            if v == 'r' and k < 32:
+            if v.symbol() == 'r' and k < 32:
                 return True
         return False
 
     @staticmethod
     def white_has_advanced_pawn(board):
         for k, v in board.piece_map().items():
-            if v == 'P' and k >= 32:
+            if v.symbol() == 'P' and k >= 32:
                 return True
         return False
 
     @staticmethod
     def black_has_advanced_pawn(board):
         for k, v in board.piece_map().items():
-            if v == 'p' and k < 32:
+            if v.symbol() == 'p' and k < 32:
                 return True
         return False
 
@@ -394,15 +370,15 @@ def get_matrix(board):
     for k, v in board.piece_map().items():
         line = k // 8
         column = k % 8
-        matrix[7-line][column] = v
+        matrix[7-line][column] = v.symbol()
     return matrix
 
 
-# if __name__ == '__main__':
-#     b = chess.Board()
-#     matrix = get_matrix(b)
-#     m = b.piece_map()
-#     print(m)
+if __name__ == '__main__':
+    b = chess.Board()
+    matrix = get_matrix(b)
+    m = b.piece_map()
+    print(m)
 
 
 def get_attribute_array(fen):
