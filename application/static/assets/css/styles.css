@@ -11,7 +11,7 @@ html,
 /* HEADER */
 /* .nav--header */
 .nav--header {
-  padding: .5em .8em;
+  padding: .35em .8em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -536,7 +536,7 @@ html,
   pointer-events: none;
   transform: translateX(-100%);
   transition: transform .3s ease-in-out;
-  background-color: var(--secondary);
+  background-color: var(--dark);
 }
 
 .strategies-details__close {
@@ -556,7 +556,7 @@ html,
 }
 
 .strategies-details__title {
-  color: #c0bbbb;
+  color: hsl(210, 17%, 98%);
 }
 
 .strategies-details .container-fluid .row .col-12 .card {
