@@ -53,15 +53,23 @@ export function getSuggestedMoves() {
 }
 
 export function getCommentary( matchString ) {
+  
   if( matchString !== "" ) {
-    // let loader = document.querySelector('#js-commentary > .lds-ellipsis');
+    let commentaryEl = document.getElementById('js-commentary');
+    let placeholder = commentaryEl.children[0];
+  
+    // hide placeholder text
+    placeholder.style.display = 'none';
+    commentaryEl.style.overflowY = 'scroll';
+
+    let loader = document.querySelector('#js-commentary > .loader');
     
-    // if( loader.classList.contains('in-view') ) {
-    //   loader.classList.remove('in-view');
-    // }
+    if( loader.classList.contains('in-view') ) {
+      loader.classList.remove('in-view');
+    }
 
     // show loader
-    // loader.classList.toggle('in-view');
+    loader.classList.toggle('in-view');
 
     $.ajax({
         url: constants.BASE_URL + '/commentary',
@@ -70,17 +78,10 @@ export function getCommentary( matchString ) {
           game: matchString
         },
         success: function(response) {
-            let commentaryEl = document.getElementById('js-commentary');
-            let placeholder = commentaryEl.children[0];
-
-            // hide placeholder text
-            placeholder.style.display = 'none';
-            commentaryEl.style.overflowY = 'scroll';
-
             render.renderCommentary( response );
 
             // hide loader
-            // loader.classList.toggle('in-view');
+            loader.classList.toggle('in-view');
 
             // add eventListeners for the moves
             // in the commentary

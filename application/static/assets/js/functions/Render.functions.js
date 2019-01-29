@@ -34,11 +34,12 @@ export function renderSuggestedMovesMarkup( strategiesResponse ) {
   strategyEls.forEach((strategyEl) => {
     strategyEl.addEventListener("mouseenter", () => {
       const strategyName = strategyEl.getAttribute("data-strategy-name");
-      clientLogic.highlightMove(strategyName);
+      clientLogic.highlightSuggestedMove(strategyName);
     });
+    
     strategyEl.addEventListener("mouseleave", () => {
       const strategyName = strategyEl.getAttribute("data-strategy-name");
-      clientLogic.highlightMove(strategyName, false);
+      clientLogic.highlightSuggestedMove(strategyName, false);
     });
   });
 }

@@ -70,7 +70,7 @@ html,
 
 [data-square]:before {
   content: "";
-  border: 3px solid var(--teal);
+  border: 3px solid;
   display: block;
   position: absolute;
   top: 0;
@@ -82,8 +82,19 @@ html,
   transform: scale(0.9);
 }
 
-[data-square].highlight:before {
+[data-square].highlight:before,
+[data-square].highlight--s:before,
+[data-square].highlight--u:before {
   opacity: 1;
+}
+
+[data-square].highlight:before,
+[data-square].highlight--s:before {
+  border-color: var(--teal);
+}
+
+[data-square].highlight--u:before {
+  border-color: var(--primary);
 }
 
 /* .current-fen component */
@@ -358,13 +369,28 @@ html,
 
 /* .commentary loader */
 
-.commentary > .lds-ellipsis {
-  display: none;
-  /* top: 55px; */
-  right: 228px;
+.commentary > .loader {
+  display: block;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
 }
 
-.commentary > .lds-ellipsis div {
+.commentary > .loader.in-view {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.commentary > .loader > .lds-ellipsis {
+  width: 64px;
+  opacity: 1;
+  transform: translateY(-50%);
+}
+
+.commentary > .loader > .lds-ellipsis div {
   top: 0;
   width: 12px;
   height: 12px;

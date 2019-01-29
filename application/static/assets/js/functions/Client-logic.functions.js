@@ -67,6 +67,9 @@ export function commentaryLinksEvents() {
     #js-commentary .commentary__line .commentary-text a.suggested-move`
   );
 
+  const userMoves = Array.from(moveLinks).filter(link => link.classList.contains("user-move"));
+  const suggestedMoves = Array.from(moveLinks).filter(link => link.classList.contains("suggested-move"));
+
   moveLinks.forEach( (link) => {
     link.addEventListener('click', () => {
       let fen = link.dataset.fen;
@@ -75,13 +78,33 @@ export function commentaryLinksEvents() {
         CHESS_COMPONENT.CHESSBOARD.position(fen);
         CHESS_COMPONENT.CHESS.load(fen);
       } else {
-        console.log(fen);
+        console.log("Error with fen", fen);
       }
+    });
+  });
+
+  suggestedMoves.forEach( (sMove) => {
+    sMove.addEventListener("mouseenter", () => {
+      highlightCommentMove(sMove, true, true);
+    });
+
+    sMove.addEventListener("mouseleave", () => {
+      highlightCommentMove(sMove, false, true);
+    });
+  });
+
+  userMoves.forEach( (uMove) => {
+    uMove.addEventListener("mouseenter", () => {
+      highlightCommentMove(uMove, true, false);
+    });
+
+    uMove.addEventListener("mouseleave", () => {
+      highlightCommentMove(uMove, false, false);
     });
   });
 }
 
-export function highlightMove( strategyName, onHover = true ) {
+export function highlightSuggestedMove( strategyName, onHover = true) {
   const chessboadContainer = document.getElementById("js-chessboard");
   const chessboardEl = chessboadContainer.querySelector(`div[class^="chessboard"] > div[class^="board"]`);
   const move = document.getElementById(`js-move-${strategyName}`).innerText;
@@ -103,17 +126,49 @@ export function highlightMove( strategyName, onHover = true ) {
   }
 }
 
+export function highlightCommentMove(el, onHover = true, suggested = true) {
+  const chessboadContainer = document.getElementById("js-chessboard");
+  const chessboardEl = chessboadContainer.querySelector(`div[class^="chessboard"] > div[class^="board"]`);
+
+  if ( el.getAttribute("data-fen") !== CHESS_COMPONENT.CHESS.fen() ) {
+    return
+  } else {
+    const move = el.dataset.move;
+    const fromTo = chunkString(move, 2);
+    const fromSquareEl = chessboardEl.querySelector(`[data-square=${fromTo[0]}]`);
+    const toSquareEl = chessboardEl.querySelector(`[data-square=${fromTo[1]}]`);
+
+    if ( onHover ) {
+      if ( suggested ) {
+        fromSquareEl.classList.add("highlight--s");
+        toSquareEl.classList.add("highlight--s");
+      } else {
+        fromSquareEl.classList.add("highlight--u");
+        toSquareEl.classList.add("highlight--u");
+      }
+    } else {
+      if ( suggested ) {
+        fromSquareEl.classList.remove("highlight--s");
+        toSquareEl.classList.remove("highlight--s");
+      } else {
+        fromSquareEl.classList.remove("highlight--u");
+        toSquareEl.classList.remove("highlight--u");
+      }
+    }
+  }
+}
+
 export function clearSuggestedMoves() {
   const suggestedMovesContainer = document.getElementById("js-suggested-moves-container");
   const movesEls = suggestedMovesContainer.querySelectorAll(".strategy .strategy__move");
   const loaders = suggestedMovesContainer.querySelectorAll(".strategy .strategy__move + .lds-ellipsis");
 
-  movesEls.forEach((moveEl) => {
+  movesEls.forEach( (moveEl) => {
     moveEl.innerText = "";
     moveEl.style.opacity = 0;
   });
 
-  loaders.forEach((loader) => {
+  loaders.forEach( (loader) => {
     if ( loader.classList.contains("in-view") ) {
       loader.classList.remove("in-view");
     }
